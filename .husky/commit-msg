@@ -1,0 +1,5 @@
+#!/bin/sh
+
+echo "🔍 commit-msg hook 실행 중..."
+
+npx --no-install commitlint --edit "$1"
