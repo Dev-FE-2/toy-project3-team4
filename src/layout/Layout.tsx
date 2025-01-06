@@ -1,7 +1,7 @@
 import { Outlet, useLocation } from 'react-router-dom';
 import { getPageTitle } from '../utils';
 import { NavBar } from '../components';
-import { default as S } from './Layout.styles';
+import * as S from './Layout.styles';
 
 const Layout = () => {
   const location = useLocation();

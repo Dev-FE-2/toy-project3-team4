@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { NAV_ITEM } from '../../constant';
 import { padding } from '../../styles';
-import { default as S } from './NavBar.styles';
+import * as S from './NavBar.styles';
 
 const NavBar = () => {
   return (
