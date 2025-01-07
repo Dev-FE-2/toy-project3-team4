@@ -1,4 +1,4 @@
-import { URL } from '../constant';
+import { URL } from '@/constant';
 
 /** Path, Route, Navagate에 관련된 유틸함수 */
 

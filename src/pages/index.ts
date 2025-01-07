@@ -1,3 +1,9 @@
 export { HomePage } from './HomePage';
 export { SignInPage } from './SignInPage';
+export { SearchPage } from './SearchPage';
+export { FollowPlaylistPage } from './FollowPlaylistPage';
+export { PlaylistViewPage } from './PlaylistViewPage';
+export { UpsertPlaylistPage } from './UpsertPlaylistPage';
 export { ProfilePage } from './ProfilePage';
+export { InterestPage } from './InterestPage';
+export { UserInfoPage } from './UserInfoPage';
