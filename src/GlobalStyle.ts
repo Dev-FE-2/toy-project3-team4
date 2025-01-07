@@ -9,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
         -moz-osx-font-smoothing: grayscale;
 
         --color-text-dark: ${colors.semantic.text.dark};
-        --color-background-light: ${colors.semantic.background.light};
+        --color-background-light: ${colors.semantic.background.white};
         --font-size-paragraph: ${font.size.paragraph};
     }
 
@@ -17,7 +17,7 @@ const GlobalStyle = createGlobalStyle`
         font-size: 100%; /* 16px */
     };
 
-    body {
+    html > body {
         font-family: 'Noto Sans KR', sans-serif;
         line-height: 1.5;
         font-weight: 400;

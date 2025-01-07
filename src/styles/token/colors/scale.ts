@@ -1,4 +1,4 @@
-import { raw } from './colorRawValue';
+import { raw } from './rawValue';
 
 const scale = {
   primary: {
@@ -109,42 +109,4 @@ const scale = {
   },
 };
 
-const semantic = {
-  primary: scale.primary.s600,
-  secondary: scale.secondary.s600,
-  success: scale.success.s600,
-  danger: scale.danger.s600,
-  warning: scale.warning.s600,
-  neutral: scale.neutral.s600, // 배경, 보조 텍스트, 구분선
-  neutralVariant: scale.neutralVariant.s600, // 보조적인 배경, 비활성 상태 UI
-  light: scale.neutral.s50,
-  dark: scale.neutral.s800,
-  info: scale.neutral.s600,
-  disabled: scale.neutralVariant.s600,
-  hover: {
-    primary: scale.primary.s400,
-    secondary: scale.secondary.s400,
-    neutral: scale.neutral.s400,
-    neutralVariant: scale.neutralVariant.s400,
-    success: scale.success.s400,
-    danger: scale.danger.s400,
-    warning: scale.warning.s400,
-    info: scale.info.s400,
-  },
-  background: {
-    light: scale.neutral.s0,
-    dark: scale.neutralVariant.s300,
-  },
-  text: {
-    light: scale.neutral.s50,
-    gray: scale.neutral.s600,
-    dark: scale.neutral.s900,
-    nav: scale.neutralVariant.s500,
-  },
-  border: {
-    light: scale.neutralVariant.s300,
-    focus: scale.primary.s500,
-  },
-};
-
-export const colors = { scale, semantic };
+export { scale };
