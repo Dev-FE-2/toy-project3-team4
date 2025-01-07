@@ -1,17 +1,19 @@
-import { ReactNode } from 'react';
-import { Navigate } from 'react-router-dom';
-import { URL } from '../constant';
+import { Navigate, Outlet } from 'react-router-dom';
+import { URLName } from '../constant';
+import { getURLLink } from '@/utils';
 
 interface ProtectedRouteParams {
   isLoggedIn: boolean;
-  children: ReactNode;
+  redirectPath?: string;
 }
 
-const ProtectedRoute = ({ isLoggedIn, children }: ProtectedRouteParams) => {
-  // 인증되지 않았으면 로그인 페이지로 리다이렉트
+const ProtectedRoute = ({
+  isLoggedIn,
+  redirectPath = getURLLink(URLName.SIGNIN),
+}: ProtectedRouteParams) => {
+  // 인증되지 않았으면 redirect path로 리다이렉트
   // 인증되었으면 자식 컴포넌트를 렌더링
-
-  return !isLoggedIn ? <Navigate to={URL.signin.link} replace /> : children;
+  return !isLoggedIn ? <Navigate to={redirectPath} replace /> : <Outlet />;
 };
 
 export default ProtectedRoute;
