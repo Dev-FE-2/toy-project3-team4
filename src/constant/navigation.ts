@@ -1,11 +1,9 @@
 /** Navigation에서 사용 */
-
-import { getURL } from '@/utils';
-import { URLName } from '../constant';
+import { URL } from '../constant';
 
 const NAV_ITEM = [
   {
-    ...getURL(URLName.HOME),
+    ...URL.HOME,
     hasSubNav: false,
     firstSubNav: '',
     isSubNav: false,
@@ -13,7 +11,7 @@ const NAV_ITEM = [
     icon: 'home',
   },
   {
-    ...getURL(URLName.SIGNIN),
+    ...URL.SIGNIN,
     hasSubNav: false,
     firstSubNav: '',
     isSubNav: false,
@@ -21,7 +19,7 @@ const NAV_ITEM = [
     icon: 'signin',
   },
   {
-    ...getURL(URLName.PROFILE),
+    ...URL.PROFILE,
     hasSubNav: false,
     firstSubNav: '',
     isSubNav: false,

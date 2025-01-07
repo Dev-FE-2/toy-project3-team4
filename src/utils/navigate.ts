@@ -1,5 +1,4 @@
-import { URL, URLName } from '@/constant';
-import { getURL } from './urlUtil';
+import { URL } from '@/constant';
 
 /** Path, Route, Navagate에 관련된 유틸함수 */
 
@@ -11,7 +10,7 @@ import { getURL } from './urlUtil';
  */
 export const getPageTitle = (path: string): string => {
   for (const key in URL) {
-    const urlInfo = getURL(key as URLName);
+    const urlInfo = URL[key];
 
     if (urlInfo.link == path) return urlInfo.text;
   }
