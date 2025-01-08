@@ -18,7 +18,7 @@ const NAV_ITEM_DESKTOP: NavItem[] = [
   },
   {
     ...URL.FOLLOWPLI,
-    icon: '➕',
+    icon: '🏃',
   },
   {
     ...URL.INSERTPLI,

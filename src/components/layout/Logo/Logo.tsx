@@ -3,10 +3,15 @@ import { URL } from '../../../constant';
 import * as S from './Logo.styles';
 import logoImage from '/logo_petmoment.svg';
 
-const Logo = ({ width }: { width: string }) => {
+type LogoProps = {
+  width: string;
+  padding?: string;
+};
+
+const Logo = ({ width, padding }: LogoProps) => {
   return (
     <Link to={URL.INDEX.link}>
-      <S.Logo width={width}>
+      <S.Logo width={width} padding={padding}>
         <img src={logoImage} alt="PETMOMENT" />
       </S.Logo>
     </Link>
