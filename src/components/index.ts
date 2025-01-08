@@ -1,2 +1,2 @@
 export * from './core';
-export { NavBar } from './NavBar';
+export * from './layout';
