@@ -11,7 +11,7 @@ const NavBar = () => {
       <S.Navigation padding={padding.lg}>
         <ul>
           {NAV_ITEM.map((navItem) => (
-            <li key={navItem.name}>
+            <li key={navItem.link}>
               <NavLink to={navItem.link}>{navItem.text}</NavLink>
             </li>
           ))}

@@ -1,10 +1,9 @@
 /** Navigation에서 사용 */
-
 import { URL } from '../constant';
 
 const NAV_ITEM = [
   {
-    ...URL.home,
+    ...URL.HOME,
     hasSubNav: false,
     firstSubNav: '',
     isSubNav: false,
@@ -12,7 +11,7 @@ const NAV_ITEM = [
     icon: 'home',
   },
   {
-    ...URL.signin,
+    ...URL.SIGNIN,
     hasSubNav: false,
     firstSubNav: '',
     isSubNav: false,
@@ -20,7 +19,7 @@ const NAV_ITEM = [
     icon: 'signin',
   },
   {
-    ...URL.profile,
+    ...URL.PROFILE,
     hasSubNav: false,
     firstSubNav: '',
     isSubNav: false,
