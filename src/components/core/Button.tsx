@@ -8,7 +8,7 @@ type ButtonColor =
   | 'white'
   | 'black'
   | 'disabled';
-type ButtonRadius = 'sm' | 'md' | 'lg' | 'full';
+type ButtonRadius = 'default' | 'full';
 type ButtonBackgroundColor = ButtonColor;
 type ButtonBorder = ButtonColor;
 
@@ -50,10 +50,8 @@ const COLOR = {
 };
 
 const RADIUS = {
-  sm: '6px',
-  md: '10px',
-  lg: '20px',
-  full: '1000px',
+  default: '8px',
+  full: '50%',
 };
 
 const Button = styled.button<IButton>`
