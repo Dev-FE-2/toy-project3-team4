@@ -14,7 +14,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     html {
-        font-size: 100%; /* 16px */
+        font-size: 62.5%; /* 10px */
     };
 
     html > body {
@@ -30,7 +30,7 @@ const GlobalStyle = createGlobalStyle`
         /** 데스크탑 이하 디바이스 **/
 
         html {
-            font-size: 90%;
+            font-size: 56.25%;
         }
     }
 

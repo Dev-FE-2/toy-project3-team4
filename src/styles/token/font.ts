@@ -1,11 +1,11 @@
 export const font = {
   size: {
-    heading: '32px',
-    headingLight: '28px',
-    subHeading: '24px',
-    paragraph: '16px',
-    info: '14px',
-    min: '13px',
+    heading: '3.2rem',
+    headingLight: '2.8rem',
+    subHeading: '2.4rem',
+    paragraph: '1.6rem',
+    info: '1.4rem',
+    min: '1.3rem',
     values: {
       heading: 36,
       subHeading: 24,

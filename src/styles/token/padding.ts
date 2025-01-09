@@ -1,10 +1,10 @@
 export const padding = {
-  xs: '4px',
-  sm: '8px',
-  md: '16px',
-  lg: '36px',
-  xl: '48px',
-  xxl: '60px',
+  xs: '0.4rem',
+  sm: '0.8rem',
+  md: '1.6rem',
+  lg: '3.6rem',
+  xl: '4.8rem',
+  xxl: '6rem',
   values: {
     xs: 4,
     sm: 8,

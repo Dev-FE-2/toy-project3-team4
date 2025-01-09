@@ -1,7 +1,7 @@
 const height = {
   mobile: {
-    header: '48px',
-    nav: '48px',
+    header: '4.8rem',
+    nav: '4.8rem',
   },
 };
 
