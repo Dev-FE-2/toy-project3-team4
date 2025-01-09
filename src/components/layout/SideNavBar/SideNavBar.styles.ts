@@ -10,7 +10,7 @@ export const SideNavBar = styled.aside`
     flex-direction: column;
     justify-content: space-between;
     height: 100vh;
-    min-width: 280px;
+    min-width: 28rem;
     border-right: ${border.default};
     color: ${colors.semantic.text.nav};
   }
@@ -22,13 +22,13 @@ export const Navigation = styled.nav`
 `;
 
 export const NavItem = styled.div<{ $padding: string }>`
-  height: 44px;
+  height: 4.4rem;
   display: flex;
   align-items: center;
   cursor: pointer;
   transition: all ease 0.2s;
   color: ${colors.semantic.primary};
-  padding: 0 ${(props) => props.$padding};
+  padding: ${(props) => props.$padding};
 
   > * {
     display: flex;
@@ -55,10 +55,10 @@ export const NavItem = styled.div<{ $padding: string }>`
 
   &.has-sub-nav.selected {
     background-color: ${hexToRgba(colors.semantic.primary, 0.05)};
-    border-right: 3px solid ${colors.semantic.primary};
+    border-right: 0.3rem solid ${colors.semantic.primary};
   }
 `;
 
 export const Themore = styled.div<{ $padding: string }>`
-  padding: ${(props) => props.$padding} 0;
+  padding: ${(props) => props.$padding};
 `;

@@ -8,7 +8,7 @@ export const MobileHeader = styled.header`
   gap: ${padding.md};
   padding: 0 ${padding.md};
   border-bottom: ${border.default};
-  height: 48px;
+  height: 4.8rem;
 
   @media (min-width: 768px) {
     display: none;

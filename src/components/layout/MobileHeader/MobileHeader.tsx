@@ -5,8 +5,8 @@ import * as S from './MobileHeader.styles';
 const MobileHeader = () => {
   return (
     <S.MobileHeader>
-      <Logo width="150px" />
-      <ProfileImage width="32px" link={URL.PROFILE.link} />
+      <Logo width="15rem" />
+      <ProfileImage width="3.2rem" link={URL.PROFILE.link} />
     </S.MobileHeader>
   );
 };
