@@ -1,1 +1,1 @@
-export { colors, padding, font, border } from './token';
+export { colors, padding, font, border, height } from './token';

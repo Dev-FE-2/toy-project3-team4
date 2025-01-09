@@ -10,8 +10,10 @@ export const border = {
     xs: '4px',
     sm: '8px',
     lg: '32px',
+    full: '50%',
     values: {
       xs: 4,
+      sm: 8,
       lg: 32,
     },
   },

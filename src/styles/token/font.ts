@@ -16,7 +16,7 @@ export const font = {
   },
   family: "'Noto Sans KR', sans-serif",
   weight: {
-    heading: 600,
+    heading: 500,
     headingLight: 300,
     light: 300,
     normal: 400,

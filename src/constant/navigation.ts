@@ -1,31 +1,63 @@
 /** Navigation에서 사용 */
 import { URL } from '../constant';
 
-const NAV_ITEM = [
+type NavItem = {
+  text: string;
+  link: string;
+  icon: string;
+};
+
+const NAV_ITEM_DESKTOP: NavItem[] = [
   {
     ...URL.HOME,
-    hasSubNav: false,
-    firstSubNav: '',
-    isSubNav: false,
-    parentNav: '',
-    icon: 'home',
+    icon: '🏠',
   },
   {
-    ...URL.SIGNIN,
-    hasSubNav: false,
-    firstSubNav: '',
-    isSubNav: false,
-    parentNav: '',
-    icon: 'signin',
+    ...URL.SEARCH,
+    icon: '🔍',
+  },
+  {
+    ...URL.FOLLOWPLI,
+    icon: '🏃',
+  },
+  {
+    ...URL.INSERTPLI,
+    icon: '➕',
   },
   {
     ...URL.PROFILE,
-    hasSubNav: false,
-    firstSubNav: '',
-    isSubNav: false,
-    parentNav: '',
-    icon: 'person',
+    icon: '',
   },
 ];
 
-export { NAV_ITEM };
+const NAV_ITEM_MOBILE: NavItem[] = [
+  {
+    ...URL.HOME,
+    icon: '🏠',
+  },
+  {
+    ...URL.FOLLOWPLI,
+    icon: '🏃',
+  },
+  {
+    ...URL.INSERTPLI,
+    icon: '➕',
+  },
+  {
+    ...URL.PROFILE,
+    icon: '',
+  },
+];
+
+const NAV_ITEM_THEMORE: NavItem[] = [
+  {
+    ...URL.USERINFO,
+    icon: '⚙️',
+  },
+  {
+    ...URL.INTERESTS,
+    icon: '🧐',
+  },
+];
+
+export { NAV_ITEM_DESKTOP, NAV_ITEM_MOBILE, NAV_ITEM_THEMORE };
