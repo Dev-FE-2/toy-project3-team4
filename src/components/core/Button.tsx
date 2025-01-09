@@ -11,9 +11,11 @@ type ButtonColor =
 type ButtonRadius = 'default' | 'full';
 type ButtonBackgroundColor = ButtonColor;
 type ButtonBorder = ButtonColor;
+type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
 interface IButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   $bgColor: ButtonBackgroundColor;
+  $size?: ButtonSize;
   $width?: string;
   $radius?: ButtonRadius;
   $borderColor?: ButtonBorder;
@@ -54,6 +56,29 @@ const RADIUS = {
   full: '50%',
 };
 
+const SIZE = {
+  xs: {
+    height: '32px',
+    fontSize: '13px',
+  },
+  sm: {
+    height: '36px',
+    fontSize: '14px',
+  },
+  md: {
+    height: '40px',
+    fontSize: '14px',
+  },
+  lg: {
+    height: '48px',
+    fontSize: '16px',
+  },
+  xl: {
+    height: '52px',
+    fontSize: '16px',
+  },
+};
+
 const Button = styled.button<IButton>`
   cursor: pointer;
   transition: all 0.3s;
@@ -62,6 +87,16 @@ const Button = styled.button<IButton>`
   width: ${(props) => {
     if (props.$width) return props.$width;
     return 'auto';
+  }};
+
+  height: ${(props) => {
+    if (props.$size) return SIZE[props.$size].height;
+    return SIZE.xl.height; // 52px
+  }};
+
+  font-size: ${(props) => {
+    if (props.$size) return SIZE[props.$size].fontSize;
+    return SIZE.xl.fontSize; // 16px
   }};
 
   border: ${(props) => {
