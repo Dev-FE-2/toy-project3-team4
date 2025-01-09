@@ -21,14 +21,14 @@ export const Navigation = styled.nav`
   border: ${border.radius.xs};
 `;
 
-export const NavItem = styled.div<{ isToggle?: boolean; padding: string }>`
+export const NavItem = styled.div<{ $padding: string }>`
   height: 44px;
   display: flex;
   align-items: center;
   cursor: pointer;
   transition: all ease 0.2s;
   color: ${colors.semantic.primary};
-  padding: 0 ${(props) => props.padding};
+  padding: 0 ${(props) => props.$padding};
 
   > * {
     display: flex;
@@ -52,14 +52,6 @@ export const NavItem = styled.div<{ isToggle?: boolean; padding: string }>`
     display: flex;
     justify-content: space-between;
   }
-
-  ${(props) =>
-    props.isToggle &&
-    `
-        .material-symbols-outlined {
-          transform: rotate(180deg);
-        }      
-      `}
 
   &.has-sub-nav.selected {
     background-color: ${hexToRgba(colors.semantic.primary, 0.05)};

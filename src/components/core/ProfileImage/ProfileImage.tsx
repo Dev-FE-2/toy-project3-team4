@@ -9,7 +9,7 @@ interface ProfileImageProps {
 
 const ProfileImage = ({ width, link }: ProfileImageProps) => {
   const profileImage = (
-    <S.ProfileImage width={width}>
+    <S.ProfileImage $width={width}>
       <img src={defaultImage} alt="PETMOMENT" />
     </S.ProfileImage>
   );
