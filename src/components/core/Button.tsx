@@ -16,7 +16,7 @@ interface IButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   $bgColor: ButtonBackgroundColor;
   $width?: string;
   $radius?: ButtonRadius;
-  $border?: ButtonBorder;
+  $borderColor?: ButtonBorder;
 }
 
 const COLOR = {
@@ -67,7 +67,8 @@ const Button = styled.button<IButton>`
   }};
 
   border: ${(props) => {
-    if (props.$border) return `1px solid ${COLOR.default[props.$border]}`;
+    if (props.$borderColor)
+      return `1px solid ${COLOR.default[props.$borderColor]}`;
     return 'none';
   }};
 
