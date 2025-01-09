@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { hexToRgba } from '../../../utils';
-import { colors, padding, border } from '../../../styles';
+import { hexToRgba } from '@/utils';
+import { colors, padding, border } from '@/styles';
 
 export const SideNavBar = styled.aside`
   display: none;
@@ -59,6 +59,6 @@ export const NavItem = styled.div<{ $padding: string }>`
   }
 `;
 
-export const Themore = styled.div<{ padding: string }>`
-  padding: ${(props) => props.padding} 0;
+export const Themore = styled.div<{ $padding: string }>`
+  padding: ${(props) => props.$padding} 0;
 `;

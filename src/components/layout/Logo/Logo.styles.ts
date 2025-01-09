@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors, font } from '../../../styles';
+import { colors, font } from '@/styles';
 
 export const Logo = styled.div<{ $width: string; $padding?: string }>`
   display: flex;

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { padding, border } from '../../../styles';
+import { padding, border } from '@/styles';
 
 export const MobileHeader = styled.header`
   display: flex;

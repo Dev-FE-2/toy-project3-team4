@@ -1,6 +1,6 @@
 import { Outlet, useLocation } from 'react-router-dom';
-import { getPageTitle } from '../utils';
-import { MobileHeader, SideNavBar, MobileNavBar } from '../components';
+import { getPageTitle } from '@/utils';
+import { MobileHeader, SideNavBar, MobileNavBar } from '@/components';
 import * as S from './Layout.styles';
 
 const Layout = () => {

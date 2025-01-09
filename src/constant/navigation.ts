@@ -1,5 +1,5 @@
 /** Navigation에서 사용 */
-import { URL } from '../constant';
+import { URL } from '@/constant';
 
 type NavItem = {
   text: string;

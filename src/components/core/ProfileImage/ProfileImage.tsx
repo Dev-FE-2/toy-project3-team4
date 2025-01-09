@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import * as S from './ProfileImage.styles';
-import defaultImage from '../../../assets/avatar.svg';
+import defaultImage from '@/assets/avatar.svg';
 
 interface ProfileImageProps {
   width: string;

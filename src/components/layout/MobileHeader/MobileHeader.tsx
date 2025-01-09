@@ -1,5 +1,5 @@
-import { URL } from '../../../constant';
-import { Logo, ProfileImage } from '../../../components';
+import { URL } from '@/constant';
+import { Logo, ProfileImage } from '@/components';
 import * as S from './MobileHeader.styles';
 
 const MobileHeader = () => {

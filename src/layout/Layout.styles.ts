@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { padding, font } from '../styles';
+import { padding, font } from '@/styles';
 
 export const Layout = styled.div`
   display: flex;

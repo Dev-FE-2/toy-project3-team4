@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
-import { NAV_ITEM_MOBILE, URL } from '../../../constant';
-import { ProfileImage } from '../../../components';
+import { NAV_ITEM_MOBILE, URL } from '@/constant';
+import { ProfileImage } from '@/components';
 import * as S from './MobileNavBar.styles';
 
 const SideNavBar = () => {

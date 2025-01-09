@@ -1,5 +1,5 @@
 import { Navigate, Outlet } from 'react-router-dom';
-import { URL } from '../constant';
+import { URL } from '@/constant';
 
 const ProtectedRoute = ({
   redirectPath = URL.SIGNIN.link,
