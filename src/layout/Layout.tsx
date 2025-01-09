@@ -9,7 +9,7 @@ const Layout = () => {
   return (
     <S.Layout>
       <MobileHeader />
-      <body className="page-container">
+      <div className="page-container">
         <SideNavBar />
         <MobileNavBar />
         <main>
@@ -18,7 +18,7 @@ const Layout = () => {
             <Outlet />
           </section>
         </main>
-      </body>
+      </div>
     </S.Layout>
   );
 };
