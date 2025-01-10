@@ -10,7 +10,7 @@ export const font = {
       subHeading: 20,
       paragraph: 16,
       info: 14,
-      min: 13,
+      min: 14,
     },
   },
   family: "'Noto Sans KR', sans-serif",
