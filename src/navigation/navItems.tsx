@@ -15,24 +15,24 @@ type NavItem = {
   icon: ReactNode;
 };
 
-const size = '2.4rem';
+export const navIconSize = '2.4rem';
 
 const desktopNavItems: NavItem[] = [
   {
     ...URL.HOME,
-    icon: <RiHome4Line size={size} />,
+    icon: <RiHome4Line size={navIconSize} />,
   },
   {
     ...URL.SEARCH,
-    icon: <RiSearchLine size={size} />,
+    icon: <RiSearchLine size={navIconSize} />,
   },
   {
     ...URL.FOLLOWPLI,
-    icon: <RiUserFollowLine size={size} />,
+    icon: <RiUserFollowLine size={navIconSize} />,
   },
   {
     ...URL.INSERTPLI,
-    icon: <RiAddCircleLine size={size} />,
+    icon: <RiAddCircleLine size={navIconSize} />,
   },
   {
     ...URL.PROFILE,
@@ -43,15 +43,15 @@ const desktopNavItems: NavItem[] = [
 const mobileNavItems: NavItem[] = [
   {
     ...URL.HOME,
-    icon: <RiHome4Line size={size} />,
+    icon: <RiHome4Line size={navIconSize} />,
   },
   {
     ...URL.FOLLOWPLI,
-    icon: <RiUserFollowLine size={size} />,
+    icon: <RiUserFollowLine size={navIconSize} />,
   },
   {
     ...URL.INSERTPLI,
-    icon: <RiAddCircleLine size={size} />,
+    icon: <RiAddCircleLine size={navIconSize} />,
   },
   {
     ...URL.PROFILE,
@@ -62,11 +62,11 @@ const mobileNavItems: NavItem[] = [
 const themoreNavItems: NavItem[] = [
   {
     ...URL.USERINFO,
-    icon: <RiUserSettingsLine />,
+    icon: <RiUserSettingsLine size={navIconSize} />,
   },
   {
     ...URL.INTERESTS,
-    icon: <RiVipDiamondLine />,
+    icon: <RiVipDiamondLine size={navIconSize} />,
   },
 ];
 

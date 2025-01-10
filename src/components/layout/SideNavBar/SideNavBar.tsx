@@ -1,35 +1,40 @@
 import { NavLink } from 'react-router-dom';
-import { NAV_ITEM_DESKTOP, URL } from '@/constant';
+import { RiMenuFill } from 'react-icons/ri';
+import { URL } from '@/constant';
+import { desktopNavItems, navIconSize } from '@/navigation';
 import { Logo, ProfileImage } from '@/components';
-import { padding } from '@/styles';
 import * as S from './SideNavBar.styles';
 
 const SideNavBar = () => {
   return (
     <S.SideNavBar>
-      <Logo width="28rem" padding={`4rem ${padding.lg}`} />
+      <S.LogoWrap>
+        <Logo width="14rem" />
+      </S.LogoWrap>
       <S.Navigation>
         <ul>
-          {NAV_ITEM_DESKTOP.map((navItem, index) => (
-            <S.NavItem
-              key={`${index}-${navItem.text}`}
-              $padding={`0 ${padding.lg}`}
-            >
-              {navItem.link === URL.PROFILE.link ? (
-                <NavLink to={navItem.link}>
-                  <ProfileImage width="2.8rem" /> <div>{navItem.text}</div>
-                </NavLink>
-              ) : (
-                <NavLink to={navItem.link}>
-                  <div>{navItem.icon}</div> <div>{navItem.text}</div>
-                </NavLink>
-              )}
-            </S.NavItem>
+          {desktopNavItems.map((navItem, index) => (
+            <li key={`${index}-${navItem.text}`}>
+              <S.NavItem as={NavLink} to={navItem.link} className="menu">
+                {navItem.link === URL.PROFILE.link ? (
+                  <>
+                    <ProfileImage width="2.4rem" isBorder={true} />{' '}
+                    <span>{navItem.text}</span>
+                  </>
+                ) : (
+                  <>
+                    {navItem.icon} <span>{navItem.text}</span>
+                  </>
+                )}
+              </S.NavItem>
+            </li>
           ))}
         </ul>
       </S.Navigation>
-      <S.Themore $padding={`${padding.md} 0`}>
-        <S.NavItem $padding={`0 ${padding.lg}`}>㆔ 더보기</S.NavItem>
+      <S.Themore>
+        <S.NavItem className="menu">
+          <RiMenuFill size={navIconSize} /> <span>더보기</span>
+        </S.NavItem>
       </S.Themore>
     </S.SideNavBar>
   );

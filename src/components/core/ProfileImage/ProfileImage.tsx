@@ -5,12 +5,13 @@ import defaultImage from '@/assets/avatar.svg';
 interface ProfileImageProps {
   width: string;
   link?: string;
+  isBorder?: boolean;
 }
 
-const ProfileImage = ({ width, link }: ProfileImageProps) => {
+const ProfileImage = ({ width, link, isBorder }: ProfileImageProps) => {
   const profileImage = (
-    <S.ProfileImage $width={width}>
-      <img src={defaultImage} alt="PETMOMENT" />
+    <S.ProfileImage $width={width} $isBorder={isBorder}>
+      <img src={defaultImage} alt="사용자 프로필 사진" />
     </S.ProfileImage>
   );
 
