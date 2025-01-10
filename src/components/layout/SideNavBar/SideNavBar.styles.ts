@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { hexToRgba } from '../../../utils';
-import { colors, padding, border } from '../../../styles';
+import { hexToRgba } from '@/utils';
+import { colors, padding, border } from '@/styles';
 
 export const SideNavBar = styled.aside`
   display: none;
@@ -10,7 +10,7 @@ export const SideNavBar = styled.aside`
     flex-direction: column;
     justify-content: space-between;
     height: 100vh;
-    min-width: 280px;
+    min-width: 28rem;
     border-right: ${border.default};
     color: ${colors.semantic.text.nav};
   }
@@ -21,14 +21,14 @@ export const Navigation = styled.nav`
   border: ${border.radius.xs};
 `;
 
-export const NavItem = styled.div<{ isToggle?: boolean; padding: string }>`
-  height: 44px;
+export const NavItem = styled.div<{ $padding: string }>`
+  height: 4.4rem;
   display: flex;
   align-items: center;
   cursor: pointer;
   transition: all ease 0.2s;
   color: ${colors.semantic.primary};
-  padding: 0 ${(props) => props.padding};
+  padding: ${(props) => props.$padding};
 
   > * {
     display: flex;
@@ -53,20 +53,12 @@ export const NavItem = styled.div<{ isToggle?: boolean; padding: string }>`
     justify-content: space-between;
   }
 
-  ${(props) =>
-    props.isToggle &&
-    `
-        .material-symbols-outlined {
-          transform: rotate(180deg);
-        }      
-      `}
-
   &.has-sub-nav.selected {
     background-color: ${hexToRgba(colors.semantic.primary, 0.05)};
-    border-right: 3px solid ${colors.semantic.primary};
+    border-right: 0.3rem solid ${colors.semantic.primary};
   }
 `;
 
-export const Themore = styled.div<{ padding: string }>`
-  padding: ${(props) => props.padding} 0;
+export const Themore = styled.div<{ $padding: string }>`
+  padding: ${(props) => props.$padding};
 `;

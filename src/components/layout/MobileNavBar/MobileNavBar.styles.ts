@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { padding, height, border } from '../../../styles';
+import { padding, height, border } from '@/styles';
 
 export const MobileNavBar = styled.aside`
   border-top: ${border.default};

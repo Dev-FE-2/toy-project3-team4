@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import * as S from './ProfileImage.styles';
-import defaultImage from '../../../assets/avatar.svg';
+import defaultImage from '@/assets/avatar.svg';
 
 interface ProfileImageProps {
   width: string;
@@ -9,7 +9,7 @@ interface ProfileImageProps {
 
 const ProfileImage = ({ width, link }: ProfileImageProps) => {
   const profileImage = (
-    <S.ProfileImage width={width}>
+    <S.ProfileImage $width={width}>
       <img src={defaultImage} alt="PETMOMENT" />
     </S.ProfileImage>
   );

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { padding, font } from '../styles';
+import { padding, font } from '@/styles';
 
 export const Layout = styled.div`
   display: flex;
@@ -32,8 +32,8 @@ export const Layout = styled.div`
         gap: ${padding.md};
 
         @media (min-width: 768px) {
-          max-width: 1500px;
-          padding: 100px ${padding.md};
+          max-width: 150rem;
+          padding: 4rem ${padding.md};
           height: 100vh;
           gap: ${padding.xl};
         }
@@ -49,16 +49,5 @@ export const Layout = styled.div`
         background-color: #fff;
       }
     }
-  }
-`;
-
-export const Body = styled.body``;
-
-export const CoreContainer = styled.section`
-  display: flex;
-  flex-direction: column-reverse;
-
-  @media (min-width: 768px) {
-    flex-direction: row;
   }
 `;
