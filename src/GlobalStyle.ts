@@ -26,11 +26,11 @@ const GlobalStyle = createGlobalStyle`
         font-size: var(--font-size-paragraph);
     }
 
-    @media (max-width: 768px) {
+    @media (min-width: 768px) {
         /** 데스크탑 이하 디바이스 **/
 
         html {
-            font-size: 56.25%;
+            font-size: 68.75%;
         }
     }
 
