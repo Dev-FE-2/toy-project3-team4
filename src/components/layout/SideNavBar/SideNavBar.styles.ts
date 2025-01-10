@@ -55,7 +55,7 @@ export const NavItem = styled.div`
   }
 
   &.active {
-    color: ${colors.semantic.primary};
+    font-weight: 700;
   }
 
   &:hover {

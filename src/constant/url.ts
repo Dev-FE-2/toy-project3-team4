@@ -8,7 +8,7 @@ type Url = Record<string, { text: string; link: string }>;
  */
 const URL: Url = {
   INDEX: { text: '', link: '/' },
-  HOME: { text: 'HOME', link: '/home' },
+  HOME: { text: '홈', link: '/home' },
   SIGNIN: { text: '로그인', link: '/signin' },
   SEARCH: { text: '검색', link: '/search' },
   FOLLOWPLI: { text: '팔로우', link: '/followpli' },
