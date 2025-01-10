@@ -7,7 +7,7 @@ export const Logo = styled.div<{ $width: string; $padding?: string }>`
   align-items: center;
   height: 100%;
   font-size: ${font.size.subHeading};
-  font-weight: ${font.weight.bold};
+  font-weight: ${font.weight.heading};
   color: ${colors.semantic.primary};
   width: ${(props) => props.$width};
   padding: ${(props) => props.$padding};
