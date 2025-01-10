@@ -1,8 +1,5 @@
 {
-  "extends": [
-    "stylelint-config-standard",
-    "stylelint-config-styled-components"
-  ],
+  "extends": ["stylelint-config-standard"],
   "customSyntax": "@stylelint/postcss-css-in-js",
   "rules": {}
 }
