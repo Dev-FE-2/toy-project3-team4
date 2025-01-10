@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { padding, border } from '@/styles';
+import { padding, border, height } from '@/styles';
 
 export const MobileHeader = styled.header`
   display: flex;
@@ -8,9 +8,9 @@ export const MobileHeader = styled.header`
   gap: ${padding.md};
   padding: 0 ${padding.md};
   border-bottom: ${border.default};
-  height: 4.8rem;
+  height: ${height.mobile.header};
 
-  @media (min-width: 768px) {
+  @media (width >= 768px) {
     display: none;
   }
 `;
