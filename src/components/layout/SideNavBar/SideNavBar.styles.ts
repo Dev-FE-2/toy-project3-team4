@@ -1,47 +1,65 @@
 import styled from 'styled-components';
 import { hexToRgba } from '@/utils';
-import { colors, padding, border } from '@/styles';
+import { colors, padding, border, font } from '@/styles';
+
+const paddingY = '4rem';
+const paddingXHalf = `${padding.values.lg / 2 / 10}rem`;
+const fontSize = `${font.size.values.paragraph}px`; // 모바일 사용 ❌ 16px 고정 값이 필요
 
 export const SideNavBar = styled.aside`
   display: none;
 
-  @media (min-width: 768px) {
+  @media (width >= 768px) {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100vh;
-    min-width: 28rem;
+    min-width: 22.3rem;
     border-right: ${border.default};
     color: ${colors.semantic.text.nav};
+    padding: 0 ${paddingXHalf};
+    font-size: ${fontSize};
+    font-weight: 500;
   }
+`;
+
+export const LogoWrap = styled.div`
+  padding: ${paddingY} ${paddingXHalf};
 `;
 
 export const Navigation = styled.nav`
   flex: 1;
-  border: ${border.radius.xs};
+
+  & > ul {
+    display: flex;
+    flex-direction: column;
+    gap: ${padding.sm};
+  }
 `;
 
-export const NavItem = styled.div<{ $padding: string }>`
-  height: 4.4rem;
+export const NavItem = styled.div`
+  height: 4.8rem;
   display: flex;
   align-items: center;
   cursor: pointer;
-  transition: all ease 0.2s;
+  transition: all 0.3s;
   color: ${colors.semantic.primary};
-  padding: ${(props) => props.$padding};
+  padding: 0 ${paddingXHalf};
+  border-radius: ${border.radius.sm};
 
-  > * {
+  &.menu,
+  & > .menu {
     display: flex;
-    gap: ${padding.sm};
+    gap: ${padding.md};
+    align-items: center;
   }
 
   &.active {
-    color: ${colors.semantic.primary};
+    font-weight: 700;
   }
 
   &:hover {
-    color: ${colors.semantic.text.white};
-    background-color: ${colors.semantic.hover.primary};
+    background-color: ${hexToRgba(colors.semantic.primary, 0.05)};
   }
 
   &.sub-nav {
@@ -59,6 +77,6 @@ export const NavItem = styled.div<{ $padding: string }>`
   }
 `;
 
-export const Themore = styled.div<{ $padding: string }>`
-  padding: ${(props) => props.$padding};
+export const Themore = styled.div`
+  padding: calc(${paddingY} / 2) 0;
 `;

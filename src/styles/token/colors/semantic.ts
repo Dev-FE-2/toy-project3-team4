@@ -1,7 +1,7 @@
 import { scale } from './scale';
 
 const PRIMARY_COLOR = '#3E5371';
-const NEUTRAL_COLOR = '#F3F4F6';
+const NEUTRAL_COLOR = '#DBDBDB'; // instagram 기준
 const NEUTRAL_VARIANT_COLOR = '#CED4DA';
 const DARK_COLOR = '#081732';
 const GRAY_LIGHT_COLOR = '#C2C6C9';
