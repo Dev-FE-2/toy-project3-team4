@@ -1,10 +1,35 @@
-import { useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { DESKTOP_NAV_ITEMS, NAV_ICON_SIZE } from '@/constant';
 import { Logo, NavMenu, NavItem, MoreMenu } from '@/components';
 import * as S from './SideNavBar.styles';
 
 const SideNavBar = () => {
   const [isVisibleMoreMenu, setIsVisibleMoreMenu] = useState(false);
+  const dropdownRef = useRef<HTMLUListElement | null>(null);
+
+  const toggleMoreMenu = (event: React.MouseEvent) => {
+    event.stopPropagation();
+    setIsVisibleMoreMenu(!isVisibleMoreMenu);
+  };
+
+  useEffect(() => {
+    const handleOutsideClick = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        dropdownRef.current.contains(event.target as Node)
+      ) {
+        return;
+      }
+
+      setIsVisibleMoreMenu(false);
+    };
+
+    document.addEventListener('click', handleOutsideClick);
+
+    return () => {
+      document.removeEventListener('click', handleOutsideClick);
+    };
+  }, []);
 
   return (
     <S.SideNavBar>
@@ -29,8 +54,8 @@ const SideNavBar = () => {
         </ul>
 
         <S.ThemoreWrap>
-          <MoreMenu isVisible={isVisibleMoreMenu} />
-          <NavItem onClick={() => setIsVisibleMoreMenu(!isVisibleMoreMenu)}>
+          <MoreMenu isVisible={isVisibleMoreMenu} ref={dropdownRef} />
+          <NavItem onClick={toggleMoreMenu}>
             <NavMenu iconName="menu" text="더보기" size={NAV_ICON_SIZE} />
           </NavItem>
         </S.ThemoreWrap>

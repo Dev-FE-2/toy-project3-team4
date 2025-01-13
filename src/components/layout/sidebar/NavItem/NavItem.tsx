@@ -5,7 +5,7 @@ import * as S from './NavItem.styles';
 type NavItemProps = {
   children: ReactNode;
   link?: string;
-  onClick?: () => void;
+  onClick?: (event: React.MouseEvent) => void;
 };
 
 const NavItem = ({ link, children, onClick }: NavItemProps) => {
