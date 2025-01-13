@@ -1,12 +1,9 @@
+import { useAuth } from '@/hooks';
 import * as S from './GoogleLoginButton.styles';
 import GoogleIcon from '@/assets/google.svg';
 
 const GoogleLoginButton = () => {
-  // const { loginWithGoogle } = useAuth();
-
-  const loginWithGoogle = () => {
-    // 구글로그인 기능 처리 필요
-  };
+  const { loginWithGoogle } = useAuth();
 
   return (
     <S.GoogleButton

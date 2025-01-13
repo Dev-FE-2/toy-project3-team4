@@ -8,9 +8,11 @@ const SignInPage = () => {
         <Logo width="400px" />
 
         <div>
-          <S.Title>반려동물의 시작, 펫모먼트</S.Title>
-          <S.Subtitle>100만명이 함께하고 있어요</S.Subtitle>
-          <S.Description>반려동물 정보를 위해 로그인이 필요해요</S.Description>
+          <S.Title>반려동물과의 특별한 순간, 펫모먼트</S.Title>
+          <S.Subtitle>1,000만 반려인과 함께하세요</S.Subtitle>
+          <S.Description>
+            펫모먼트의 모든 기능을 이용하려면 로그인이 필요해요
+          </S.Description>
         </div>
 
         <GoogleLoginButton />

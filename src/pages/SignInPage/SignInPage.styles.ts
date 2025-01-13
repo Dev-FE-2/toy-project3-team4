@@ -9,7 +9,7 @@ export const Main = styled.main`
   justify-content: center;
   padding: ${padding.md};
 
-  @media (min-width: 768px) {
+  @media (width >= 768px) {
     padding: ${padding.lg};
   }
 `;
@@ -25,7 +25,7 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h1`
-  font-size: ${font.size.heading};
+  font-size: ${font.size.headingLight};
   font-weight: ${font.weight.heading};
   margin-bottom: ${padding.xs};
 `;
