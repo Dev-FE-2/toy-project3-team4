@@ -12,7 +12,7 @@ export const Layout = styled.div`
     flex: 1;
     overflow: auto;
 
-    @media (min-width: 768px) {
+    @media (width >= 768px) {
       flex-direction: row;
     }
 
@@ -25,13 +25,14 @@ export const Layout = styled.div`
       overflow: auto;
 
       .page-content {
+        position: relative;
         width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         gap: ${padding.md};
 
-        @media (min-width: 768px) {
+        @media (width >= 768px) {
           max-width: 150rem;
           padding: 4rem ${padding.md};
           height: 100vh;
@@ -45,7 +46,6 @@ export const Layout = styled.div`
         font-weight: ${font.weight.heading};
         position: absolute;
         opacity: 0;
-
         background-color: #fff;
       }
     }

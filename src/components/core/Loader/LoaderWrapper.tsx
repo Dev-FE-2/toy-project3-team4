@@ -6,7 +6,7 @@ import * as S from './LoaderWrapper.styles';
 interface LoaderWrapperProps {
   isLoading: boolean;
   text?: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 const LoaderWrapper = ({ isLoading, text, children }: LoaderWrapperProps) => {
