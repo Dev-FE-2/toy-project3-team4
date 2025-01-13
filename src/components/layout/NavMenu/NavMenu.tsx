@@ -15,7 +15,7 @@ import {
   RiMenuFill,
 } from 'react-icons/ri';
 import { ProfileImage } from '@/components';
-import * as S from './NavMenu.style';
+import * as S from './NavMenu.styles';
 
 type MenuProps = {
   iconName: string;
