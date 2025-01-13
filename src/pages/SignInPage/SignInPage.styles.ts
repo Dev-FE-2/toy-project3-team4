@@ -25,14 +25,14 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h1`
-  font-size: ${font.size.headingLight};
+  font-size: ${font.size.heading};
   font-weight: ${font.weight.heading};
   margin-bottom: ${padding.xs};
 `;
 
 export const Subtitle = styled.p`
   font-size: ${font.size.subHeading};
-  font-weight: ${font.weight.heading};
+  font-weight: ${font.weight.subHeading};
   color: ${colors.semantic.primary};
   margin-bottom: ${padding.xs};
 `;

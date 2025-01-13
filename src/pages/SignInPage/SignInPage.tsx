@@ -5,7 +5,7 @@ const SignInPage = () => {
   return (
     <S.Main>
       <S.Container>
-        <Logo width="400px" />
+        <Logo width="32rem" />
 
         <div>
           <S.Title>반려동물과의 특별한 순간, 펫모먼트</S.Title>
