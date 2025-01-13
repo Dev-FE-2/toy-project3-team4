@@ -6,7 +6,7 @@ import {
 } from 'firebase/auth';
 import { AUTH } from '@/api/firebase';
 import { useUserActions } from '@/store';
-import { userService } from '@/api';
+import { addUser, getUser } from '@/api';
 import type { IUserAPISchema } from '@/types';
 import { useNavigate } from 'react-router-dom';
 import { formatUserResponseToState } from '@/utils';
@@ -25,7 +25,7 @@ const useAuth = () => {
       const { uid, email, displayName, photoURL } = result.user;
 
       // DB에서 유저 정보 조회
-      let userData = await userService.getUser(uid);
+      let userData = await getUser(uid);
 
       if (!userData) {
         // DB에 유저 정보가 없으면 신규 유저 등록
@@ -38,7 +38,7 @@ const useAuth = () => {
         };
 
         // DB에 신규 유저 등록
-        await userService.addUser(userData as IUserAPISchema);
+        await addUser(userData as IUserAPISchema);
       }
 
       // 전역 상태에 유저 정보 저장

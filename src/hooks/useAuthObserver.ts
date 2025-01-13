@@ -1,5 +1,5 @@
 import { onAuthStateChanged } from 'firebase/auth';
-import { AUTH, userService } from '@/api';
+import { AUTH, getUser } from '@/api';
 import { useUserActions } from '@/store';
 import { formatUserResponseToState } from '@/utils';
 
@@ -12,7 +12,7 @@ const useAuthObserver = () => {
       if (user) {
         const { uid } = user;
         try {
-          const userData = await userService.getUser(uid);
+          const userData = await getUser(uid);
 
           if (userData) {
             setUser(formatUserResponseToState({ ...userData, userSn: uid }));
