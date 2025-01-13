@@ -1,7 +1,6 @@
 import { Navigate } from 'react-router-dom';
 import { Layout } from '@/layout';
 import { URL } from '@/constant';
-import ProtectedRoute from './ProtectedRoute';
 import {
   HomePage,
   SignInPage,
@@ -13,6 +12,7 @@ import {
   InterestPage,
   UserInfoPage,
 } from '@/pages';
+import AuthRoute from './AuthRoute';
 
 export const routeConfig = [
   {
@@ -30,7 +30,7 @@ export const routeConfig = [
       { path: URL.VIEWPLI.link, element: <PlaylistViewPage /> },
       { path: URL.PROFILE.link, element: <ProfilePage /> },
       {
-        element: <ProtectedRoute />,
+        element: <AuthRoute mode="authenticated" />,
         children: [
           // 인증이 필요한 경로 목록
           { path: URL.INSERTPLI.link, element: <UpsertPlaylistPage /> },
@@ -41,5 +41,9 @@ export const routeConfig = [
       },
     ],
   },
-  { path: URL.SIGNIN.link, element: <SignInPage /> },
+  {
+    element: <AuthRoute mode="guest" />,
+    // 비회원 경로 목록
+    children: [{ path: URL.SIGNIN.link, element: <SignInPage /> }],
+  },
 ];
