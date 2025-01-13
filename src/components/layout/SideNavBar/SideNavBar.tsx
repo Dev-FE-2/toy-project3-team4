@@ -4,8 +4,12 @@ import { URL } from '@/constant';
 import { desktopNavItems, navIconSize } from '@/navigation';
 import { Logo, ProfileImage } from '@/components';
 import * as S from './SideNavBar.styles';
+import { useAuth } from '@/hooks';
+import { useUser } from '@/store';
 
 const SideNavBar = () => {
+  const { logout } = useAuth();
+  const user = useUser();
   return (
     <S.SideNavBar>
       <S.LogoWrap>
@@ -35,6 +39,12 @@ const SideNavBar = () => {
         <S.NavItem className="menu">
           <RiMenuFill size={navIconSize} /> <span>더보기</span>
         </S.NavItem>
+        {/* 임시로 로그아웃 버튼 추가, 추후 수정 필요 */}
+        {user && (
+          <S.NavItem className="menu" onClick={logout}>
+            <RiMenuFill size={navIconSize} /> <span>로그아웃</span>
+          </S.NavItem>
+        )}
       </S.Themore>
     </S.SideNavBar>
   );
