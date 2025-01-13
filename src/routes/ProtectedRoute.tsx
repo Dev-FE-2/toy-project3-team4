@@ -1,5 +1,7 @@
 import { Navigate, Outlet } from 'react-router-dom';
 import { URL } from '@/constant';
+import { useUserFetching, useUserSn } from '@/store';
+import { LoaderWrapper } from '@/components';
 
 const ProtectedRoute = ({
   redirectPath = URL.SIGNIN.link,
@@ -8,11 +10,14 @@ const ProtectedRoute = ({
 }) => {
   // 인증되지 않았으면 redirect path로 리다이렉트
   // 인증되었으면 자식 컴포넌트를 렌더링
+  const userSn = useUserSn();
+  const isUserFetching = useUserFetching();
 
-  // 인증 처리 추후 수정 예정
-  const isLoggedIn = true;
+  if (isUserFetching) {
+    return <LoaderWrapper isLoading={isUserFetching} />;
+  }
 
-  return !isLoggedIn ? <Navigate to={redirectPath} replace /> : <Outlet />;
+  return !userSn ? <Navigate to={redirectPath} replace /> : <Outlet />;
 };
 
 export default ProtectedRoute;
