@@ -23,9 +23,10 @@ const SideNavBar = () => {
             <li key={`${index}-${navItem.text}`}>
               <S.NavItem as={NavLink} to={navItem.link}>
                 <NavMenu
-                  icon={navItem.iconName}
+                  iconName={navItem.iconName}
                   text={navItem.text}
                   size={NAV_ICON_SIZE}
+                  link={navItem.link}
                 />
               </S.NavItem>
             </li>
@@ -34,7 +35,7 @@ const SideNavBar = () => {
 
         <div>
           <S.NavItem>
-            <NavMenu icon="menu" text="더보기" size={NAV_ICON_SIZE} />
+            <NavMenu iconName="menu" text="더보기" size={NAV_ICON_SIZE} />
           </S.NavItem>
 
           {/* 임시로 로그아웃 버튼 추가, 추후 수정 필요 */}

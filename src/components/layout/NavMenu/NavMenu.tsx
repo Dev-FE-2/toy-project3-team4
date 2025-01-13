@@ -1,3 +1,4 @@
+import { useLocation } from 'react-router-dom';
 import {
   RiHome4Line,
   RiHome4Fill,
@@ -17,12 +18,15 @@ import { ProfileImage } from '@/components';
 import * as S from './NavMenu.style';
 
 type MenuProps = {
-  icon: string;
+  iconName: string;
   text?: string;
   size: string;
+  link?: string;
 };
 
-const NavMenu = ({ icon, text, size }: MenuProps) => {
+const NavMenu = ({ iconName, text, size, link }: MenuProps) => {
+  const { pathname } = useLocation();
+
   const navIcons = new Map([
     [
       'home',
@@ -81,15 +85,12 @@ const NavMenu = ({ icon, text, size }: MenuProps) => {
     ],
   ]);
 
+  const iconInfo = navIcons.get(iconName);
+
   return (
     <S.NavMenu>
-      {text ? (
-        <>
-          {navIcons.get(icon)?.icon} <span>{text}</span>
-        </>
-      ) : (
-        <>{navIcons.get(icon)?.icon}</>
-      )}
+      {pathname === link ? iconInfo?.activeIcon : iconInfo?.icon}
+      {text ? <span>{text}</span> : ''}
     </S.NavMenu>
   );
 };

@@ -11,7 +11,11 @@ const MobileNavBar = () => {
           {MOBILE_NAV_ITEMS.map((navItem, index) => (
             <li key={`${index}-${navItem.text}`}>
               <NavLink to={navItem.link} aria-label={navItem.text}>
-                <NavMenu icon={navItem.iconName} size="2.8rem" />
+                <NavMenu
+                  iconName={navItem.iconName}
+                  link={navItem.link}
+                  size="2.8rem"
+                />
               </NavLink>
             </li>
           ))}

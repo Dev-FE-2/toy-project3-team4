@@ -6,8 +6,10 @@ export const ProfileImage = styled.div<{ $size: string; $isBorder?: boolean }>`
   justify-content: center;
   align-items: center;
   color: ${colors.semantic.primary};
-  width: ${(props) => props.$size};
-  height: ${(props) => props.$size};
+  width: ${(props) =>
+    props.$isBorder ? `calc(${props.$size} + 2px)` : props.$size};
+  height: ${(props) =>
+    props.$isBorder ? `calc(${props.$size} + 2px)` : props.$size};
   border: ${(props) =>
     props.$isBorder ? `2px solid ${colors.semantic.primary}` : 'none'};
   border-radius: ${border.radius.full};
