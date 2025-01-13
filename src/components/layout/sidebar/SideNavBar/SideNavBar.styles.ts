@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { hexToRgba } from '@/utils';
 import { colors, padding, border, font } from '@/styles';
 
 const paddingY = '4rem';
@@ -32,6 +31,7 @@ export const Navigation = styled.nav`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding-bottom: ${paddingXHalf};
 
   & > ul {
     display: flex;
@@ -40,35 +40,6 @@ export const Navigation = styled.nav`
   }
 `;
 
-export const NavItem = styled.div`
-  height: 4.8rem;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  transition: all 0.3s;
-  color: ${colors.semantic.primary};
-  padding: 0 ${paddingXHalf};
-  border-radius: ${border.radius.sm};
-
-  &.active {
-    font-weight: 700;
-  }
-
-  &:hover {
-    background-color: ${hexToRgba(colors.semantic.primary, 0.05)};
-  }
-
-  &.sub-nav {
-    margin-left: ${padding.lg};
-  }
-
-  &.has-sub-nav {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  &.has-sub-nav.selected {
-    background-color: ${hexToRgba(colors.semantic.primary, 0.05)};
-    border-right: 0.3rem solid ${colors.semantic.primary};
-  }
+export const ThemoreWrap = styled.div`
+  position: relative;
 `;

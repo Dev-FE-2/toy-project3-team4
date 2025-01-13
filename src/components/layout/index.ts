@@ -1,5 +1,5 @@
 export { MobileHeader } from './MobileHeader';
 export { Logo } from './Logo';
-export { SideNavBar } from './SideNavBar';
+export * from './sidebar';
 export { MobileNavBar } from './MobileNavBar';
 export { NavMenu } from './NavMenu';
