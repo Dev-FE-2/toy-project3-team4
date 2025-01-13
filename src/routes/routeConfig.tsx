@@ -28,13 +28,13 @@ export const routeConfig = [
       { path: URL.SEARCH.link, element: <SearchPage /> },
       { path: URL.FOLLOWPLI.link, element: <FollowPlaylistPage /> },
       { path: URL.VIEWPLI.link, element: <PlaylistViewPage /> },
-      { path: URL.INSERTPLI.link, element: <UpsertPlaylistPage /> },
-      { path: URL.UPDATEPLI.link, element: <UpsertPlaylistPage /> },
       { path: URL.PROFILE.link, element: <ProfilePage /> },
       {
         element: <ProtectedRoute />,
         children: [
           // 인증이 필요한 경로 목록
+          { path: URL.INSERTPLI.link, element: <UpsertPlaylistPage /> },
+          { path: URL.UPDATEPLI.link, element: <UpsertPlaylistPage /> },
           { path: URL.INTERESTS.link, element: <InterestPage /> },
           { path: URL.USERINFO.link, element: <UserInfoPage /> },
         ],
