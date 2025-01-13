@@ -17,15 +17,15 @@ const URL: Url = {
   USERINFO: { text: '내 정보 수정', link: '/userinfo' },
   VIEWPLI: {
     text: '플레이리스트 상세',
-    link: '/playlists/:pliId?/view',
+    link: '/playlists/:pliId/view',
   },
   INSERTPLI: {
     text: '플레이리스트 생성',
-    link: '/playlists?/insert',
+    link: '/playlists/insert',
   },
   UPDATEPLI: {
     text: '플레이리스트 수정',
-    link: '/playlists/:pliId?/update',
+    link: '/playlists/:pliId/update',
   },
 } as const;
 

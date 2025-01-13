@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { colors } from '@/styles';
-import { Button } from '../core';
+import { Button } from '../../core';
 
 export const GoogleButton = styled(Button)`
   display: flex;

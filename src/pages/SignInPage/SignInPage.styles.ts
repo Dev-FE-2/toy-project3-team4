@@ -9,7 +9,7 @@ export const Main = styled.main`
   justify-content: center;
   padding: ${padding.md};
 
-  @media (min-width: 768px) {
+  @media (width >= 768px) {
     padding: ${padding.lg};
   }
 `;
@@ -32,7 +32,7 @@ export const Title = styled.h1`
 
 export const Subtitle = styled.p`
   font-size: ${font.size.subHeading};
-  font-weight: ${font.weight.heading};
+  font-weight: ${font.weight.subHeading};
   color: ${colors.semantic.primary};
   margin-bottom: ${padding.xs};
 `;
