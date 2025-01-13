@@ -1,29 +1,24 @@
 import { NavLink } from 'react-router-dom';
-import { URL } from '@/constant';
-import { mobileNavItems } from '@/navigation';
-import { ProfileImage } from '@/components';
+import { MOBILE_NAV_ITEMS } from '@/constant';
+import { NavMenu } from '@/components';
 import * as S from './MobileNavBar.styles';
 
-const SideNavBar = () => {
+const MobileNavBar = () => {
   return (
     <S.MobileNavBar>
       <S.Navigation>
         <ul>
-          {mobileNavItems.map((navItem, index) =>
-            navItem.link === URL.PROFILE.link ? (
-              <S.NavItem key={`${index}-${navItem.text}`}>
-                <ProfileImage link={URL.PROFILE.link} width="2.8rem" />
-              </S.NavItem>
-            ) : (
-              <S.NavItem key={`${index}-${navItem.text}`}>
-                <NavLink to={navItem.link}>{navItem.icon}</NavLink>
-              </S.NavItem>
-            ),
-          )}
+          {MOBILE_NAV_ITEMS.map((navItem, index) => (
+            <li key={`${index}-${navItem.text}`}>
+              <NavLink to={navItem.link} aria-label={navItem.text}>
+                <NavMenu icon={navItem.iconName} size="2.8rem" />
+              </NavLink>
+            </li>
+          ))}
         </ul>
       </S.Navigation>
     </S.MobileNavBar>
   );
 };
 
-export default SideNavBar;
+export default MobileNavBar;

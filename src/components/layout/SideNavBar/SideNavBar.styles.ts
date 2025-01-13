@@ -29,6 +29,9 @@ export const LogoWrap = styled.div`
 
 export const Navigation = styled.nav`
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   & > ul {
     display: flex;
@@ -46,13 +49,6 @@ export const NavItem = styled.div`
   color: ${colors.semantic.primary};
   padding: 0 ${paddingXHalf};
   border-radius: ${border.radius.sm};
-
-  &.menu,
-  & > .menu {
-    display: flex;
-    gap: ${padding.md};
-    align-items: center;
-  }
 
   &.active {
     font-weight: 700;
@@ -75,8 +71,4 @@ export const NavItem = styled.div`
     background-color: ${hexToRgba(colors.semantic.primary, 0.05)};
     border-right: 0.3rem solid ${colors.semantic.primary};
   }
-`;
-
-export const Themore = styled.div`
-  padding: calc(${paddingY} / 2) 0;
 `;

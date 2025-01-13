@@ -1,50 +1,50 @@
 import { NavLink } from 'react-router-dom';
-import { RiMenuFill } from 'react-icons/ri';
-import { URL } from '@/constant';
-import { desktopNavItems, navIconSize } from '@/navigation';
-import { Logo, ProfileImage } from '@/components';
-import * as S from './SideNavBar.styles';
 import { useAuth } from '@/hooks';
 import { useUser } from '@/store';
+import { DESKTOP_NAV_ITEMS } from '@/constant';
+import { Logo, NavMenu } from '@/components';
+import * as S from './SideNavBar.styles';
 
 const SideNavBar = () => {
   const { logout } = useAuth();
   const user = useUser();
+
+  const NAV_ICON_SIZE = '2.4rem';
+
   return (
     <S.SideNavBar>
       <S.LogoWrap>
         <Logo width="14rem" />
       </S.LogoWrap>
+
       <S.Navigation>
         <ul>
-          {desktopNavItems.map((navItem, index) => (
+          {DESKTOP_NAV_ITEMS.map((navItem, index) => (
             <li key={`${index}-${navItem.text}`}>
-              <S.NavItem as={NavLink} to={navItem.link} className="menu">
-                {navItem.link === URL.PROFILE.link ? (
-                  <>
-                    <ProfileImage width="2.4rem" /> <span>{navItem.text}</span>
-                  </>
-                ) : (
-                  <>
-                    {navItem.icon} <span>{navItem.text}</span>
-                  </>
-                )}
+              <S.NavItem as={NavLink} to={navItem.link}>
+                <NavMenu
+                  icon={navItem.iconName}
+                  text={navItem.text}
+                  size={NAV_ICON_SIZE}
+                />
               </S.NavItem>
             </li>
           ))}
         </ul>
-      </S.Navigation>
-      <S.Themore>
-        <S.NavItem className="menu">
-          <RiMenuFill size={navIconSize} /> <span>더보기</span>
-        </S.NavItem>
-        {/* 임시로 로그아웃 버튼 추가, 추후 수정 필요 */}
-        {user && (
-          <S.NavItem className="menu" onClick={logout}>
-            <RiMenuFill size={navIconSize} /> <span>로그아웃</span>
+
+        <div>
+          <S.NavItem>
+            <NavMenu icon="menu" text="더보기" size={NAV_ICON_SIZE} />
           </S.NavItem>
-        )}
-      </S.Themore>
+
+          {/* 임시로 로그아웃 버튼 추가, 추후 수정 필요 */}
+          {user && (
+            <S.NavItem onClick={logout}>
+              <span>로그아웃</span>
+            </S.NavItem>
+          )}
+        </div>
+      </S.Navigation>
     </S.SideNavBar>
   );
 };
