@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import * as S from './ProfileImage.styles';
 import defaultImage from '@/assets/avatar.svg';
+import { useUserImg } from '@/store';
 
 interface ProfileImageProps {
   width: string;
@@ -9,9 +10,11 @@ interface ProfileImageProps {
 }
 
 const ProfileImage = ({ width, link, isBorder }: ProfileImageProps) => {
+  const userPhoto = useUserImg();
+
   const profileImage = (
     <S.ProfileImage $width={width} $isBorder={isBorder}>
-      <img src={defaultImage} alt="사용자 프로필 사진" />
+      <img src={userPhoto || defaultImage} alt="사용자 프로필 사진" />
     </S.ProfileImage>
   );
 
