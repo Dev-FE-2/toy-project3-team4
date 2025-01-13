@@ -10,8 +10,7 @@ export const ProfileImage = styled.div<{ $width: string; $isBorder?: boolean }>`
   width: ${(props) => props.$width};
   border: ${(props) =>
     props.$isBorder ? `2px solid ${colors.semantic.primary}` : 'none'};
-  border-radius: ${(props) =>
-    props.$isBorder ? `${border.radius.full}` : '0'};
+  border-radius: ${border.radius.full};
   overflow: hidden;
 
   img {

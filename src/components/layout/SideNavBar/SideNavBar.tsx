@@ -22,8 +22,7 @@ const SideNavBar = () => {
               <S.NavItem as={NavLink} to={navItem.link} className="menu">
                 {navItem.link === URL.PROFILE.link ? (
                   <>
-                    <ProfileImage width="2.4rem" isBorder={true} />{' '}
-                    <span>{navItem.text}</span>
+                    <ProfileImage width="2.4rem" /> <span>{navItem.text}</span>
                   </>
                 ) : (
                   <>
