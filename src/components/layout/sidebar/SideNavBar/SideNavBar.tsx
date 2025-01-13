@@ -1,8 +1,11 @@
+import { useState } from 'react';
 import { DESKTOP_NAV_ITEMS, NAV_ICON_SIZE } from '@/constant';
-import { Logo, NavMenu, NavItem } from '@/components';
+import { Logo, NavMenu, NavItem, MoreMenu } from '@/components';
 import * as S from './SideNavBar.styles';
 
 const SideNavBar = () => {
+  const [isVisibleMoreMenu, setIsVisibleMoreMenu] = useState(false);
+
   return (
     <S.SideNavBar>
       <S.LogoWrap>
@@ -26,7 +29,8 @@ const SideNavBar = () => {
         </ul>
 
         <S.ThemoreWrap>
-          <NavItem>
+          <MoreMenu isVisible={isVisibleMoreMenu} />
+          <NavItem onClick={() => setIsVisibleMoreMenu(!isVisibleMoreMenu)}>
             <NavMenu iconName="menu" text="더보기" size={NAV_ICON_SIZE} />
           </NavItem>
         </S.ThemoreWrap>

@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import { hexToRgba } from '@/utils';
-import { colors, padding, border } from '@/styles';
+import { colors, padding, border, height } from '@/styles';
 
 const paddingXHalf = `${padding.values.lg / 2 / 10}rem`;
 
 export const NavItem = styled.div`
-  height: 4.8rem;
+  height: ${height.desktop.navItem};
   display: flex;
   align-items: center;
   cursor: pointer;
