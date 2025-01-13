@@ -1,5 +1,5 @@
-export enum DBCollection {
-  USERS = 'users',
-  PLAYLISTS = 'playlists',
-  COMMENTS = 'comments',
+export enum DB_COLLECTION {
+  USER = 'user',
+  PLAYLIST = 'playlist',
+  COMMENT = 'comment',
 }
