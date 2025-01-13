@@ -2,7 +2,7 @@ import { forwardRef } from 'react';
 import { useAuth } from '@/hooks';
 import { useUser } from '@/store';
 import { THEMORE_NAV_ITEMS, URL } from '@/constant';
-import { NavMenu, NavItem } from '@/components/layout';
+import { NavMenu, SideNavItem } from '@/components/layout';
 import * as S from './MoreMenu.styles';
 
 type MoreMenuProps = {
@@ -18,23 +18,23 @@ const MoreMenu = forwardRef<HTMLUListElement, MoreMenuProps>(
       <S.MoreMenu ref={ref} $isVisible={isVisible}>
         {THEMORE_NAV_ITEMS.map((navItem, index) => (
           <li key={`${index}-${navItem.text}`}>
-            <NavItem link={navItem.link}>
+            <SideNavItem link={navItem.link}>
               <NavMenu
                 iconName={navItem.iconName}
                 text={navItem.text}
                 size="1.8rem"
                 link={navItem.link}
               />
-            </NavItem>
+            </SideNavItem>
           </li>
         ))}
 
         <hr />
 
         {user ? (
-          <NavItem onClick={logout}>로그아웃</NavItem>
+          <SideNavItem onClick={logout}>로그아웃</SideNavItem>
         ) : (
-          <NavItem link={URL.SIGNIN.link}>로그인</NavItem>
+          <SideNavItem link={URL.SIGNIN.link}>로그인</SideNavItem>
         )}
       </S.MoreMenu>
     );

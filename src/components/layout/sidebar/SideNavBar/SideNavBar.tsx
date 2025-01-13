@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import { DESKTOP_NAV_ITEMS, NAV_ICON_SIZE } from '@/constant';
-import { Logo, NavMenu, NavItem, MoreMenu } from '@/components';
+import { Logo, NavMenu, SideNavItem, MoreMenu } from '@/components';
 import * as S from './SideNavBar.styles';
 
 const SideNavBar = () => {
@@ -41,23 +41,23 @@ const SideNavBar = () => {
         <ul>
           {DESKTOP_NAV_ITEMS.map((navItem, index) => (
             <li key={`${index}-${navItem.text}`}>
-              <NavItem link={navItem.link}>
+              <SideNavItem link={navItem.link}>
                 <NavMenu
                   iconName={navItem.iconName}
                   text={navItem.text}
                   size={NAV_ICON_SIZE}
                   link={navItem.link}
                 />
-              </NavItem>
+              </SideNavItem>
             </li>
           ))}
         </ul>
 
         <S.ThemoreWrap>
           <MoreMenu isVisible={isVisibleMoreMenu} ref={dropdownRef} />
-          <NavItem onClick={toggleMoreMenu}>
+          <SideNavItem onClick={toggleMoreMenu}>
             <NavMenu iconName="menu" text="더보기" size={NAV_ICON_SIZE} />
-          </NavItem>
+          </SideNavItem>
         </S.ThemoreWrap>
       </S.Navigation>
     </S.SideNavBar>

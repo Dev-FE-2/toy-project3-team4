@@ -1,3 +1,3 @@
 export { SideNavBar } from './SideNavBar';
-export { NavItem } from './NavItem';
+export { SideNavItem } from './SideNavItem';
 export { MoreMenu } from './MoreMenu';

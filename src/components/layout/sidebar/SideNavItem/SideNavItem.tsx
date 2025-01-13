@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { NavLink } from 'react-router-dom';
-import * as S from './NavItem.styles';
+import * as S from './SideNavItem.styles';
 
 type NavItemProps = {
   children: ReactNode;
