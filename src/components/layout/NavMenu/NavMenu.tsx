@@ -16,15 +16,13 @@ import {
 import { ProfileImage } from '@/components';
 import * as S from './NavMenu.style';
 
-const NavMenu = ({
-  icon,
-  text,
-  size,
-}: {
+type MenuProps = {
   icon: string;
   text?: string;
   size: string;
-}) => {
+};
+
+const NavMenu = ({ icon, text, size }: MenuProps) => {
   const navIcons = new Map([
     [
       'home',
@@ -57,8 +55,8 @@ const NavMenu = ({
     [
       'profile',
       {
-        icon: <ProfileImage width={size} />,
-        activeIcon: <ProfileImage width={size} isBorder />,
+        icon: <ProfileImage size={size} />,
+        activeIcon: <ProfileImage size={size} isBorder />,
       },
     ],
     [
