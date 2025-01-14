@@ -18,9 +18,17 @@ interface IUserActions {
 
 type UserStore = IUserState & IUserActions;
 
+const USER_ACTION_PREFIX = 'user/';
+
+const USER_ACTION_NAME = {
+  SET_USER: `${USER_ACTION_PREFIX}setUser`,
+  CLEAR_USER: `${USER_ACTION_PREFIX}clearUser`,
+  SET_USER_FETCHING: `${USER_ACTION_PREFIX}setUserFetching`,
+} as const;
+
 const initialState: IUserState = {
   user: null,
-  isUserFetching: false,
+  isUserFetching: true,
 };
 
 export const useUserStore = create<UserStore>()(
@@ -29,21 +37,29 @@ export const useUserStore = create<UserStore>()(
       ...initialState,
       actions: {
         setUser: (userData) =>
-          set((state) => {
-            if (userData === null) {
-              state.user = null;
-            } else {
-              state.user = state.user
-                ? { ...state.user, ...userData }
-                : (userData as IUser);
-            }
-            state.isUserFetching = false;
-          }),
-        clearUser: () => set(initialState),
+          set(
+            (state) => {
+              if (userData === null) {
+                state.user = null;
+              } else {
+                state.user = state.user
+                  ? { ...state.user, ...userData }
+                  : (userData as IUser);
+              }
+              state.isUserFetching = false;
+            },
+            false,
+            USER_ACTION_NAME.SET_USER,
+          ),
+        clearUser: () => set(initialState, false, USER_ACTION_NAME.CLEAR_USER),
         setUserFetching: (isUserFetching) =>
-          set((state) => {
-            state.isUserFetching = isUserFetching;
-          }),
+          set(
+            (state) => {
+              state.isUserFetching = isUserFetching;
+            },
+            false,
+            USER_ACTION_NAME.SET_USER_FETCHING,
+          ),
       },
     })),
   ),

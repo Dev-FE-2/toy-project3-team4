@@ -26,15 +26,15 @@ export const routeConfig = [
       },
       { path: URL.HOME.link, element: <HomePage /> },
       { path: URL.SEARCH.link, element: <SearchPage /> },
-      { path: URL.FOLLOWPLI.link, element: <FollowPlaylistPage /> },
       { path: URL.VIEWPLI.link, element: <PlaylistViewPage /> },
-      { path: URL.PROFILE.link, element: <ProfilePage /> },
       {
         element: <AuthRoute mode="authenticated" />,
         children: [
           // 인증이 필요한 경로 목록
+          { path: URL.FOLLOWPLI.link, element: <FollowPlaylistPage /> },
           { path: URL.INSERTPLI.link, element: <UpsertPlaylistPage /> },
           { path: URL.UPDATEPLI.link, element: <UpsertPlaylistPage /> },
+          { path: URL.PROFILE.link, element: <ProfilePage /> },
           { path: URL.INTERESTS.link, element: <InterestPage /> },
           { path: URL.USERINFO.link, element: <UserInfoPage /> },
         ],
