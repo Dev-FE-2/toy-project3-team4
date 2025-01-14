@@ -13,7 +13,7 @@ import { formatUserResponseToState } from '@/utils';
 import { defaultUserSchema } from '@/constant';
 
 const useAuth = () => {
-  const { setUser, clearUser } = useUserActions();
+  const { setUser } = useUserActions();
   const navigate = useNavigate();
 
   // Google 로그인
@@ -52,7 +52,6 @@ const useAuth = () => {
   // 로그아웃
   const logout = async () => {
     await AUTH.signOut();
-    clearUser();
     alert('로그아웃 되었습니다.');
   };
 
