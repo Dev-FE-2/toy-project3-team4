@@ -15,7 +15,7 @@ export const Navigation = styled.nav`
     align-items: center;
     padding: 0 ${padding.md};
 
-    @media (min-width: 768px) {
+    @media (width >= 768px) {
       display: none;
     }
 
@@ -31,5 +31,3 @@ export const Navigation = styled.nav`
     }
   }
 `;
-
-export const NavItem = styled.li``;
