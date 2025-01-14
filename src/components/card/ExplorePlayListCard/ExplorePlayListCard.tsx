@@ -1,4 +1,4 @@
-import { Button } from '@/components/core';
+import { Button } from '@/components';
 import { RiMore2Fill } from 'react-icons/ri';
 import * as S from './ExplorePlayListCard.styles';
 
