@@ -2,20 +2,22 @@ import { ReactNode } from 'react';
 import { NavLink } from 'react-router-dom';
 import * as S from './SideNavItem.styles';
 
-type NavItemProps = {
+interface ISideNavItem {
   children: ReactNode;
   link?: string;
   onClick?: (event: React.MouseEvent) => void;
-};
+}
 
-const NavItem = ({ link, children, onClick }: NavItemProps) => {
+const SideNavItem = ({ link, children, onClick }: ISideNavItem) => {
   return link ? (
-    <S.NavItem as={NavLink} to={link}>
+    <S.SideNavItem as={NavLink} to={link}>
       {children}
-    </S.NavItem>
+    </S.SideNavItem>
   ) : (
-    <S.NavItem onClick={onClick}>{children}</S.NavItem>
+    <S.SideNavItem type="button" onClick={onClick}>
+      {children}
+    </S.SideNavItem>
   );
 };
 
-export default NavItem;
+export default SideNavItem;

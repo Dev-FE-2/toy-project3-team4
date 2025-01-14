@@ -22,11 +22,11 @@ export const SideNavBar = styled.aside`
   }
 `;
 
-export const LogoWrap = styled.div`
+export const LogoWrap = styled.section`
   padding: ${paddingY} ${paddingXHalf};
 `;
 
-export const Navigation = styled.nav`
+export const Navigation = styled.section`
   flex: 1;
   display: flex;
   flex-direction: column;
