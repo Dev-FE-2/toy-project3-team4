@@ -1,3 +1,4 @@
+import { colors } from '@/styles';
 import styled from 'styled-components';
 
 type ButtonColor =
@@ -21,33 +22,36 @@ interface IButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   $borderColor?: ButtonBorder;
 }
 
+const { primary, secondary, danger, success, disabled, hover } =
+  colors.semantic;
+
 const COLOR = {
   default: {
-    primary: '#3E5371',
-    secondary: '#A2C0DE',
-    danger: '#DA626B',
-    success: '#4CAF50',
+    primary: primary,
+    secondary: secondary,
+    danger: danger,
+    success: success,
     white: '#FFFFFF',
     black: '#000000',
-    disabled: '#CED4DA',
+    disabled: disabled,
   },
   hover: {
-    primary: '#A2C0DE',
-    secondary: '#C3D9EF',
-    danger: '#EB949B',
-    success: '#4CAF50',
+    primary: hover.primary,
+    secondary: hover.secondary,
+    danger: hover.danger,
+    success: hover.success,
     white: '#F8F8F8',
     black: '#000000',
-    disabled: '#CED4DA',
+    disabled: disabled,
   },
   disabled: {
-    primary: '#A2C0DE',
-    secondary: '#C3D9EF',
-    danger: '#EB949B',
-    success: '#4CAF50',
+    primary: hover.primary,
+    secondary: hover.secondary,
+    danger: hover.danger,
+    success: hover.success,
     white: '#F8F8F8',
     black: '#000000',
-    disabled: '#CED4DA',
+    disabled: disabled,
   },
 };
 
@@ -83,28 +87,23 @@ const Button = styled.button<IButton>`
   cursor: pointer;
   transition: all 0.3s;
   background-color: ${(props) => COLOR.default[props.$bgColor]};
-
   width: ${(props) => {
     if (props.$width) return props.$width;
     return 'auto';
   }};
-
   height: ${(props) => {
     if (props.$size) return SIZE[props.$size].height;
     return SIZE.xl.height; // 52px
   }};
-
   font-size: ${(props) => {
     if (props.$size) return SIZE[props.$size].fontSize;
     return SIZE.xl.fontSize; // 16px
   }};
-
   border: ${(props) => {
     if (props.$borderColor)
       return `1px solid ${COLOR.default[props.$borderColor]}`;
     return 'none';
   }};
-
   border-radius: ${(props) => {
     if (props.$radius) return RADIUS[props.$radius];
     return 0;
