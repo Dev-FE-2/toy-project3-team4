@@ -1,27 +1,14 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 interface IUseVisibilityToggle<T extends HTMLElement> {
   initialState?: boolean;
-  ref: React.RefObject<T> | ((instance: T | null) => void) | null;
+  ref: React.RefObject<T> | null;
 }
 
 const useVisibilityToggle = <T extends HTMLElement>({
   initialState = false,
   ref,
 }: IUseVisibilityToggle<T>) => {
-  const localRef = useRef<T | null>(null);
-
-  // ref를 로컬 ref와 통합 처리
-  const resolvedRef = useCallback(() => {
-    if (typeof ref === 'function') {
-      return localRef;
-    }
-    if (ref && 'current' in ref) {
-      return ref;
-    }
-    return localRef;
-  }, [ref]);
-
   const [isVisible, setIsVisible] = useState(initialState);
 
   const resetVisibility = () => setIsVisible(initialState);
@@ -33,12 +20,12 @@ const useVisibilityToggle = <T extends HTMLElement>({
 
   const handleOutsideClick = useCallback(
     (event: MouseEvent) => {
-      const currentRef = resolvedRef().current;
+      const currentRef = ref?.current;
       if (currentRef?.contains(event.target as Node)) return;
 
       setIsVisible(false);
     },
-    [resolvedRef],
+    [ref],
   );
 
   useEffect(() => {
@@ -53,7 +40,6 @@ const useVisibilityToggle = <T extends HTMLElement>({
     isVisible,
     toggleVisibility,
     resetVisibility,
-    ref: resolvedRef(), // 로컬 ref 반환
   };
 };
 
