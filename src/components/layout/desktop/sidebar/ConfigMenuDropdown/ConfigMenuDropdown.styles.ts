@@ -4,7 +4,7 @@ import { colors, height, padding } from '@/styles';
 
 const boxPadding = `calc(${padding.md} / 2);`;
 
-export const MoreMenu = styled.ul<{ $isVisible: boolean }>`
+export const MenuDropdown = styled.ul<{ $isVisible: boolean }>`
   position: absolute;
   bottom: ${height.desktop.navItem};
   left: ${boxPadding};

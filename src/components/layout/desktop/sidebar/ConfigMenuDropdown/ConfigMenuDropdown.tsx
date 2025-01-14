@@ -3,19 +3,19 @@ import { useAuth } from '@/hooks';
 import { useUser } from '@/store';
 import { THEMORE_NAV_ITEMS, URL } from '@/constant';
 import { NavMenu, SideNavItem } from '@/components/layout';
-import * as S from './MoreMenu.styles';
+import * as S from './ConfigMenuDropdown.styles';
 
 type MoreMenuProps = {
   isVisible: boolean;
 };
 
-const MoreMenu = forwardRef<HTMLUListElement, MoreMenuProps>(
+const ConfigMenuDropdown = forwardRef<HTMLUListElement, MoreMenuProps>(
   ({ isVisible }, ref) => {
     const { logout } = useAuth();
     const user = useUser();
 
     return (
-      <S.MoreMenu ref={ref} $isVisible={isVisible}>
+      <S.MenuDropdown ref={ref} $isVisible={isVisible}>
         {THEMORE_NAV_ITEMS.map((navItem, index) => (
           <li key={`${index}-${navItem.text}`}>
             <SideNavItem link={navItem.link}>
@@ -36,9 +36,9 @@ const MoreMenu = forwardRef<HTMLUListElement, MoreMenuProps>(
         ) : (
           <SideNavItem link={URL.SIGNIN.link}>로그인</SideNavItem>
         )}
-      </S.MoreMenu>
+      </S.MenuDropdown>
     );
   },
 );
 
-export default MoreMenu;
+export default ConfigMenuDropdown;
