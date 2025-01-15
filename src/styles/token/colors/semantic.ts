@@ -1,6 +1,6 @@
 import { scale } from './scale';
 
-const PRIMARY_COLOR = '#758AA7';
+const PRIMARY_COLOR = '#3E5371';
 const NEUTRAL_COLOR = '#DBDBDB'; // instagram 기준
 const NEUTRAL_VARIANT_COLOR = '#CED4DA';
 const DARK_COLOR = '#081732';
@@ -19,7 +19,7 @@ const semantic = {
   info: GRAY_DARK_COLOR,
   disabled: NEUTRAL_VARIANT_COLOR,
   hover: {
-    primary: '#3E5371',
+    primary: '#2B3A50',
     secondary: '#8AA7C4',
     success: '#91CC93',
     danger: '#EB949B',
