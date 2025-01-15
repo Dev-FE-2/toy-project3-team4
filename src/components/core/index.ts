@@ -2,3 +2,4 @@
 export { ProfileImage } from './ProfileImage';
 export { LoaderWrapper } from './Loader';
 export { PageTitle } from './PageTitle';
+export { Switch } from './Switch';
