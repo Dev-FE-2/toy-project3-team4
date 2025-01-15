@@ -1,25 +1,32 @@
-import { useState } from 'react';
-import * as S from './InterestPage.styles';
-import { PageTitle } from '@/components';
 import { RiPlayCircleLine } from 'react-icons/ri';
+import { useUser, useUserActions } from '@/store';
+import { useInterestSelection } from '@/hooks';
+import { updateUser } from '@/api';
 import { INTERESTS } from '@/constant';
+import { PageTitle } from '@/components';
+import type { IUser } from '@/types';
+import * as S from './InterestPage.styles';
 
 const InterestPage = () => {
-  const [selectedInterests, setSelectedInterests] = useState<number[]>([]);
+  const { userSn, interests } = useUser() as IUser;
+  const { setUser } = useUserActions();
+  const { selectedInterests, toggleInterest, validateInterests } =
+    useInterestSelection(interests);
 
-  const toggleInterest = (id: number) => {
-    setSelectedInterests((prev) =>
-      prev.includes(id) ? prev.filter((i) => i !== id) : [...prev, id],
-    );
-  };
+  // 관심사 저장 핸들러, 추후 커스텀훅으로 리팩토링 예정
+  const handleSave = async () => {
+    try {
+      // 추후 tanstack-query 사용 시 isPending 상태로 중복 요청 방지 필요
+      if (!validateInterests()) return;
 
-  const handleSave = () => {
-    if (selectedInterests.length === 0) {
-      alert('관심사는 1개 이상 선택해주세요.');
-      return;
+      const interestParam = { interests: selectedInterests };
+      await updateUser(userSn, interestParam);
+      setUser(interestParam);
+      alert('관심사가 저장되었습니다.');
+    } catch (error) {
+      console.error('관심사 업데이트 오류: ', error);
+      alert('관심사 저장 중 문제가 발생했습니다. 다시 시도해주세요.');
     }
-
-    console.log('Selected interests:', selectedInterests);
   };
 
   return (
