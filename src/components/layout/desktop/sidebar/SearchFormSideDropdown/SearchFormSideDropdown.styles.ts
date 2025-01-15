@@ -27,7 +27,7 @@ export const SearchFormHeader = styled.header`
   gap: ${padding.lg};
 
   .search-title {
-    padding: 3rem 0 4rem;
+    padding: 3rem 0 2rem;
     font-size: ${font.size.subHeading};
     font-weight: 700;
   }

@@ -22,7 +22,7 @@ const SearchFormSideDropdown = forwardRef<
       $isVisible={isVisible}
     >
       <S.SearchFormHeader>
-        <h2 className="search-title">검색</h2>
+        <h3 className="search-title">검색</h3>
         <SearchInput />
       </S.SearchFormHeader>
       <SearchHistoryList />
