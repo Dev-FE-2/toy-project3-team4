@@ -18,6 +18,11 @@ const useVisibilityToggle = <T extends HTMLElement>({
     setIsVisible((prev) => !prev);
   };
 
+  const showVisibility = (event: React.MouseEvent) => {
+    event.stopPropagation();
+    setIsVisible(true);
+  };
+
   const handleOutsideClick = useCallback(
     (event: MouseEvent) => {
       const currentRef = ref?.current;
@@ -40,6 +45,7 @@ const useVisibilityToggle = <T extends HTMLElement>({
     isVisible,
     toggleVisibility,
     resetVisibility,
+    showVisibility,
   };
 };
 

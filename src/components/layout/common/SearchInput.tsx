@@ -1,7 +1,11 @@
 import { useState, ChangeEvent } from 'react';
 import { Input } from '@/components';
 
-const SearchInput = () => {
+interface ISearchInput {
+  onClick?: (event: React.MouseEvent) => void;
+}
+
+const SearchInput = ({ onClick }: ISearchInput) => {
   const [searchInput, setSearchInput] = useState('');
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -14,6 +18,7 @@ const SearchInput = () => {
       value={searchInput}
       placeholder="검색"
       onChange={handleChange}
+      onClick={onClick}
       isBorder={false}
       bgColor="#ebeef1"
     />

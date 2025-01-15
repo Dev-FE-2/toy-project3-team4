@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { padding, border, height } from '@/styles';
 
 export const MobileHeader = styled.header`
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
