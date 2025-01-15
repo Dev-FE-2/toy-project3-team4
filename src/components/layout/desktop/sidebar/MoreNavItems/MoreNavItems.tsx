@@ -13,12 +13,6 @@ const MoreNavItems = () => {
 
   return (
     <S.MoreNavItems aria-label="More Options Menu">
-      <ConfigMenuDropdown
-        id="configMenu"
-        ref={dropdownRef}
-        isVisible={isVisibleMoreMenu}
-      />
-
       <SideNavItem
         ariaExpanded={isVisibleMoreMenu}
         ariaControls="configMenu"
@@ -26,6 +20,12 @@ const MoreNavItems = () => {
       >
         <NavMenu iconName="menu" text="더보기" size={NAV_ICON_SIZE} />
       </SideNavItem>
+
+      <ConfigMenuDropdown
+        id="configMenu"
+        ref={dropdownRef}
+        isVisible={isVisibleMoreMenu}
+      />
     </S.MoreNavItems>
   );
 };
