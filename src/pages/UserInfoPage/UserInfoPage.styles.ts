@@ -1,5 +1,6 @@
 import { Button } from '@/components';
 import { border, colors, font, padding } from '@/styles';
+import { RiAddLine } from 'react-icons/ri';
 import styled from 'styled-components';
 
 export const InfoContainer = styled.form`
@@ -23,6 +24,41 @@ export const Title = styled.h2`
   font-weight: ${font.weight.heading};
 `;
 
+export const ImageBox = styled.label`
+  display: block;
+  width: 12rem;
+  height: 12rem;
+  border: 1px solid ${colors.semantic.primary};
+  border-radius: ${border.radius.full};
+  overflow: hidden;
+  position: relative;
+
+  &:hover {
+    outline: 1px solid ${colors.semantic.hover.primary};
+  }
+`;
+
+export const ImageInputFile = styled.input`
+  display: none;
+`;
+
+export const ImageOverlay = styled(RiAddLine)`
+  width: 100%;
+  height: 100%;
+  padding: ${padding.lg};
+  border-radius: ${border.radius.full};
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  opacity: 0;
+  font-size: 2rem;
+  background-color: ${colors.semantic.background.dark};
+  ${ImageBox}:hover & {
+    opacity: 1;
+    color: white;
+  }
+`;
+
 export const SubTitle = styled.h3`
   width: 100%;
   padding: ${padding.md} 0 ${padding.sm};
@@ -37,7 +73,7 @@ export const InputText = styled.input`
   border-radius: ${border.radius.sm};
 
   &:focus {
-    outline: 1px solid ${colors.semantic.hover.primary};
+    outline: 2px solid ${colors.semantic.hover.primary};
   }
 `;
 
@@ -61,5 +97,9 @@ export const UpdateButton = styled(Button)`
 
   &:active {
     background-color: ${colors.semantic.hover.primary};
+  }
+
+  &:disabled {
+    background-color: ${colors.semantic.disabled};
   }
 `;
