@@ -1,11 +1,10 @@
 import { useRef } from 'react';
 import { useVisibilityToggle } from '@/hooks';
 import { NAV_ICON_SIZE } from '@/constant';
-import { NavMenu, SideNavItem, ConfigMenuDropdown } from '@/components';
+import { NavMenu, ConfigMenuDropdown } from '@/components';
 import { height, padding } from '@/styles';
-import * as S from './MoreNavItems.styles';
 
-const MoreNavItems = () => {
+const MobileMoreWrap = () => {
   const dropdownRef = useRef(null);
   const { isVisible: isVisibleMoreMenu, toggleVisibility: toggleMoreMenu } =
     useVisibilityToggle({
@@ -13,26 +12,26 @@ const MoreNavItems = () => {
     });
 
   return (
-    <S.MoreNavItems aria-label="More Options Menu">
-      <SideNavItem
-        ariaExpanded={isVisibleMoreMenu}
-        ariaControls="configMenu"
+    <>
+      <button
+        aria-expanded={isVisibleMoreMenu}
+        aria-controls="configMenu"
         onClick={toggleMoreMenu}
       >
-        <NavMenu iconName="menu" text="더보기" size={NAV_ICON_SIZE} />
-      </SideNavItem>
+        <NavMenu iconName="menu" size={NAV_ICON_SIZE} />
+      </button>
 
       {isVisibleMoreMenu && (
         <ConfigMenuDropdown
           id="configMenu"
           ref={dropdownRef}
           isVisible={isVisibleMoreMenu}
-          positionBottom={height.desktop.navItem}
-          positionLeft={padding.sm}
+          positionTop={height.mobile.header}
+          positionRight={padding.sm}
         />
       )}
-    </S.MoreNavItems>
+    </>
   );
 };
 
-export default MoreNavItems;
+export default MobileMoreWrap;

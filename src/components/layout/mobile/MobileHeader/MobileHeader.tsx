@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import { URL } from '@/constant';
-import { Logo, MobileSearchWrap } from '@/components';
+import { Logo, MobileSearchWrap, MobileMoreWrap } from '@/components';
 import * as S from './MobileHeader.styles';
 
 const MobileHeader = () => {
@@ -10,7 +10,11 @@ const MobileHeader = () => {
     <S.MobileHeader id="mobileHedaer">
       <Logo width="12rem" />
 
-      {pathname === URL.PROFILE.link ? <>더보기</> : <MobileSearchWrap />}
+      {pathname === URL.PROFILE.link ? (
+        <MobileMoreWrap />
+      ) : (
+        <MobileSearchWrap />
+      )}
     </S.MobileHeader>
   );
 };
