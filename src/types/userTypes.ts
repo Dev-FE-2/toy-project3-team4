@@ -4,7 +4,7 @@ export interface IUser {
   name: string;
   description: string;
   imgUrl: string;
-  interests: string[];
+  interests: number[];
 }
 
 export interface IUserAPISchema extends IUser {

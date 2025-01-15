@@ -1,9 +1,10 @@
-import { Button } from '@/components';
-import { colors, font } from '@/styles';
 import styled from 'styled-components';
+import { colors, font } from '@/styles';
+import { width } from '@/styles/token/width';
+import { Button } from '@/components';
 
 export const Container = styled.div`
-  max-width: 72rem;
+  max-width: ${width.content};
   width: 100%;
   margin: 0 auto;
 `;
