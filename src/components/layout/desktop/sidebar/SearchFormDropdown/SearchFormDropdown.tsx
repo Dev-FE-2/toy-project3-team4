@@ -63,7 +63,7 @@ const SearchFormDropdown = forwardRef<
         </ul>
       </S.SearchHistory>
     </S.SearchFormDropdown>,
-    document.querySelector('#root') as Element,
+    document.querySelector('#sideNavBar') as Element,
   );
 });
 
