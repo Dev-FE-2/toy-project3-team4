@@ -1,4 +1,4 @@
-import { Logo, MainNavItems, MoreNavItems } from '@/components';
+import { Logo, MainNavItems, MoreNavItems, FollowNavItems } from '@/components';
 import * as S from './SideNavBar.styles';
 
 const SideNavBar = () => {
@@ -11,7 +11,7 @@ const SideNavBar = () => {
 
         <S.Navigation>
           <MainNavItems />
-          <nav aria-label="Follower List Menu">follows 네비 영역</nav>
+          <FollowNavItems />
           <MoreNavItems />
         </S.Navigation>
       </article>

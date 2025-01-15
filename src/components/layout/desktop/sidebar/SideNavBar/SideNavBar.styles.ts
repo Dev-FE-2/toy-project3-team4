@@ -35,6 +35,8 @@ export const LogoWrap = styled.section`
 
 export const Navigation = styled.section`
   flex: 1;
+  overflow-y: auto;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
