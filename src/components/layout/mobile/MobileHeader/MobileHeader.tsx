@@ -1,12 +1,11 @@
-import { Logo } from '@/components';
-import { RiSearchLine } from 'react-icons/ri';
+import { Logo, SearchInput } from '@/components';
 import * as S from './MobileHeader.styles';
 
 const MobileHeader = () => {
   return (
     <S.MobileHeader>
-      <Logo width="15rem" />
-      <RiSearchLine size="2.4rem" />
+      <Logo width="12rem" />
+      <SearchInput />
     </S.MobileHeader>
   );
 };

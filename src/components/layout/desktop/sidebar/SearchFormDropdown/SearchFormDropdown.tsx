@@ -1,7 +1,7 @@
-import { forwardRef, RefObject, useState, ChangeEvent } from 'react';
+import { forwardRef, RefObject } from 'react';
 import { createPortal } from 'react-dom';
 import { RiCloseLine } from 'react-icons/ri';
-import { Input } from '@/components';
+import { SearchInput } from '@/components';
 import * as S from './SearchFormDropdown.styles';
 
 interface ISearchFormDropdown {
@@ -14,12 +14,6 @@ const SearchFormDropdown = forwardRef<
   HTMLDivElement | null,
   ISearchFormDropdown
 >(({ id, isVisible }, ref) => {
-  const [searchInput, setSearchInput] = useState('');
-
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setSearchInput(event.target.value);
-  };
-
   return createPortal(
     <S.SearchFormDropdown
       ref={ref}
@@ -30,14 +24,7 @@ const SearchFormDropdown = forwardRef<
     >
       <S.SearchFormHeader>
         <h2 className="search-title">검색</h2>
-        <Input
-          type="search"
-          value={searchInput}
-          placeholder="검색"
-          onChange={handleChange}
-          isBorder={false}
-          bgColor="#ebeef1"
-        />
+        <SearchInput />
       </S.SearchFormHeader>
       <S.SearchHistory>
         <h3 className="search-history-title">최근 검색 항목</h3>
