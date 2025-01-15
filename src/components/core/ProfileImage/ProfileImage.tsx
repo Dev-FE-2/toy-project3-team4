@@ -1,18 +1,15 @@
 import * as S from './ProfileImage.styles';
-import defaultImage from '@/assets/avatar.svg';
-import { useUserImg } from '@/store';
 
 interface ProfileImageProps {
+  imageUrl: string;
   size: string;
   isBorder?: boolean;
 }
 
-const ProfileImage = ({ size, isBorder }: ProfileImageProps) => {
-  const userPhoto = useUserImg();
-
+const ProfileImage = ({ imageUrl, size, isBorder }: ProfileImageProps) => {
   return (
     <S.ProfileImage $size={size} $isBorder={isBorder}>
-      <img src={userPhoto || defaultImage} alt="사용자 프로필 사진" />
+      <img src={imageUrl} alt="사용자 프로필 사진" />
     </S.ProfileImage>
   );
 };

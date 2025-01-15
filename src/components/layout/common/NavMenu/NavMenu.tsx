@@ -14,7 +14,7 @@ import {
   RiVipDiamondFill,
   RiMenuFill,
 } from 'react-icons/ri';
-import { ProfileImage } from '@/components';
+import { MyProfileImage } from '@/components';
 import * as S from './NavMenu.styles';
 
 type MenuProps = {
@@ -59,8 +59,8 @@ const NavMenu = ({ iconName, text, size, link }: MenuProps) => {
     [
       'profile',
       {
-        icon: <ProfileImage size={size} />,
-        activeIcon: <ProfileImage size={size} isBorder />,
+        icon: <MyProfileImage size={size} />,
+        activeIcon: <MyProfileImage size={size} isBorder />,
       },
     ],
     [
