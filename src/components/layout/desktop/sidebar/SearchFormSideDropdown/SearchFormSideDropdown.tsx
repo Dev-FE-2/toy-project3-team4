@@ -2,20 +2,20 @@ import { forwardRef, RefObject } from 'react';
 import { createPortal } from 'react-dom';
 import { RiCloseLine } from 'react-icons/ri';
 import { SearchInput } from '@/components';
-import * as S from './SearchFormDropdown.styles';
+import * as S from './SearchFormSideDropdown.styles';
 
-interface ISearchFormDropdown {
+interface ISearchFormSideDropdown {
   id: string;
   isVisible: boolean;
   ref: RefObject<HTMLElement>;
 }
 
-const SearchFormDropdown = forwardRef<
+const SearchFormSideDropdown = forwardRef<
   HTMLDivElement | null,
-  ISearchFormDropdown
+  ISearchFormSideDropdown
 >(({ id, isVisible }, ref) => {
   return createPortal(
-    <S.SearchFormDropdown
+    <S.SearchFormSideDropdown
       ref={ref}
       id={id}
       role="menu"
@@ -49,9 +49,9 @@ const SearchFormDropdown = forwardRef<
           </li>
         </ul>
       </S.SearchHistory>
-    </S.SearchFormDropdown>,
+    </S.SearchFormSideDropdown>,
     document.querySelector('#sideNavBar') as Element,
   );
 });
 
-export default SearchFormDropdown;
+export default SearchFormSideDropdown;

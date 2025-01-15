@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { colors, padding, font, border } from '@/styles';
 
-export const SearchFormDropdown = styled.article<{ $isVisible: boolean }>`
+export const SearchFormSideDropdown = styled.article<{ $isVisible: boolean }>`
   z-index: 1;
   position: fixed;
   top: 0;
