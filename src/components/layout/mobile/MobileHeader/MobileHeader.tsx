@@ -1,29 +1,16 @@
-import { useRef } from 'react';
-import { useVisibilityToggle } from '@/hooks';
-import { Logo, SearchInput, SearchHistoryDropdown } from '@/components';
+import { useLocation } from 'react-router-dom';
+import { URL } from '@/constant';
+import { Logo, MobileSearchWrap } from '@/components';
 import * as S from './MobileHeader.styles';
 
 const MobileHeader = () => {
-  const dropdownRef = useRef(null);
-  const {
-    isVisible: isVisibleSearchHistory,
-    showVisibility: showSearchHistory,
-  } = useVisibilityToggle({
-    ref: dropdownRef,
-  });
+  const { pathname } = useLocation();
 
   return (
     <S.MobileHeader id="mobileHedaer">
       <Logo width="12rem" />
-      <SearchInput onClick={showSearchHistory} />
 
-      {isVisibleSearchHistory && (
-        <SearchHistoryDropdown
-          ref={dropdownRef}
-          id="searchHistory"
-          isVisible={isVisibleSearchHistory}
-        />
-      )}
+      {pathname === URL.PROFILE.link ? <>더보기</> : <MobileSearchWrap />}
     </S.MobileHeader>
   );
 };
