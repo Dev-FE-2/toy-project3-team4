@@ -2,3 +2,4 @@
 export { ProfileImage } from './ProfileImage';
 export { LoaderWrapper } from './Loader';
 export { RoundImage } from './RoundImage';
+export { PageTitle } from './PageTitle';
