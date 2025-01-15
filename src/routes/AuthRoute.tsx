@@ -1,7 +1,6 @@
 import { Navigate, Outlet } from 'react-router-dom';
+import { useUserSn } from '@/store';
 import { URL } from '@/constant';
-import { useUserFetching, useUserSn } from '@/store';
-import { LoaderWrapper } from '@/components';
 
 type AuthMode = 'authenticated' | 'guest';
 
@@ -12,11 +11,6 @@ interface IAuthRouteProps {
 
 const AuthRoute = ({ mode, redirectPath }: IAuthRouteProps) => {
   const userSn = useUserSn(); // 사용자 인증 정보
-  const isUserFetching = useUserFetching(); // 사용자 인증 상태 로딩 여부
-
-  if (isUserFetching) {
-    return <LoaderWrapper isLoading={isUserFetching} />;
-  }
 
   // 모드에 따라 동작 분기
   if (mode === 'authenticated' && !userSn) {
