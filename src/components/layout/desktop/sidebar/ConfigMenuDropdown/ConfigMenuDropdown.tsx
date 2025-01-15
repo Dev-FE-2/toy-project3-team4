@@ -1,4 +1,5 @@
 import { forwardRef, RefObject } from 'react';
+import { createPortal } from 'react-dom';
 import { useAuth } from '@/hooks';
 import { useUser } from '@/store';
 import { THEMORE_NAV_ITEMS, URL } from '@/constant';
@@ -26,39 +27,42 @@ const ConfigMenuDropdown = forwardRef<
     const { logout } = useAuth();
     const user = useUser();
 
-    return (
-      <S.MenuDropdown
-        ref={ref}
-        id={id}
-        role="menu"
-        aria-hidden={!isVisible}
-        $isVisible={isVisible}
-        $left={positionLeft}
-        $right={positionRight}
-        $top={positionTop}
-        $bottom={positionBottom}
-      >
-        {THEMORE_NAV_ITEMS.map((navItem, index) => (
-          <li key={`${index}-${navItem.text}`}>
-            <SideNavItem link={navItem.link}>
-              <NavMenu
-                iconName={navItem.iconName}
-                text={navItem.text}
-                size="1.8rem"
-                link={navItem.link}
-              />
-            </SideNavItem>
-          </li>
-        ))}
+    return createPortal(
+      <nav aria-label="User Config Menu">
+        <S.MenuDropdown
+          ref={ref}
+          id={id}
+          role="menu"
+          aria-hidden={!isVisible}
+          $isVisible={isVisible}
+          $left={positionLeft}
+          $right={positionRight}
+          $top={positionTop}
+          $bottom={positionBottom}
+        >
+          {THEMORE_NAV_ITEMS.map((navItem, index) => (
+            <li key={`${index}-${navItem.text}`}>
+              <SideNavItem link={navItem.link}>
+                <NavMenu
+                  iconName={navItem.iconName}
+                  text={navItem.text}
+                  size="1.8rem"
+                  link={navItem.link}
+                />
+              </SideNavItem>
+            </li>
+          ))}
 
-        <hr />
+          <hr />
 
-        {user ? (
-          <SideNavItem onClick={logout}>로그아웃</SideNavItem>
-        ) : (
-          <SideNavItem link={URL.SIGNIN.link}>로그인</SideNavItem>
-        )}
-      </S.MenuDropdown>
+          {user ? (
+            <SideNavItem onClick={logout}>로그아웃</SideNavItem>
+          ) : (
+            <SideNavItem link={URL.SIGNIN.link}>로그인</SideNavItem>
+          )}
+        </S.MenuDropdown>
+      </nav>,
+      document.querySelector('#sideNavBar') as Element,
     );
   },
 );
