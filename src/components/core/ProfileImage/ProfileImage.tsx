@@ -9,7 +9,7 @@ interface ProfileImageProps {
 const ProfileImage = ({ imageUrl, size, isBorder }: ProfileImageProps) => {
   return (
     <S.ProfileImage $size={size} $isBorder={isBorder}>
-      <img src={imageUrl} alt="사용자 프로필 사진" />
+      <img src={imageUrl} alt="" />
     </S.ProfileImage>
   );
 };
