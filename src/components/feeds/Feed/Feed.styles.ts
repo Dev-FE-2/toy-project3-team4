@@ -12,7 +12,6 @@ export const FeedHeader = styled.header`
   justify-content: space-between;
   align-items: center;
   gap: ${padding.sm};
-  padding: 0 ${padding.md};
   height: 6rem;
   width: 100%;
   max-width: 76.8rem;
@@ -29,11 +28,10 @@ export const FeedBody = styled.section`
   display: flex;
   flex-direction: column;
   gap: ${padding.sm};
-  padding: 0 ${padding.md} ${padding.md};
+  padding: 0 0 ${padding.md};
 
   .likes-info {
     font-weight: 600;
-    margin-bottom: ${padding.xs};
   }
 `;
 
