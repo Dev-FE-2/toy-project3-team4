@@ -6,3 +6,6 @@ export { PageTitle } from './PageTitle';
 export { Input } from './Input';
 export { Textarea } from './Textarea';
 export { Switch } from './Switch';
+export { RoundTag } from './RoundTag';
+export { TextTag } from './TextTag';
+export { TagList } from './TagList';

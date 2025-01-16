@@ -1,5 +1,5 @@
-import { colors, font, padding } from '@/styles';
 import styled from 'styled-components';
+import { font, padding } from '@/styles';
 
 export const CardContainer = styled.div`
   width: 100%;
@@ -32,11 +32,6 @@ export const CardInfoBox = styled.div`
   justify-content: space-between;
   align-items: flex-start;
   gap: ${padding.sm};
-`;
-
-export const CardTagBox = styled.div`
-  font-size: ${font.size.info};
-  color: ${colors.semantic.text.nav};
 `;
 
 export const CardInfoLine = styled.div`
