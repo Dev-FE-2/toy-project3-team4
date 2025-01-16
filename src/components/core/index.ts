@@ -3,3 +3,5 @@ export { ProfileImage } from './ProfileImage';
 export { LoaderWrapper } from './Loader';
 export { RoundImage } from './RoundImage';
 export { PageTitle } from './PageTitle';
+export { Input } from './Input';
+export { Textarea } from './Textarea';
