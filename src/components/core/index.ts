@@ -5,3 +5,4 @@ export { RoundImage } from './RoundImage';
 export { PageTitle } from './PageTitle';
 export { Input } from './Input';
 export { Textarea } from './Textarea';
+export { Switch } from './Switch';
