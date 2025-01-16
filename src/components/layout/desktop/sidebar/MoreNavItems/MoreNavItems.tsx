@@ -27,8 +27,9 @@ const MoreNavItems = () => {
           id="configMenu"
           ref={dropdownRef}
           isVisible={isVisibleMoreMenu}
-          positionBottom={height.desktop.navItem}
-          positionLeft={padding.sm}
+          positionBottom={`calc(${height.desktop.navItem} + ${padding.md})`}
+          positionLeft={padding.md}
+          potalParentId="#sidebar"
         />
       )}
     </S.MoreNavItems>
