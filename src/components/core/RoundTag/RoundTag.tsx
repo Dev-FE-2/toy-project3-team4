@@ -3,14 +3,14 @@ import * as S from './RoundTag.styles';
 
 interface IRoundTag {
   text: string;
-  isEditable?: boolean;
+  isDeletable?: boolean;
 }
 
-const RoundTag = ({ text, isEditable = false }: IRoundTag) => {
+const RoundTag = ({ text, isDeletable = false }: IRoundTag) => {
   return (
     <S.RoundTag>
       #{text}
-      {isEditable && (
+      {isDeletable && (
         <button type="button">
           <RiCloseLine size="1.2rem" />
         </button>
