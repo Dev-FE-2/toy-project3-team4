@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { useVisibilityToggle } from '@/hooks';
 import { DESKTOP_NAV_ITEMS, NAV_ICON_SIZE, URL } from '@/constant';
-import { NavMenu, SideNavItem, SearchFormSideDropdown } from '@/components';
+import { DesktopSearch, NavMenu, SideNavItem } from '@/components';
 
 const MainNavItems = () => {
   const dropdownRef = useRef(null);
@@ -36,7 +36,7 @@ const MainNavItems = () => {
       </ul>
 
       {isVisibleSearchForm && (
-        <SearchFormSideDropdown
+        <DesktopSearch
           id="searchForm"
           ref={dropdownRef}
           isVisible={isVisibleSearchForm}

@@ -1,7 +1,7 @@
 import { forwardRef, RefObject } from 'react';
 import { createPortal } from 'react-dom';
-import { SearchInput, SearchHistoryList } from '@/components';
-import * as S from './SearchFormSideDropdown.styles';
+import { SearchForm, SearchHistory } from '@/components/search';
+import * as S from './DesktopSearch.styles';
 
 interface ISearchFormSideDropdown {
   id: string;
@@ -9,10 +9,14 @@ interface ISearchFormSideDropdown {
   ref: RefObject<HTMLElement>;
 }
 
-const SearchFormSideDropdown = forwardRef<
+const DesktopSearch = forwardRef<
   HTMLDivElement | null,
   ISearchFormSideDropdown
 >(({ id, isVisible }, ref) => {
+  const handleClick = (event: React.MouseEvent) => {
+    console.log(event);
+  };
+
   return createPortal(
     <S.SearchFormSideDropdown
       ref={ref}
@@ -23,12 +27,12 @@ const SearchFormSideDropdown = forwardRef<
     >
       <S.SearchFormHeader>
         <h3 className="search-title">검색</h3>
-        <SearchInput />
+        <SearchForm onClick={handleClick} />
       </S.SearchFormHeader>
-      <SearchHistoryList />
+      <SearchHistory />
     </S.SearchFormSideDropdown>,
     document.querySelector('#sideNavBar') as Element,
   );
 });
 
-export default SearchFormSideDropdown;
+export default DesktopSearch;
