@@ -5,10 +5,13 @@ import { DesktopSearch, NavMenu, SideNavItem } from '@/components';
 
 const MainNavItems = () => {
   const dropdownRef = useRef(null);
-  const { isVisible: isVisibleSearchForm, toggleVisibility: toggleSearchForm } =
-    useVisibilityToggle({
-      ref: dropdownRef,
-    });
+  const {
+    isVisible: isVisibleSearchForm,
+    toggleVisibility: toggleSearchForm,
+    resetVisibility,
+  } = useVisibilityToggle({
+    ref: dropdownRef,
+  });
 
   return (
     <nav aria-label="Main Menu">
@@ -40,6 +43,7 @@ const MainNavItems = () => {
           id="searchForm"
           ref={dropdownRef}
           isVisible={isVisibleSearchForm}
+          resetVisibility={resetVisibility}
         />
       )}
     </nav>
