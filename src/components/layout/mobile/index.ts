@@ -1,5 +1,4 @@
 export { MobileHeader } from './MobileHeader';
 export { MobileNavBar } from './MobileNavBar';
-export { SearchHistoryDropdown } from './SearchHistoryDropdown';
-export { default as MobileSearchWrap } from './MobileSearchWrap';
+export { MobileSearch } from './MobileSearch';
 export { default as MobileMoreWrap } from './MobileMoreWrap';
