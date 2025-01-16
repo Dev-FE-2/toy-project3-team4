@@ -29,7 +29,7 @@ const MoreNavItems = () => {
           isVisible={isVisibleMoreMenu}
           positionBottom={`calc(${height.desktop.navItem} + ${padding.md})`}
           positionLeft={padding.md}
-          potalParentId="#sidebar"
+          potalParentId="#sideNavBar"
         />
       )}
     </S.MoreNavItems>
