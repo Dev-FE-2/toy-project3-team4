@@ -3,3 +3,5 @@ export { default as useVisibilityToggle } from './useVisibilityToggle';
 export { default as useFetchUserInfo } from './useFetchUserInfo';
 export { default as useInterestSelection } from './useInterestSelection';
 export * from './playlist';
+export { default as useVideoEdit } from './useVideoEdit';
+export { default as useTagEdit } from './useTagEdit';
