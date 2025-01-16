@@ -5,5 +5,5 @@ export const PLAYLIST_LIMITS = {
   MAX_TAGS: 10, // 태그 최대 개수
   MIN_VIDEOS: 1, // 영상 최소 개수
   MIN_TAGS: 1, // 태그 최소 개수
-  ALLOWED_VIDEO_DOMAINS: ['youtube.com', 'vimeo.com'] as const, // 허용된 영상 플랫폼 도메인
+  ALLOWED_VIDEO_DOMAINS: ['youtube.com', 'youtu.be', 'vimeo.com'] as const, // 허용된 영상 플랫폼 도메인
 } as const;
