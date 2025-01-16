@@ -4,8 +4,9 @@ import { colors, padding, border, height } from '@/styles';
 
 const paddingXHalf = `${padding.values.lg / 2 / 10}rem`;
 
-export const NavItem = styled.div`
+export const SideNavItem = styled.button`
   height: ${height.desktop.navItem};
+  width: 100%;
   display: flex;
   align-items: center;
   cursor: pointer;

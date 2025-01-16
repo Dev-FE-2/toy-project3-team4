@@ -9,25 +9,34 @@ export const SideNavBar = styled.aside`
   display: none;
 
   @media (width >= 768px) {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100vh;
-    min-width: 22.3rem;
-    border-right: ${border.default};
+    display: block;
     color: ${colors.semantic.text.nav};
-    padding: 0 ${paddingXHalf};
     font-size: ${fontSize};
-    font-weight: 500;
+
+    .vertical-navbar {
+      z-index: 2;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100vh;
+      min-width: 22.3rem;
+      border-right: ${border.default};
+      background-color: ${colors.semantic.background.white};
+      padding: 0 ${paddingXHalf};
+      font-weight: 500;
+    }
   }
 `;
 
-export const LogoWrap = styled.div`
+export const LogoWrap = styled.section`
   padding: ${paddingY} ${paddingXHalf};
 `;
 
-export const Navigation = styled.nav`
+export const Navigation = styled.section`
   flex: 1;
+  overflow-y: auto;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

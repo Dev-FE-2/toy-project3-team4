@@ -1,7 +1,7 @@
 import { scale } from './scale';
 
 const PRIMARY_COLOR = '#3E5371';
-const NEUTRAL_COLOR = '#DBDBDB'; // instagram 기준
+const NEUTRAL_COLOR = '#d4d6db';
 const NEUTRAL_VARIANT_COLOR = '#CED4DA';
 const DARK_COLOR = '#081732';
 const GRAY_LIGHT_COLOR = '#C2C6C9';
@@ -27,8 +27,8 @@ const semantic = {
   },
   background: {
     white: WHITE_COLOR,
-    light: NEUTRAL_COLOR,
-    gray: '#F8F8F8',
+    light: '#F6F9FC',
+    grayLight: '#F8F8F8',
     dark: DARK_COLOR,
   },
   text: {

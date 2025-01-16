@@ -1,13 +1,23 @@
-import { Logo } from '@/components';
-import { RiSearchLine } from 'react-icons/ri';
+import { useLocation } from 'react-router-dom';
+import { URL } from '@/constant';
+import { Logo, MobileSearchWrap, MobileMoreWrap } from '@/components';
 import * as S from './MobileHeader.styles';
 
 const MobileHeader = () => {
+  const { pathname } = useLocation();
+
   return (
-    <S.MobileHeader>
-      <Logo width="15rem" />
-      <RiSearchLine size="2.4rem" />
-    </S.MobileHeader>
+    <header id="mobileHedaer">
+      <S.MobileHeader>
+        <Logo width="12rem" />
+
+        {pathname === URL.PROFILE.link ? (
+          <MobileMoreWrap />
+        ) : (
+          <MobileSearchWrap />
+        )}
+      </S.MobileHeader>
+    </header>
   );
 };
 

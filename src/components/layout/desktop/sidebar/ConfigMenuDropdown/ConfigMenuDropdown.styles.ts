@@ -1,13 +1,20 @@
 import styled from 'styled-components';
 import { hexToRgba } from '@/utils';
-import { colors, height, padding } from '@/styles';
+import { colors, padding } from '@/styles';
 
-const boxPadding = `calc(${padding.md} / 2);`;
+export interface IMenuDropdown {
+  $isVisible: boolean;
+  $left?: string;
+  $right?: string;
+  $top?: string;
+  $bottom?: string;
+}
 
-export const MoreMenu = styled.ul<{ $isVisible: boolean }>`
+export const MenuDropdown = styled.ul<IMenuDropdown>`
+  z-index: 2;
   position: absolute;
-  bottom: ${height.desktop.navItem};
-  left: ${boxPadding};
+  inset: ${(props) => props.$top ?? 'auto'} ${(props) => props.$right ?? 'auto'}
+    ${(props) => props.$bottom ?? 'auto'} ${(props) => props.$left ?? 'auto'};
   display: ${(props) => (props.$isVisible ? 'flex' : 'none')};
   flex-direction: column;
   justify-content: space-between;
@@ -16,7 +23,7 @@ export const MoreMenu = styled.ul<{ $isVisible: boolean }>`
   background-color: ${colors.semantic.background.white};
   border-radius: 16px;
   overflow: hidden;
-  padding: ${boxPadding};
+  padding: ${padding.sm};
   font-size: 14px;
 
   hr {

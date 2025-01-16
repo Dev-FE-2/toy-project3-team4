@@ -1,14 +1,14 @@
-import { useState, useEffect, useCallback, RefObject } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
-interface UseVisibilityToggleProps {
+interface IUseVisibilityToggle<T extends HTMLElement> {
   initialState?: boolean;
-  ref: RefObject<HTMLElement>;
+  ref: React.RefObject<T> | null;
 }
 
-const useVisibilityToggle = ({
+const useVisibilityToggle = <T extends HTMLElement>({
   initialState = false,
   ref,
-}: UseVisibilityToggleProps) => {
+}: IUseVisibilityToggle<T>) => {
   const [isVisible, setIsVisible] = useState(initialState);
 
   const resetVisibility = () => setIsVisible(initialState);
@@ -18,9 +18,15 @@ const useVisibilityToggle = ({
     setIsVisible((prev) => !prev);
   };
 
+  const showVisibility = (event: React.MouseEvent) => {
+    event.stopPropagation();
+    setIsVisible(true);
+  };
+
   const handleOutsideClick = useCallback(
     (event: MouseEvent) => {
-      if (ref.current?.contains(event.target as Node)) return;
+      const currentRef = ref?.current;
+      if (currentRef?.contains(event.target as Node)) return;
 
       setIsVisible(false);
     },
@@ -35,7 +41,12 @@ const useVisibilityToggle = ({
     };
   }, [handleOutsideClick]);
 
-  return { isVisible, toggleVisibility, resetVisibility };
+  return {
+    isVisible,
+    toggleVisibility,
+    resetVisibility,
+    showVisibility,
+  };
 };
 
 export default useVisibilityToggle;

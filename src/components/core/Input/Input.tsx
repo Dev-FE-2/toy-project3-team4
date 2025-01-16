@@ -1,4 +1,4 @@
-import { ChangeEvent } from 'react';
+import React, { ChangeEvent } from 'react';
 import * as S from './Input.styles';
 
 interface IInput {
@@ -11,6 +11,7 @@ interface IInput {
   bgColor?: string;
   isBorder?: boolean;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  onClick?: (event: React.MouseEvent<HTMLInputElement>) => void;
 }
 
 const Input = ({
@@ -20,6 +21,7 @@ const Input = ({
   value,
   required = false,
   onChange,
+  onClick,
   color,
   bgColor,
   isBorder = true,
@@ -32,6 +34,7 @@ const Input = ({
       id={name}
       value={value}
       onChange={onChange}
+      onClick={onClick}
       {...(required ? { required } : {})}
       $color={color}
       $bgColor={bgColor}
