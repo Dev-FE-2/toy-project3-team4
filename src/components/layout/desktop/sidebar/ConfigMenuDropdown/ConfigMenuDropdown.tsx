@@ -14,6 +14,7 @@ interface IConfigMenuDropdown {
   positionRight?: string;
   positionTop?: string;
   positionBottom?: string;
+  potalParentId: string;
 }
 
 const ConfigMenuDropdown = forwardRef<
@@ -21,7 +22,15 @@ const ConfigMenuDropdown = forwardRef<
   IConfigMenuDropdown
 >(
   (
-    { id, isVisible, positionLeft, positionRight, positionTop, positionBottom },
+    {
+      id,
+      isVisible,
+      positionLeft,
+      positionRight,
+      positionTop,
+      positionBottom,
+      potalParentId,
+    },
     ref,
   ) => {
     const { logout } = useAuth();
@@ -62,7 +71,7 @@ const ConfigMenuDropdown = forwardRef<
           )}
         </S.MenuDropdown>
       </nav>,
-      document.querySelector('#sideNavBar') as Element,
+      document.querySelector(potalParentId) as Element,
     );
   },
 );

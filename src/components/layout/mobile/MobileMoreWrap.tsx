@@ -28,6 +28,7 @@ const MobileMoreWrap = () => {
           isVisible={isVisibleMoreMenu}
           positionTop={height.mobile.header}
           positionRight={padding.sm}
+          potalParentId="#mobileHedaer"
         />
       )}
     </>

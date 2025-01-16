@@ -7,15 +7,17 @@ const MobileHeader = () => {
   const { pathname } = useLocation();
 
   return (
-    <S.MobileHeader id="mobileHedaer">
-      <Logo width="12rem" />
+    <header id="mobileHedaer">
+      <S.MobileHeader>
+        <Logo width="12rem" />
 
-      {pathname === URL.PROFILE.link ? (
-        <MobileMoreWrap />
-      ) : (
-        <MobileSearchWrap />
-      )}
-    </S.MobileHeader>
+        {pathname === URL.PROFILE.link ? (
+          <MobileMoreWrap />
+        ) : (
+          <MobileSearchWrap />
+        )}
+      </S.MobileHeader>
+    </header>
   );
 };
 
