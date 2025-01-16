@@ -12,7 +12,7 @@ export const Thumbnails = styled(Link)`
   aspect-ratio: 16 / 9;
   background-color: ${hexToRgba(colors.semantic.background.black, 8)};
   position: relative;
-  transition: all 0.3s;
+  transition: opacity 0.5s;
 
   @media (width >= 768px) {
     width: 100%;
