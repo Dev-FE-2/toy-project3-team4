@@ -1,46 +1,35 @@
-import React, { ChangeEvent } from 'react';
-import * as S from './Input.styles';
+import { styled } from 'styled-components';
+import { padding, border, colors } from '@/styles';
 
-interface IInput {
-  type: string;
-  placeholder: string;
-  name?: string;
-  value: string;
-  required?: boolean;
-  color?: string;
-  bgColor?: string;
-  isBorder?: boolean;
-  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
-  onClick?: (event: React.MouseEvent<HTMLInputElement>) => void;
+interface IInput extends React.InputHTMLAttributes<HTMLInputElement> {
+  $width?: string;
+  $height?: string;
+  $color?: string;
+  $bgColor?: string;
+  $isBorder?: boolean;
 }
 
-const Input = ({
-  type,
-  placeholder,
-  name,
-  value,
-  required = false,
-  onChange,
-  onClick,
-  color,
-  bgColor,
-  isBorder = true,
-}: IInput) => {
-  return (
-    <S.Input
-      type={type}
-      placeholder={placeholder}
-      name={name}
-      id={name}
-      value={value}
-      onChange={onChange}
-      onClick={onClick}
-      {...(required ? { required } : {})}
-      $color={color}
-      $bgColor={bgColor}
-      $isBorder={isBorder}
-    />
-  );
-};
+const Input = styled.input<IInput>`
+  width: ${(props) => (props.$width ? props.$width : '100%')};
+  height: ${(props) => (props.$height ? props.$height : '4rem')};
+  line-height: 1;
+  padding: 0 ${padding.md};
+  border-radius: ${border.radius.sm};
+  border: ${(props) => (props.$isBorder ? border.default : 'none')};
+  color: ${(props) => (props.$color ? props.$color : '#000000')};
+  background-color: ${(props) => (props.$bgColor ? props.$bgColor : '#ffffff')};
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  &:valid {
+    border-color: ${colors.semantic.border.light};
+  }
+
+  &:invalid {
+    border-color: ${colors.semantic.danger};
+  }
+`;
 
 export default Input;
