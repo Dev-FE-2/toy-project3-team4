@@ -7,12 +7,13 @@ interface ISearchFormSideDropdown {
   id: string;
   isVisible: boolean;
   ref: RefObject<HTMLElement>;
+  resetVisibility: () => void;
 }
 
 const DesktopSearch = forwardRef<
   HTMLDivElement | null,
   ISearchFormSideDropdown
->(({ id, isVisible }, ref) => {
+>(({ id, isVisible, resetVisibility }, ref) => {
   const handleClick = (event: React.MouseEvent) => {
     console.log(event);
   };
@@ -27,9 +28,9 @@ const DesktopSearch = forwardRef<
     >
       <S.SearchFormHeader>
         <h3 className="search-title">검색</h3>
-        <SearchForm onClick={handleClick} />
+        <SearchForm onClick={handleClick} resetVisibility={resetVisibility} />
       </S.SearchFormHeader>
-      <SearchHistory />
+      <SearchHistory resetVisibility={resetVisibility} />
     </S.SearchFormSideDropdown>,
     document.querySelector('#sideNavBar') as Element,
   );
