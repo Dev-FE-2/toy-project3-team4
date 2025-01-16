@@ -1,7 +1,15 @@
-import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useUserSn } from '@/store';
-import { usePostPlaylist, useTagEdit, useVideoEdit } from '@/hooks';
+import { fetchVimeoInfo, fetchYouTubeInfo } from '@/api';
+import {
+  useFetchPlaylist,
+  usePostPlaylist,
+  useTagEdit,
+  useUpdatePlaylist,
+  useVideoEdit,
+} from '@/hooks';
 import {
   EditTagSection,
   EditVideoSection,
@@ -11,7 +19,7 @@ import {
   Switch,
 } from '@/components';
 import { PLAYLIST_LIMITS, URL } from '@/constant';
-import type { PlaylistFormData } from '@/types';
+import type { PlaylistFormData, Video } from '@/types';
 import { FormItemSet, Label } from '../FormItem/FormItem.styles';
 import * as S from './PlayListForm.styles';
 
@@ -19,6 +27,7 @@ type UpsertMode = 'insert' | 'update';
 
 const PlayListForm = () => {
   const { pathname } = useLocation();
+  const navigate = useNavigate();
   const pageMode: UpsertMode =
     pathname === URL.INSERTPLI.link ? 'insert' : 'update';
 
@@ -38,7 +47,8 @@ const PlayListForm = () => {
   });
 
   const userSn = useUserSn() as string;
-  const { mutate, isPending } = usePostPlaylist();
+  const { mutate: insert, isPending: isInserting } = usePostPlaylist();
+  const { mutate: update, isPending: isUpdating } = useUpdatePlaylist();
 
   const {
     videos,
@@ -48,48 +58,94 @@ const PlayListForm = () => {
   } = useVideoEdit();
   const { tags, setTags, validate: validateTag } = useTagEdit();
 
+  // 플레이리스트 불러오기
+  const playlistSn = pageMode === 'update' ? pathname.split('/').pop() : null; // URL에서 ID 추출
+  const { data: playlistData } = useFetchPlaylist(playlistSn as string);
+
+  // 수정 모드 시 기존 데이터 바인딩
+  useEffect(() => {
+    if (playlistData && pageMode === 'update') {
+      if (userSn !== playlistData.userSn) {
+        alert('본인이 만든 플레이리스트만 수정할 수 있습니다.');
+        navigate(-1);
+        return;
+      }
+
+      setValue('title', playlistData.title);
+      setValue('content', playlistData.content);
+      setValue('disclosure', playlistData.disclosure);
+      setTags(playlistData.hashTags);
+
+      // 기존 영상 데이터 로드 및 비디오 정보 추가
+      Promise.all(
+        playlistData.links.map(async (url) => {
+          if (url.includes('youtube.com') || url.includes('youtu.be')) {
+            return fetchYouTubeInfo(url);
+          } else if (url.includes('vimeo.com')) {
+            return fetchVimeoInfo(url);
+          }
+          return null;
+        }),
+      ).then((videoData) => {
+        const validVideos = videoData.filter(
+          (video): video is Video => video !== null,
+        );
+        setVideos(validVideos);
+      });
+    }
+  }, [playlistData, pageMode, setValue, setVideos, setTags]);
+
   // 플레이리스트 저장
   const onSubmit = async (data: PlaylistFormData) => {
     // 비디오, 태그는 별도로 유효성 검사
     if (!(validateVideo() && validateTag())) return;
 
-    try {
-      const submitData = {
+    const submitData = {
+      title: data.title,
+      content: data.content,
+      date: new Date().toISOString(),
+      disclosure: data.disclosure,
+      hashTags: tags,
+      thumbnailUrl: thumbnailUrl,
+      links: videos.map((video) => video.url),
+    };
+
+    if (pageMode === 'insert') {
+      // 플레이리스트 생성
+      const insertData = {
+        ...submitData,
         playlistSn: crypto.randomUUID(),
         userSn: userSn,
-        title: data.title,
-        content: data.content,
+
         likes: [],
         comments: [],
-        date: new Date().toISOString(),
-        disclosure: data.disclosure,
-        hashTags: tags,
-        thumbnailUrl: thumbnailUrl,
-        links: videos.map((video) => video.url),
       };
 
-      mutate(submitData, {
+      insert(insertData, {
         onSuccess: () => {
-          const isInsertMode = pageMode === 'insert';
-          alert(`플레이리스트가 ${isInsertMode ? '생성' : '수정'}되었습니다.`);
+          alert('플레이리스트가 생성되었습니다.');
 
-          // 등록 후 필드 초기화
-          if (isInsertMode) {
-            reset();
-            setVideos([]);
-            setTags([]);
-          }
+          reset();
+          setVideos([]);
+          setTags([]);
         },
       });
-    } catch (error) {
-      console.error('저장 실패:', error);
-      alert('저장에 실패했습니다. 다시 시도해주세요.');
+    } else {
+      // 플레이리스트 수정
+      update(
+        { playlistSn: playlistSn as string, updates: submitData },
+        {
+          onSuccess: () => {
+            alert('플레이리스트가 수정되었습니다.');
+          },
+        },
+      );
     }
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <LoaderWrapper isLoading={isPending} />
+      <LoaderWrapper isLoading={isInserting || isUpdating} />
       <S.Section>
         <PageTitle>
           플레이리스트 {pageMode === 'insert' ? '생성' : '수정'}
@@ -151,7 +207,7 @@ const PlayListForm = () => {
           $size="md"
           $width="100%"
           $radius="default"
-          disabled={isPending}
+          disabled={isInserting || isUpdating}
         >
           플레이리스트 {pageMode === 'insert' ? '생성' : '수정'}
         </S.SaveButton>

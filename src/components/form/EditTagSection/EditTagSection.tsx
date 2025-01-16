@@ -33,7 +33,9 @@ const EditTagSection = () => {
       {tagError && <S.ErrorMessage>{tagError}</S.ErrorMessage>}
       {tagValidError && <S.ErrorMessage>{tagValidError}</S.ErrorMessage>}
 
-      {tags.length > 0 && <TagList tags={tags} gap={0.8} tagType="round" />}
+      {tags.length > 0 && (
+        <TagList tags={tags} gap={0.8} tagType="round" isDeletable={true} />
+      )}
     </S.FormItemSet>
   );
 };
