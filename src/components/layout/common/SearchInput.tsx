@@ -1,5 +1,5 @@
+import { Input } from '@/components/core';
 import { useState, ChangeEvent } from 'react';
-import { Input } from '@/components';
 
 interface ISearchInput {
   onClick?: (event: React.MouseEvent) => void;
@@ -19,8 +19,8 @@ const SearchInput = ({ onClick }: ISearchInput) => {
       placeholder="검색"
       onChange={handleChange}
       onClick={onClick}
-      isBorder={false}
-      bgColor="#ebeef1"
+      $isBorder={false}
+      $bgColor="#ebeef1"
     />
   );
 };

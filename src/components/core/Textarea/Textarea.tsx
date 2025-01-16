@@ -1,34 +1,24 @@
-import { ChangeEvent } from 'react';
-import * as S from './Textarea.styles';
+import { styled } from 'styled-components';
+import { padding, border, colors } from '@/styles';
 
-interface ITextarea {
-  placeholder: string;
-  name?: string;
-  value: string;
-  rows?: number;
-  required?: boolean;
-  onChange: (event: ChangeEvent<HTMLTextAreaElement>) => void;
-}
+const Textarea = styled.textarea`
+  width: 100%;
+  line-height: 1;
+  padding: ${padding.sm} ${padding.md};
+  border: ${border.default};
+  border-radius: ${border.radius.sm};
 
-const Textarea = ({
-  placeholder,
-  name,
-  rows = 3,
-  required = false,
-  value,
-  onChange,
-}: ITextarea) => {
-  return (
-    <S.Textarea
-      placeholder={placeholder}
-      id={name}
-      name={name}
-      value={value}
-      rows={rows}
-      onChange={onChange}
-      {...(required ? { required } : {})}
-    ></S.Textarea>
-  );
-};
+  &:focus-visible {
+    outline: none;
+  }
+
+  &:valid {
+    border-color: ${colors.semantic.border.light};
+  }
+
+  &:invalid {
+    border-color: ${colors.semantic.danger};
+  }
+`;
 
 export default Textarea;
