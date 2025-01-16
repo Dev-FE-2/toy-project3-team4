@@ -1,11 +1,19 @@
 import {
   addDocument,
   getDocument,
+  getAllDocument,
   updateDocument,
   deleteDocument,
 } from '@/utils';
 import { DB_COLLECTION } from '@/constant';
 import type { IPlaylistAPISchema } from '@/types';
+
+/**
+ * Firestore에서 플레이리스트 정보 조회
+ * @returns {Promise<IPlaylistAPISchema[] | null>} - 플레이리스트 데이터 또는 null
+ */
+const getAllPlaylist = async (): Promise<IPlaylistAPISchema[] | null> =>
+  getAllDocument<IPlaylistAPISchema>(DB_COLLECTION.PLAYLIST);
 
 /**
  * Firestore에서 플레이리스트 정보 조회
@@ -51,4 +59,10 @@ const deletePlaylist = async (playlistSn: string): Promise<void> => {
   await deleteDocument(DB_COLLECTION.PLAYLIST, playlistSn);
 };
 
-export { getPlaylist, addPlaylist, updatePlaylist, deletePlaylist };
+export {
+  getAllPlaylist,
+  getPlaylist,
+  addPlaylist,
+  updatePlaylist,
+  deletePlaylist,
+};
