@@ -11,3 +11,9 @@ export interface IPlaylistAPISchema {
   thumbnailUrl: string;
   links: string[];
 }
+
+export interface PlaylistFormData {
+  title: string;
+  content: string;
+  disclosure: boolean;
+}
