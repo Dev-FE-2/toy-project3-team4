@@ -4,7 +4,7 @@ import { useUserSn } from '@/store';
 import { STALE_TIME } from '@/constant';
 import type { IUserAPISchema } from '@/types';
 
-const useFetchMyInfo = () => {
+const useFetchMyUserInfo = () => {
   const userSn = useUserSn();
 
   return useQuery<IUserAPISchema | null, Error>({
@@ -19,4 +19,4 @@ const useFetchMyInfo = () => {
   });
 };
 
-export default useFetchMyInfo;
+export default useFetchMyUserInfo;

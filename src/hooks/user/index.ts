@@ -1,1 +1,1 @@
-export { default as useFetchMyInfo } from './useFetchMyInfo';
+export { default as useFetchMyUserInfo } from './useFetchMyUserInfo';
