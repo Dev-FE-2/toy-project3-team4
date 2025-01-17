@@ -5,3 +5,5 @@ export { default as useInterestSelection } from './useInterestSelection';
 export * from './playlist';
 export * from './user';
 export { default as useCopyToClipboard } from './useCopyToClipboard';
+export { default as useVideoEdit } from './useVideoEdit';
+export { default as useTagEdit } from './useTagEdit';

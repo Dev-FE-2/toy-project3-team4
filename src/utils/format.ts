@@ -32,3 +32,41 @@ export const parseUserDoc = (data: DocumentData): IUserAPISchema => {
     ...data,
   };
 };
+
+export const formatISODurationToHHMMSS = (isoDuration: string) => {
+  // ISO 8601 패턴 분석
+  const regex =
+    /P(?:(\d+)Y)?(?:(\d+)M)?(?:(\d+)D)?T(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/;
+  const matches = isoDuration.match(regex);
+
+  if (!matches) {
+    throw new Error('유효하지 않은 ISO 8601 기간 형식입니다.');
+  }
+
+  // 결과 매핑 (null 값은 0으로 변환)
+  const [, , , , hours, minutes, seconds] = matches.map(
+    (x) => parseInt(x, 10) || 0,
+  );
+
+  // 초 계산
+  const totalSeconds = hours * 3600 + minutes * 60 + seconds;
+
+  // HH:MM:SS 포맷 변환
+  return formatSecondsToHHMMSS(totalSeconds);
+};
+
+export const formatSecondsToHHMMSS = (totalSeconds: number) => {
+  const m = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
+  const s = String(totalSeconds % 60).padStart(2, '0');
+
+  let durationString = `${m}:${s}`;
+
+  const hours = Math.floor(totalSeconds / 3600);
+
+  if (hours > 0) {
+    const h = String(hours).padStart(2, '0');
+    durationString = `${h}:${durationString}`;
+  }
+
+  return durationString;
+};
