@@ -3,13 +3,14 @@ import { RiMoreFill } from 'react-icons/ri';
 import { useFetchAuthor } from '@/hooks';
 import type { IPlaylistAPISchema } from '@/types';
 import { ProfileImage, TagList } from '@/components';
-import { Thumbnails } from '@/components/feeds';
+import { Thumbnails, InteractionBar } from '@/components/feeds';
 import * as S from './Feed.styles';
 import defaultImage from '@/assets/avatar.svg';
 
-type IFeed = Omit<IPlaylistAPISchema, 'playlistSn' | 'date' | 'disclosure'>;
+type IFeed = Omit<IPlaylistAPISchema, 'date' | 'disclosure'>;
 
 const Feed = ({
+  playlistSn,
   userSn,
   title,
   content,
@@ -33,7 +34,7 @@ const Feed = ({
       </S.FeedHeader>
       <S.FeedBody>
         <Thumbnails thumbnailUrl={thumbnailUrl} />
-        {/* <InteractionBar links={links} /> */}
+        <InteractionBar likes={likes} playlistSn={playlistSn} />
         <S.FeedInfo>
           <div className="likes-info">좋아요 {likes.length}개</div>
           <div>
