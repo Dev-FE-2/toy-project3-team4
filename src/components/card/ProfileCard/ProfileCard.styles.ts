@@ -1,3 +1,4 @@
+import { RoundImage } from '@/components/core';
 import { font, padding } from '@/styles';
 import styled from 'styled-components';
 
@@ -17,7 +18,7 @@ export const CardContainer = styled.div`
   }
 `;
 
-export const CardImage = styled.img`
+export const CardImage = styled(RoundImage)`
   width: 10rem;
   height: 10rem;
 `;

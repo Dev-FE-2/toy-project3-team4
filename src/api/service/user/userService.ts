@@ -16,6 +16,14 @@ const getUser = async (userSn: string): Promise<IUserAPISchema | null> =>
   getDocument<IUserAPISchema>(DB_COLLECTION.USER, userSn, parseUserDoc);
 
 /**
+ * Firestore에서 사용자 정보 조회
+ * @param {string} userSn - 사용자 고유 ID
+ * @returns {Promise<IUserAPISchema | null>} - 사용자 데이터 또는 null
+ */
+const getSearchUser = async (userSn: string): Promise<IUserAPISchema | null> =>
+  getDocument<IUserAPISchema>(DB_COLLECTION.USER, userSn, parseUserDoc);
+
+/**
  * Firestore에 신규 유저 등록
  * @param {IUserAPISchema} userData - 사용자 정보
  * @returns {Promise<void>}
@@ -35,4 +43,4 @@ const updateUser = async (
 ): Promise<void> =>
   updateDocument<IUserAPISchema>(DB_COLLECTION.USER, userSn, updates);
 
-export { getUser, addUser, updateUser };
+export { getUser, getSearchUser, addUser, updateUser };

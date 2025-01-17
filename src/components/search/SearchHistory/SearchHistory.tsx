@@ -13,11 +13,11 @@ const SearchHistory = ({ resetVisibility }: ISearchHistory) => {
   const { removeSearchHistory } = useSearchHistoryActions();
   const navigate = useNavigate();
 
-  const handleClick = (history: string) => {
+  const handleClick = (keyword: string) => {
     resetVisibility();
     navigate({
       pathname: './search',
-      search: createSearchParams({ history }).toString(),
+      search: createSearchParams({ keyword }).toString(),
     });
   };
 

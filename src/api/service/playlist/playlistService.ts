@@ -7,6 +7,15 @@ import {
 } from '@/utils';
 import { DB_COLLECTION } from '@/constant';
 import type { IPlaylistAPISchema } from '@/types';
+import {
+  collection,
+  getDocs,
+  query,
+  startAfter,
+  where,
+} from 'firebase/firestore/lite';
+import { DB } from '@/api/firebase';
+import { getUser } from '../user';
 
 /**
  * Firestore에서 플레이리스트 정보 조회
@@ -59,10 +68,100 @@ const deletePlaylist = async (playlistSn: string): Promise<void> => {
   await deleteDocument(DB_COLLECTION.PLAYLIST, playlistSn);
 };
 
+const searchPlaylist = async (
+  keyword: string,
+  cursor?: IPlaylistAPISchema,
+): Promise<IPlaylistAPISchema[]> => {
+  try {
+    // Playlist 검색
+    const playlistsRef = collection(DB, DB_COLLECTION.PLAYLIST);
+    let playlistQuery = query(
+      playlistsRef,
+      where('title', '>=', keyword),
+      where('title', '<=', keyword + '\uf8ff'),
+    );
+
+    if (cursor) {
+      playlistQuery = query(playlistQuery, startAfter(cursor));
+    }
+
+    const playlistSnapshot = await getDocs(playlistQuery);
+    const playlists: IPlaylistAPISchema[] = playlistSnapshot.docs.map(
+      (doc) => ({
+        ...(doc.data() as IPlaylistAPISchema),
+      }),
+    );
+
+    return playlists;
+  } catch (error) {
+    console.error('Error searching documents:', error);
+    throw error;
+  }
+};
+
+const userPlaylist = async (userSn?: string): Promise<IPlaylistAPISchema[]> => {
+  if (!userSn) throw new Error();
+  try {
+    const userRef = await getUser(userSn);
+    if (!userRef) throw new Error();
+
+    const { myPlaylists } = userRef;
+    const playlistsRef = collection(DB, DB_COLLECTION.PLAYLIST);
+    const playlistQuery = query(
+      playlistsRef,
+      where('playlistSn', 'in', myPlaylists),
+    );
+
+    const playlistSnapshot = await getDocs(playlistQuery);
+    const playlists: IPlaylistAPISchema[] = playlistSnapshot.docs.map(
+      (doc) => ({
+        ...(doc.data() as IPlaylistAPISchema),
+      }),
+    );
+
+    return playlists;
+  } catch (error) {
+    console.error('Error searching documents:', error);
+    throw error;
+  }
+};
+
+const bookmarkPlaylist = async (
+  userSn?: string,
+): Promise<IPlaylistAPISchema[]> => {
+  if (!userSn) throw new Error();
+  try {
+    const userRef = await getUser(userSn);
+    if (!userRef) throw new Error();
+
+    const { bookmarks } = userRef;
+    const playlistsRef = collection(DB, DB_COLLECTION.PLAYLIST);
+    const playlistQuery = query(
+      playlistsRef,
+      where('playlistSn', 'in', bookmarks),
+    );
+
+    const playlistSnapshot = await getDocs(playlistQuery);
+    const playlists: IPlaylistAPISchema[] = playlistSnapshot.docs.map(
+      (doc) => ({
+        ...(doc.data() as IPlaylistAPISchema),
+      }),
+    );
+
+    return playlists;
+  } catch (error) {
+    console.error('Error searching documents:', error);
+    throw error;
+  }
+};
+
 export {
   getAllPlaylist,
   getPlaylist,
   addPlaylist,
   updatePlaylist,
   deletePlaylist,
+  searchPlaylist,
+  userPlaylist,
+  bookmarkPlaylist,
 };
