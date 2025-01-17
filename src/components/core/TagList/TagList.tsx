@@ -4,7 +4,7 @@ import * as S from './TagList.styles';
 interface ITagList {
   tags: string[];
   tagType: 'text' | 'round';
-  gap: number;
+  gap?: number;
   isDeletable?: boolean;
 }
 
