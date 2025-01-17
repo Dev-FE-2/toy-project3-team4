@@ -1,20 +1,28 @@
 import { Button, TagList } from '@/components';
 import { RiMore2Fill } from 'react-icons/ri';
 import * as S from './ExplorePlayListCard.styles';
+import { IPlaylistAPISchema } from '@/types';
 
-const ExplorePlayListCard = () => {
+interface IExplorePlayListCard {
+  data: IPlaylistAPISchema;
+}
+
+const ExplorePlayListCard = ({ data }: IExplorePlayListCard) => {
+  const { title, hashTags, comments, likes } = data;
   return (
     <S.CardContainer>
       <S.CardImageBox>
         <S.CardImage src="src/assets/testThumbnail.png" />
       </S.CardImageBox>
       <S.CardInfoBox>
-        <h3>고양이는 너무 귀여웡</h3>
+        <h3>{title}</h3>
         <div>
-          <TagList tags={['고양', '고영', '냐옹이']} tagType="text" />
+          <TagList tags={hashTags} tagType="text" gap={2} />
         </div>
         <S.CardInfoLine>
-          <span>댓글 1천· 좋아요 1만</span>
+          <span>
+            댓글 {comments.length}· 좋아요 {likes.length}
+          </span>
           <Button $bgColor="white" $size="xs">
             <RiMore2Fill />
           </Button>
