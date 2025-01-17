@@ -20,7 +20,7 @@ const ProfileCard = () => {
   return (
     <S.CardContainer>
       <S.CardImage imgUrl={user?.imgUrl || defaultImage} size="10rem" />
-      <S.CardTitle>이민태</S.CardTitle>
+      <S.CardTitle>{data?.name}</S.CardTitle>
       <S.CardInfoBox>
         <S.CardStack>
           <S.B>{data?.myPlaylists.length}</S.B>
