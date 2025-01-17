@@ -136,9 +136,11 @@ project/
 |   |       └── index.ts
 |   |       └── 컴포넌트
 |   |── constant/            # 프로젝트에서 사용하는 상수값 모음 (예: URL, 키값 등)
+|   |── context/             # Context API 관련 설정
 │   ├── hooks/               # 커스텀 훅 모음
 |   |── layout/              # 레이아웃 관련 UI
 │   ├── pages/               # 각 페이지컴포넌트와 해당 페이지에서만 사용하는 컴포넌트
+│   ├── provider/            # React Provider 컴포넌트 정의
 |   |── routes/              # 경로 설정 화면 라우팅과 URL 직접 접근 차단
 |   |── store/               # 전역 상태 관리를 위한 로직 (Zustand, user 상태 관리 관련 코드)
 |   ├── styles/              # reset.css 및 디자인 토큰 정의
@@ -211,7 +213,7 @@ project/
 
 ## 코드 포맷팅
 
-### ESLint, PrettierLint
+### ESLint, PrettierLint, StyleLint
 
 <br/>
 
