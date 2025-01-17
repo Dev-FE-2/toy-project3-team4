@@ -1,5 +1,12 @@
+import { FeedList } from '@/components';
+import * as S from './HomePage.styles';
+
 const HomePage = () => {
-  return <div>Home 페이지 입니다</div>;
+  return (
+    <S.FeedsContents>
+      <FeedList />
+    </S.FeedsContents>
+  );
 };
 
 export default HomePage;

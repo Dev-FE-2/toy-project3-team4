@@ -31,6 +31,7 @@ export const Layout = styled.div`
         flex-direction: column;
         justify-content: flex-start;
         gap: ${padding.md};
+        padding: 0 ${padding.md};
 
         @media (width >= 768px) {
           max-width: 150rem;
