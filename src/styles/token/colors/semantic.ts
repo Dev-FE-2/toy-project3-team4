@@ -7,6 +7,7 @@ const DARK_COLOR = '#081732';
 const GRAY_LIGHT_COLOR = '#C2C6C9';
 const GRAY_DARK_COLOR = '#9CA3AF';
 const WHITE_COLOR = '#FFFFFF';
+const BLACK_COLOR = '#000000';
 
 const semantic = {
   primary: PRIMARY_COLOR,
@@ -30,6 +31,7 @@ const semantic = {
     light: '#F6F9FC',
     grayLight: '#F8F8F8',
     dark: DARK_COLOR,
+    black: BLACK_COLOR,
   },
   text: {
     white: WHITE_COLOR,

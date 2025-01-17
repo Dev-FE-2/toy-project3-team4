@@ -1,4 +1,4 @@
-export const padding = {
+const padding = {
   xs: '0.4rem',
   sm: '0.8rem',
   md: '1.6rem',
@@ -16,3 +16,5 @@ export const padding = {
     xxxl: 60,
   },
 };
+
+export { padding };
