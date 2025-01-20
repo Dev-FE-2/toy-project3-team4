@@ -1,18 +1,16 @@
 import { RiCloseLine } from 'react-icons/ri';
 import * as S from './RoundTag.styles';
-import { useTagEdit } from '@/hooks';
 
 interface IRoundTag {
   text: string;
-  isDeletable?: boolean;
+  removeTag?: (text: string) => void;
 }
 
-const RoundTag = ({ text, isDeletable = false }: IRoundTag) => {
-  const { removeTag } = useTagEdit();
+const RoundTag = ({ text, removeTag }: IRoundTag) => {
   return (
     <S.RoundTag>
       #{text}
-      {isDeletable && (
+      {removeTag && (
         <button type="button" onClick={() => removeTag(text)}>
           <RiCloseLine size="1.2rem" />
         </button>
