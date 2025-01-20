@@ -4,11 +4,10 @@ import { font, padding } from '@/styles';
 export const CardContainer = styled.div`
   width: 100%;
   max-width: 48.5rem;
-  padding: 0 ${padding['md']};
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: ${padding['md']};
+  gap: ${padding.md};
   transition: 0.3s;
   cursor: pointer;
 `;
