@@ -1,11 +1,10 @@
-import { RiShareLine } from 'react-icons/ri';
-import { URL, QUERY_PARAMS, FEED_ICON_SIZE } from '@/constant';
-import { useCopyToClipboard } from '@/hooks';
+import { URL, QUERY_PARAMS } from '@/constant';
 import {
   LikeButton,
   BookmarkButton,
   IndexViewButton,
   CommentViewButton,
+  ShareButton,
 } from '@/components';
 import * as S from './InteractionBar.styles';
 
@@ -14,7 +13,6 @@ interface IInteractionBar {
 }
 
 const InteractionBar = ({ playlistSn }: IInteractionBar) => {
-  const { copyToClipboard } = useCopyToClipboard();
   const link = URL.VIEWPLI.link + `?${QUERY_PARAMS.PLAYLIST_SN}=${playlistSn}`;
 
   return (
@@ -22,9 +20,7 @@ const InteractionBar = ({ playlistSn }: IInteractionBar) => {
       <LikeButton playlistSn={playlistSn} />
       <IndexViewButton link={link} />
       <CommentViewButton link={link} />
-      <button type="button" onClick={() => copyToClipboard('복사')}>
-        <RiShareLine size={FEED_ICON_SIZE} />
-      </button>
+      <ShareButton link={link} />
       <div className="position-right">
         <BookmarkButton playlistSn={playlistSn} />
       </div>
