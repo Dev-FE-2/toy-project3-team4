@@ -12,7 +12,7 @@ const URL: Url = {
   SIGNIN: { text: '로그인', link: '/signin' },
   SEARCH: { text: '검색', link: '/search' },
   FOLLOWPLI: { text: '팔로우', link: '/followpli' },
-  PROFILE: { text: '프로필', link: '/profile' },
+  PROFILE: { text: '프로필', link: '/profile/:userSn' },
   INTERESTS: { text: '관심사 선택', link: '/interests' },
   USERINFO: { text: '내 정보 수정', link: '/userinfo' },
   VIEWPLI: {
