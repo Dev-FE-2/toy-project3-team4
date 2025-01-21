@@ -2,6 +2,7 @@ import { RiHeart3Line, RiHeart3Fill } from 'react-icons/ri';
 import { useUserSn } from '@/store';
 import { FEED_ICON_SIZE } from '@/constant';
 import { useUpdatePlaylist, useContextFeed } from '@/hooks';
+import { IconButton } from '@/components';
 
 interface ILikeButton {
   playlistSn: string;
@@ -55,13 +56,17 @@ const LikeButton = ({ playlistSn }: ILikeButton) => {
   };
 
   return userSn && likes.includes(userSn) ? (
-    <button type="button" onClick={removeLikePli} aria-label="좋아요 취소하기">
+    <IconButton
+      type="button"
+      onClick={removeLikePli}
+      aria-label="좋아요 취소하기"
+    >
       <RiHeart3Fill size={FEED_ICON_SIZE} />
-    </button>
+    </IconButton>
   ) : (
-    <button type="button" onClick={addLikePli} aria-label="좋아요 하기">
+    <IconButton type="button" onClick={addLikePli} aria-label="좋아요 하기">
       <RiHeart3Line size={FEED_ICON_SIZE} />
-    </button>
+    </IconButton>
   );
 };
 
