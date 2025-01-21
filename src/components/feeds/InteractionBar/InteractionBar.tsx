@@ -1,14 +1,8 @@
 import { Link } from 'react-router-dom';
-import {
-  RiBookmarkLine,
-  RiChat1Line,
-  RiShareLine,
-  RiBillLine,
-  RiBookmarkFill,
-} from 'react-icons/ri';
+import { RiChat1Line, RiShareLine, RiBillLine } from 'react-icons/ri';
 import { FEED_ICON_SIZE } from '@/constant';
-import { useFetchMyUserInfo, useCopyToClipboard } from '@/hooks';
-import { LikeButton } from '@/components';
+import { useCopyToClipboard } from '@/hooks';
+import { LikeButton, BookmarkButton } from '@/components';
 import * as S from './InteractionBar.styles';
 
 interface IInteractionBar {
@@ -16,7 +10,6 @@ interface IInteractionBar {
 }
 
 const InteractionBar = ({ playlistSn }: IInteractionBar) => {
-  const { data: myUserInfo } = useFetchMyUserInfo();
   const { copyToClipboard } = useCopyToClipboard();
 
   return (
@@ -32,12 +25,7 @@ const InteractionBar = ({ playlistSn }: IInteractionBar) => {
         <RiShareLine size={FEED_ICON_SIZE} />
       </button>
       <div className="position-right">
-        {playlistSn && myUserInfo?.bookmarks?.includes(playlistSn)}
-        {playlistSn && myUserInfo?.bookmarks?.includes(playlistSn) ? (
-          <RiBookmarkFill size={FEED_ICON_SIZE} />
-        ) : (
-          <RiBookmarkLine size={FEED_ICON_SIZE} />
-        )}
+        <BookmarkButton playlistSn={playlistSn} />
       </div>
     </S.InteractionBar>
   );
