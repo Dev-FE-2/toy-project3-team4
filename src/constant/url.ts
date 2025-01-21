@@ -17,7 +17,7 @@ const URL: Url = {
   USERINFO: { text: '내 정보 수정', link: '/userinfo' },
   VIEWPLI: {
     text: '플레이리스트 상세',
-    link: '/playlists/view/:pliId',
+    link: '/playlists/view',
   },
   INSERTPLI: {
     text: '플레이리스트 생성',
@@ -25,7 +25,7 @@ const URL: Url = {
   },
   UPDATEPLI: {
     text: '플레이리스트 수정',
-    link: '/playlists/update/:pliId',
+    link: '/playlists/update',
   },
 } as const;
 
