@@ -1,4 +1,3 @@
-import { URL, QUERY_PARAMS } from '@/constant';
 import {
   LikeButton,
   BookmarkButton,
@@ -8,19 +7,24 @@ import {
 } from '@/components';
 import * as S from './InteractionBar.styles';
 
+type detailViewLinksType = {
+  default: string;
+  infoView: string;
+  indexView: string;
+  commentView: string;
+};
 interface IInteractionBar {
   playlistSn: string;
+  detailViewLinks: detailViewLinksType;
 }
 
-const InteractionBar = ({ playlistSn }: IInteractionBar) => {
-  const link = URL.VIEWPLI.link + `?${QUERY_PARAMS.PLAYLIST_SN}=${playlistSn}`;
-
+const InteractionBar = ({ playlistSn, detailViewLinks }: IInteractionBar) => {
   return (
     <S.InteractionBar>
       <LikeButton playlistSn={playlistSn} />
-      <IndexViewButton link={link} />
-      <CommentViewButton link={link} />
-      <ShareButton link={link} />
+      <IndexViewButton link={detailViewLinks.indexView} />
+      <CommentViewButton link={detailViewLinks.commentView} />
+      <ShareButton link={detailViewLinks.default} />
       <div className="position-right">
         <BookmarkButton playlistSn={playlistSn} />
       </div>

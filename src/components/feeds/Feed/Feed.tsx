@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { RiMoreFill } from 'react-icons/ri';
+import { URL, QUERY_PARAMS } from '@/constant';
 import { useFetchAuthor, useContextFeed } from '@/hooks';
 import { ProfileImage, TagList } from '@/components';
 import { Thumbnails, InteractionBar } from '@/components/feeds';
@@ -16,15 +17,21 @@ const Feed = ({ playlistSn }: { playlistSn: string }) => {
     comments,
     hashTags,
     thumbnailUrl,
-    links,
+    // links,
   } = feed;
   const { data: author } = useFetchAuthor(userSn);
-  const videoLink = links[0];
+  const link = URL.VIEWPLI.link + `?${QUERY_PARAMS.PLAYLIST_SN}=${playlistSn}`;
+  const detailViewLinks = {
+    default: link,
+    infoView: link + `&${QUERY_PARAMS.PLAYLIST_INFO}=true`,
+    indexView: link + `&${QUERY_PARAMS.PLAYLIST_INDEX}=true`,
+    commentView: link + `&${QUERY_PARAMS.PLAYLIST_COMMENTS}=true`,
+  };
 
   return (
     <S.Feed>
       <S.FeedHeader>
-        <S.AuthorInfo to={videoLink}>
+        <S.AuthorInfo to={link}>
           <ProfileImage size="3rem" imageUrl={author?.imgUrl || defaultImage} />
           {author?.name}
         </S.AuthorInfo>
@@ -32,19 +39,26 @@ const Feed = ({ playlistSn }: { playlistSn: string }) => {
       </S.FeedHeader>
       <S.FeedBody>
         <Thumbnails thumbnailUrl={thumbnailUrl} />
-        <InteractionBar playlistSn={playlistSn} />
+        <InteractionBar
+          playlistSn={playlistSn}
+          detailViewLinks={detailViewLinks}
+        />
         <S.FeedInfo>
           <div className="likes-info">좋아요 {likes.length}개</div>
           <div>
-            <h4 className="feed-title">{title}</h4>
-            <div className="feed-des">{content}</div>
+            <Link to={link}>
+              <h4 className="feed-title">{title}</h4>
+            </Link>
+            <Link to={detailViewLinks.infoView}>
+              <div className="feed-des">{content}</div>
+            </Link>
           </div>
           {hashTags.length > 0 ? (
             <TagList tags={hashTags} tagType="text" gap={0.4} />
           ) : (
             <></>
           )}
-          <Link to={videoLink} className="comments-info">
+          <Link to={detailViewLinks.commentView} className="comments-info">
             {comments.length > 0 ? (
               <>댓글 {comments.length}개 모두 보기</>
             ) : (
