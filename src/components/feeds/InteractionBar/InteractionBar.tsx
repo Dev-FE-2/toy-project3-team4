@@ -6,41 +6,37 @@ import {
   RiBillLine,
   RiBookmarkFill,
 } from 'react-icons/ri';
-import { useUserSn } from '@/store';
+import { FEED_ICON_SIZE } from '@/constant';
 import { useFetchMyUserInfo, useCopyToClipboard } from '@/hooks';
 import { LikeButton } from '@/components';
 import * as S from './InteractionBar.styles';
 
-const ICON_SIZE = '2.4rem';
-
 interface IInteractionBar {
   playlistSn: string;
-  likes: string[];
 }
 
-const InteractionBar = ({ playlistSn, likes }: IInteractionBar) => {
-  const userSn = useUserSn();
+const InteractionBar = ({ playlistSn }: IInteractionBar) => {
   const { data: myUserInfo } = useFetchMyUserInfo();
   const { copyToClipboard } = useCopyToClipboard();
 
   return (
     <S.InteractionBar>
-      <LikeButton myuserSn={userSn} likes={likes} iconSize={ICON_SIZE} />
+      <LikeButton playlistSn={playlistSn} />
       <Link to="/">
-        <RiBillLine size={ICON_SIZE} />
+        <RiBillLine size={FEED_ICON_SIZE} />
       </Link>
       <Link to="/">
-        <RiChat1Line size={ICON_SIZE} />
+        <RiChat1Line size={FEED_ICON_SIZE} />
       </Link>
       <button type="button" onClick={() => copyToClipboard('복사')}>
-        <RiShareLine size={ICON_SIZE} />
+        <RiShareLine size={FEED_ICON_SIZE} />
       </button>
       <div className="position-right">
         {playlistSn && myUserInfo?.bookmarks?.includes(playlistSn)}
         {playlistSn && myUserInfo?.bookmarks?.includes(playlistSn) ? (
-          <RiBookmarkFill size={ICON_SIZE} />
+          <RiBookmarkFill size={FEED_ICON_SIZE} />
         ) : (
-          <RiBookmarkLine size={ICON_SIZE} />
+          <RiBookmarkLine size={FEED_ICON_SIZE} />
         )}
       </div>
     </S.InteractionBar>

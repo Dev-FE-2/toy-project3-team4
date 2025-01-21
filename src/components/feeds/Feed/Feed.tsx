@@ -1,25 +1,23 @@
 import { Link } from 'react-router-dom';
 import { RiMoreFill } from 'react-icons/ri';
-import { useFetchAuthor } from '@/hooks';
-import type { IPlaylistAPISchema } from '@/types';
+import { useFetchAuthor, useContextFeed } from '@/hooks';
 import { ProfileImage, TagList } from '@/components';
 import { Thumbnails, InteractionBar } from '@/components/feeds';
 import * as S from './Feed.styles';
 import defaultImage from '@/assets/avatar.svg';
 
-type IFeed = Omit<IPlaylistAPISchema, 'date' | 'disclosure'>;
-
-const Feed = ({
-  playlistSn,
-  userSn,
-  title,
-  content,
-  likes,
-  comments,
-  hashTags,
-  thumbnailUrl,
-  links,
-}: IFeed) => {
+const Feed = ({ playlistSn }: { playlistSn: string }) => {
+  const feed = useContextFeed(playlistSn);
+  const {
+    userSn,
+    title,
+    content,
+    likes,
+    comments,
+    hashTags,
+    thumbnailUrl,
+    links,
+  } = feed;
   const { data: author } = useFetchAuthor(userSn);
   const videoLink = links[0];
 
@@ -34,7 +32,7 @@ const Feed = ({
       </S.FeedHeader>
       <S.FeedBody>
         <Thumbnails thumbnailUrl={thumbnailUrl} />
-        <InteractionBar likes={likes} playlistSn={playlistSn} />
+        <InteractionBar playlistSn={playlistSn} />
         <S.FeedInfo>
           <div className="likes-info">좋아요 {likes.length}개</div>
           <div>
