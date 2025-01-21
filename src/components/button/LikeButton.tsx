@@ -1,7 +1,7 @@
 import { RiHeart3Line, RiHeart3Fill } from 'react-icons/ri';
 import { useUserSn } from '@/store';
 import { FEED_ICON_SIZE } from '@/constant';
-import { useUpdatePlaylist, useContextFeed } from '@/hooks';
+import { useContextFeed, useUpdateLikes } from '@/hooks';
 import { IconButton } from '@/components';
 
 interface ILikeButton {
@@ -9,10 +9,10 @@ interface ILikeButton {
 }
 
 const LikeButton = ({ playlistSn }: ILikeButton) => {
-  const { feed, updateLikes: updateLikesContext } = useContextFeed(playlistSn);
+  const { feed } = useContextFeed(playlistSn);
   const { likes } = feed;
   const userSn = useUserSn();
-  const { mutate: updateLikesDB } = useUpdatePlaylist();
+  const { mutate: updateLikes } = useUpdateLikes(playlistSn);
 
   const addLikePli = () => {
     if (!userSn) {
@@ -21,38 +21,12 @@ const LikeButton = ({ playlistSn }: ILikeButton) => {
     }
 
     const newLikes = [...likes, userSn];
-
-    updateLikesContext(playlistSn, newLikes);
-    updateLikesDB(
-      { playlistSn: playlistSn as string, updates: { likes: newLikes } },
-      {
-        onSuccess: () => {
-          console.log('좋아요 추가 성공!');
-          console.log('newLikes:', newLikes);
-        },
-        onError: () => {
-          console.log('좋아요 추가 실패!');
-        },
-      },
-    );
+    updateLikes({ playlistSn, newLikes });
   };
 
   const removeLikePli = () => {
     const newLikes = likes.filter((like) => like !== userSn);
-
-    updateLikesContext(playlistSn, newLikes);
-    updateLikesDB(
-      { playlistSn: playlistSn as string, updates: { likes: newLikes } },
-      {
-        onSuccess: () => {
-          console.log('좋아요 취소 성공!');
-          console.log('newLikes:', newLikes);
-        },
-        onError: () => {
-          console.log('좋아요 취소 실패!');
-        },
-      },
-    );
+    updateLikes({ playlistSn, newLikes });
   };
 
   return userSn && likes.includes(userSn) ? (
