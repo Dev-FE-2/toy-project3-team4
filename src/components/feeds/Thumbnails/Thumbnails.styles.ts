@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { hexToRgba } from '@/utils';
-import { border, colors, padding } from '@/styles';
+import { border, colors, padding, font } from '@/styles';
 
 export const Thumbnails = styled(Link)`
   display: block;
@@ -19,6 +19,24 @@ export const Thumbnails = styled(Link)`
     margin-left: 0;
     margin-right: 0;
     border-radius: ${border.radius.sm};
+  }
+
+  .multiple-flag {
+    position: absolute;
+    bottom: ${padding.sm};
+    right: ${padding.sm};
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: ${padding.xs};
+    background-color: ${colors.semantic.primary};
+    color: ${colors.semantic.text.white};
+    line-height: 1;
+    padding: ${padding.xs} ${padding.sm} ${padding.xs} ${padding.xs};
+    border-radius: ${border.radius.xs};
+    opacity: 0.8;
+    font-size: ${font.size.info};
+    font-weight: 600;
   }
 
   &:hover .thumb-hover {

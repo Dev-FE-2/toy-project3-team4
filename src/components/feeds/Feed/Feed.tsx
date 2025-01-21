@@ -17,8 +17,9 @@ const Feed = ({ playlistSn }: { playlistSn: string }) => {
     comments,
     hashTags,
     thumbnailUrl,
-    // links,
+    links,
   } = feed;
+  const videoCount = links.length;
   const { data: author } = useFetchAuthor(userSn);
   const link = URL.VIEWPLI.link + `?${QUERY_PARAMS.PLAYLIST_SN}=${playlistSn}`;
   const detailViewLinks = {
@@ -38,7 +39,11 @@ const Feed = ({ playlistSn }: { playlistSn: string }) => {
         <RiMoreFill size="1.6rem" />
       </S.FeedHeader>
       <S.FeedBody>
-        <Thumbnails thumbnailUrl={thumbnailUrl} />
+        <Thumbnails
+          thumbnailUrl={thumbnailUrl}
+          videoCount={videoCount}
+          link={link}
+        />
         <InteractionBar
           playlistSn={playlistSn}
           detailViewLinks={detailViewLinks}
