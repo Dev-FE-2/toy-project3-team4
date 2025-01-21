@@ -7,7 +7,7 @@ import * as S from './Feed.styles';
 import defaultImage from '@/assets/avatar.svg';
 
 const Feed = ({ playlistSn }: { playlistSn: string }) => {
-  const feed = useContextFeed(playlistSn);
+  const { feed } = useContextFeed(playlistSn);
   const {
     userSn,
     title,
