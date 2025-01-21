@@ -4,3 +4,5 @@ export { default as IconButton } from './IconButton';
 export { default as IconLink } from './IconLink';
 export { default as LikeButton } from './LikeButton';
 export { default as BookmarkButton } from './BookmarkButton';
+export { default as IndexViewButton } from './IndexViewButton';
+export { default as CommentViewButton } from './CommentViewButton';

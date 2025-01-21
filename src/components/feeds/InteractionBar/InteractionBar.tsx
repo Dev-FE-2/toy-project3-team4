@@ -1,8 +1,12 @@
-import { Link } from 'react-router-dom';
-import { RiChat1Line, RiShareLine, RiBillLine } from 'react-icons/ri';
-import { FEED_ICON_SIZE } from '@/constant';
+import { RiShareLine } from 'react-icons/ri';
+import { URL, QUERY_PARAMS, FEED_ICON_SIZE } from '@/constant';
 import { useCopyToClipboard } from '@/hooks';
-import { LikeButton, BookmarkButton } from '@/components';
+import {
+  LikeButton,
+  BookmarkButton,
+  IndexViewButton,
+  CommentViewButton,
+} from '@/components';
 import * as S from './InteractionBar.styles';
 
 interface IInteractionBar {
@@ -11,16 +15,13 @@ interface IInteractionBar {
 
 const InteractionBar = ({ playlistSn }: IInteractionBar) => {
   const { copyToClipboard } = useCopyToClipboard();
+  const link = URL.VIEWPLI.link + `?${QUERY_PARAMS.PLAYLIST_SN}=${playlistSn}`;
 
   return (
     <S.InteractionBar>
       <LikeButton playlistSn={playlistSn} />
-      <Link to="/">
-        <RiBillLine size={FEED_ICON_SIZE} />
-      </Link>
-      <Link to="/">
-        <RiChat1Line size={FEED_ICON_SIZE} />
-      </Link>
+      <IndexViewButton link={link} />
+      <CommentViewButton link={link} />
       <button type="button" onClick={() => copyToClipboard('복사')}>
         <RiShareLine size={FEED_ICON_SIZE} />
       </button>
