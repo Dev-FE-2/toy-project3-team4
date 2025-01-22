@@ -9,9 +9,10 @@ export const VideoItem = styled.div`
   padding: ${padding.sm} 0;
   border-radius: ${border.radius.xs};
   transition: background-color 0.2s;
+  cursor: pointer;
 
   &:hover {
-    background-color: ${colors.semantic.background.gray};
+    background-color: ${colors.semantic.background.grayLight};
   }
 `;
 
