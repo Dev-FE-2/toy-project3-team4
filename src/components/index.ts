@@ -6,3 +6,7 @@ export { Feed, FeedList } from './feeds';
 export * from './card';
 export * from './form';
 export * from './InfiniteScroll';
+export * from './feeds';
+export * from './video';
+export * from './comment';
+export * from './view';
