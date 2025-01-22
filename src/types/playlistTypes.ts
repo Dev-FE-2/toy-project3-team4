@@ -10,6 +10,7 @@ export interface IPlaylistAPISchema {
   hashTags: string[];
   thumbnailUrl: string;
   links: string[];
+  hits: number;
 }
 
 export interface PlaylistFormData {
