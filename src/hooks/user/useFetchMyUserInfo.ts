@@ -8,9 +8,9 @@ const useFetchMyUserInfo = () => {
   const userSn = useUserSn();
 
   return useQuery<IUserAPISchema | null, Error>({
-    queryKey: ['playlist', userSn],
+    queryKey: ['myInfo', userSn],
     queryFn: async () => {
-      if (!userSn) throw new Error('Invalid userSn ID');
+      if (!userSn) throw new Error('Invalid my userSn ID');
       return await getUser(userSn);
     },
     enabled: !!userSn,
