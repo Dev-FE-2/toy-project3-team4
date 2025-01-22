@@ -14,3 +14,5 @@ export interface IUserAPISchema extends IUser {
   myPlaylists: string[];
   bookmarks: string[];
 }
+
+export type MyBookmarksType = IUserAPISchema['bookmarks'];

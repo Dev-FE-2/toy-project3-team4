@@ -6,8 +6,6 @@ type NavItem = {
   iconName: string;
 };
 
-export const NAV_ICON_SIZE = '2.4rem';
-
 export const DESKTOP_NAV_ITEMS: NavItem[] = [
   {
     ...URL.HOME,

@@ -15,9 +15,18 @@ const URL: Url = {
   PROFILE: { text: '프로필', link: '/profile/:userSn' },
   INTERESTS: { text: '관심사 선택', link: '/interests' },
   USERINFO: { text: '내 정보 수정', link: '/userinfo' },
-  VIEWPLI: { text: '플레이리스트 상세', link: '/playlists/view' },
-  INSERTPLI: { text: '플레이리스트 생성', link: '/playlists/insert' },
-  UPDATEPLI: { text: '플레이리스트 수정', link: '/playlists/update' },
+  VIEWPLI: {
+    text: '플레이리스트 상세',
+    link: '/playlists/view',
+  },
+  INSERTPLI: {
+    text: '플레이리스트 생성',
+    link: '/playlists/insert',
+  },
+  UPDATEPLI: {
+    text: '플레이리스트 수정',
+    link: '/playlists/update',
+  },
 } as const;
 
 export { URL };

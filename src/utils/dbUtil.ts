@@ -31,7 +31,7 @@ export const getAllDocument = async <T>(
     return documents;
   } catch (error) {
     console.error('전체 문서 조회 실패:', error);
-    return null;
+    throw new Error(`전체 문서 조회 실패: ${error}`);
   }
 };
 
@@ -58,7 +58,7 @@ export const getDocument = async <T>(
     return parser ? parser(data) : (data as T);
   } catch (error) {
     console.error('문서 조회 실패:', error);
-    return null;
+    throw new Error(`문서 조회 실패: ${error}`);
   }
 };
 
@@ -77,7 +77,7 @@ export const addDocument = async <T extends WithFieldValue<DocumentData>>(
     await setDoc(doc(DB, collection, docId), data);
   } catch (error) {
     console.error('문서 추가 실패:', error);
-    throw error;
+    throw new Error(`문서 추가 실패: ${error}`);
   }
 };
 
@@ -97,7 +97,7 @@ export const updateDocument = async <T>(
     await updateDoc(docRef, updates);
   } catch (error) {
     console.error('문서 업데이트 실패:', error);
-    throw error;
+    throw new Error(`문서 업데이트 실패: ${error}`);
   }
 };
 
@@ -115,6 +115,6 @@ export const deleteDocument = async (
     await deleteDoc(docRef);
   } catch (error) {
     console.error('문서 삭제 실패:', error);
-    throw error;
+    throw new Error(`문서 삭제 실패: ${error}`);
   }
 };
