@@ -26,7 +26,7 @@ $ npm run dev
 | :---------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------: |
 | <img src="https://avatars.githubusercontent.com/u/31915107?v=4" alt="김금란" width="150"> | <img src="https://avatars.githubusercontent.com/u/50770004?v=4" alt="양명규" width="150"> | <img  src="https://avatars.githubusercontent.com/u/92559779?v=4" alt="이민태" width="150"> |
 |                                            FE                                             |                                            FE                                             |                                             FE                                             |
-|                          [GitHub](https://github.com/goldegg127)                          |                           [GitHub](https://github.com/vgotu99)                            |                          [GitHub](https://github.com/Chajaesik01)                          |
+|                          [GitHub](https://github.com/goldegg127)                          |                           [GitHub](https://github.com/mgYang53)                           |                           [GitHub](https://github.com/laivastia)                           |
 |                                      고양이 좋아함😻                                      |                                      고양이 좋아함😻                                      |                                      강아지 좋아함🐶                                       |
 
 <br/>
