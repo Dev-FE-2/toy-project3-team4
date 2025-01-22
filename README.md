@@ -26,7 +26,7 @@ $ npm run dev
 | :---------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------: |
 | <img src="https://avatars.githubusercontent.com/u/31915107?v=4" alt="김금란" width="150"> | <img src="https://avatars.githubusercontent.com/u/50770004?v=4" alt="양명규" width="150"> | <img  src="https://avatars.githubusercontent.com/u/92559779?v=4" alt="이민태" width="150"> |
 |                                            FE                                             |                                            FE                                             |                                             FE                                             |
-|                          [GitHub](https://github.com/goldegg127)                          |                           [GitHub](https://github.com/vgotu99)                            |                          [GitHub](https://github.com/Chajaesik01)                          |
+|                          [GitHub](https://github.com/goldegg127)                          |                           [GitHub](https://github.com/mgYang53)                           |                           [GitHub](https://github.com/laivastia)                           |
 |                                      고양이 좋아함😻                                      |                                      고양이 좋아함😻                                      |                                      강아지 좋아함🐶                                       |
 
 <br/>
@@ -68,13 +68,12 @@ $ npm run dev
 
 # 5. Technology Stack (기술 스택)
 
-## 5.1 Language
+## 5.1 Programming Language
 
-|            |                                                                                                                                                           |
-| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| HTML5      | <img src="https://github.com/user-attachments/assets/2e122e74-a28b-4ce7-aff6-382959216d31" alt="HTML5" width="100">                                       |
-| CSS3       | <img src="https://github.com/user-attachments/assets/c531b03d-55a3-40bf-9195-9ff8c4688f13" alt="CSS3" width="100">                                        |
-| Typescript | <img src="https://i.namu.wiki/i/EY559r31H-um8uTtptPIbCZoBGxsumSlwEH0T_rA6WmxQq1UwqyAf3cJQJXN7Fv5CoEz0kv5CBXzjkkPU_XWig.svg" alt="Typescript" width="100"> |
+|            |                                                                                                                                                                                                                      |
+| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Javascript | <img src="https://i.namu.wiki/i/FZXm0yzdMY6GSM7VrPcXlEvFHCL6b4dwMA9fxv1lHMUwKjUIqsNqv33MyENA_p7LFTfQDND6CsOUp2iaZ9q3jpo8l9mVA3EPmbNAi17S3XfU8VVbhWyjTqHzzC73ICaiNNTT801NasJcZYkPRIwLTw.svg" alt="HTML5" width="100"> |
+| Typescript | <img src="https://i.namu.wiki/i/EY559r31H-um8uTtptPIbCZoBGxsumSlwEH0T_rA6WmxQq1UwqyAf3cJQJXN7Fv5CoEz0kv5CBXzjkkPU_XWig.svg" alt="Typescript" width="100">                                                            |
 
 <br/>
 
@@ -362,5 +361,11 @@ prefix : subject (#issueNumber)
 <br/>
 
 # 10. 데이터베이스 구조
+
+- user 콜렉션
+- playlist 콜렉션
+- comment 콜렉션
+
+![데이터베이스 구조 이미지](https://private-user-images.githubusercontent.com/31915107/404127104-214898f9-f86a-421e-98a9-ca9b8fc81c36.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mzc1MjMyODksIm5iZiI6MTczNzUyMjk4OSwicGF0aCI6Ii8zMTkxNTEwNy80MDQxMjcxMDQtMjE0ODk4ZjktZjg2YS00MjFlLTk4YTktY2E5YjhmYzgxYzM2LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAxMjIlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMTIyVDA1MTYyOVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWJmNTcyMmI5ZjIxNmMxOGVmMzIwMWMyZDA1ODhmZDgwYWIzNGM2NzBjMzI1YmJkOGNlYzA4OGJhYWYwOGQ0YWUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.uoE67njFv8P0fXUy6AxigXHHIF6mc6yqIvS6sgJkvnA)
 
 # 11. 화면
