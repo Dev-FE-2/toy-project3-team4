@@ -9,7 +9,10 @@ import { DB_COLLECTION } from '@/constant';
 import type { IPlaylistAPISchema } from '@/types';
 import {
   collection,
+  doc,
+  getDoc,
   getDocs,
+  limit,
   query,
   startAfter,
   where,
@@ -70,28 +73,31 @@ const deletePlaylist = async (playlistSn: string): Promise<void> => {
 
 const searchPlaylist = async (
   keyword: string,
-  cursor?: IPlaylistAPISchema,
+  cursor?: string,
 ): Promise<IPlaylistAPISchema[]> => {
   try {
-    // Playlist 검색
     const playlistsRef = collection(DB, DB_COLLECTION.PLAYLIST);
     let playlistQuery = query(
       playlistsRef,
       where('title', '>=', keyword),
       where('title', '<=', keyword + '\uf8ff'),
+      limit(6), // 5개 요청에 1개 추가
     );
 
     if (cursor) {
-      playlistQuery = query(playlistQuery, startAfter(cursor));
+      const cursorDoc = await getDoc(doc(DB, DB_COLLECTION.PLAYLIST, cursor));
+      if (cursorDoc.exists()) {
+        playlistQuery = query(playlistQuery, startAfter(cursorDoc));
+      }
     }
 
     const playlistSnapshot = await getDocs(playlistQuery);
-    const playlists: IPlaylistAPISchema[] = playlistSnapshot.docs.map(
-      (doc) => ({
+    const playlists: IPlaylistAPISchema[] = playlistSnapshot.docs
+      .slice(0, 5)
+      .map((doc) => ({
+        id: doc.id,
         ...(doc.data() as IPlaylistAPISchema),
-      }),
-    );
-
+      }));
     return playlists;
   } catch (error) {
     console.error('Error searching documents:', error);
@@ -102,15 +108,8 @@ const searchPlaylist = async (
 const userPlaylist = async (userSn?: string): Promise<IPlaylistAPISchema[]> => {
   if (!userSn) throw new Error();
   try {
-    const userRef = await getUser(userSn);
-    if (!userRef) throw new Error();
-
-    const { myPlaylists } = userRef;
     const playlistsRef = collection(DB, DB_COLLECTION.PLAYLIST);
-    const playlistQuery = query(
-      playlistsRef,
-      where('playlistSn', 'in', myPlaylists),
-    );
+    const playlistQuery = query(playlistsRef, where('userSn', '==', userSn));
 
     const playlistSnapshot = await getDocs(playlistQuery);
     const playlists: IPlaylistAPISchema[] = playlistSnapshot.docs.map(
