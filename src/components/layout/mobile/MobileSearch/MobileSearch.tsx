@@ -13,7 +13,7 @@ const MobileSearch = () => {
   const history = useSearchHistory();
 
   return (
-    <>
+    <S.MobileSearchBox>
       <SearchForm onClick={showVisibility} resetVisibility={resetVisibility} />
 
       {isVisible &&
@@ -29,7 +29,7 @@ const MobileSearch = () => {
           </S.MobileSearch>,
           document.querySelector('#mobileHedaer') as Element,
         )}
-    </>
+    </S.MobileSearchBox>
   );
 };
 
