@@ -2,8 +2,10 @@ import { useRef } from 'react';
 import { useVisibilityToggle } from '@/hooks';
 import { DESKTOP_NAV_ITEMS, NAV_ICON_SIZE, URL } from '@/constant';
 import { DesktopSearch, NavMenu, SideNavItem } from '@/components';
+import { useUser } from '@/store';
 
 const MainNavItems = () => {
+  const user = useUser();
   const dropdownRef = useRef(null);
   const {
     isVisible: isVisibleSearchForm,
@@ -25,7 +27,12 @@ const MainNavItems = () => {
                     'aria-expanded': isVisibleSearchForm,
                     'aria-controls': 'searchForm',
                   }
-                : { link: navItem.link })}
+                : {
+                    link:
+                      navItem.link === '/profile/:userSn'
+                        ? `/profile/${user?.userSn}`
+                        : navItem.link,
+                  })}
             >
               <NavMenu
                 iconName={navItem.iconName}
