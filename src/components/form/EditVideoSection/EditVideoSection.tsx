@@ -1,6 +1,6 @@
 import { RiAddCircleLine } from 'react-icons/ri';
 import { useVideoEdit } from '@/hooks';
-import { Input, PlayListVideoCard } from '@/components';
+import { Input, VideoList } from '@/components';
 import {
   AddButton,
   ErrorMessage,
@@ -18,6 +18,7 @@ const VideoSection = () => {
     videos,
     isLoadingVideo,
     addVideo,
+    removeVideo,
     videoValidError,
   } = useVideoEdit();
 
@@ -48,18 +49,14 @@ const VideoSection = () => {
       {videoUrlError && <ErrorMessage>{videoUrlError}</ErrorMessage>}
       {videoValidError && <ErrorMessage>{videoValidError}</ErrorMessage>}
 
-      <S.VideoList>
-        {videos.length > 0 ? (
-          videos.map((video) => (
-            <PlayListVideoCard key={video.url} data={video} isEditable={true} />
-          ))
-        ) : (
-          <S.VideoNoData>
+      <S.VideoListWrapper>
+        <VideoList videos={videos} onRemoveVideo={removeVideo}>
+          <S.VideoNoData htmlFor="video">
             <RiAddCircleLine size={40} />
             <p>영상을 추가해주세요.</p>
           </S.VideoNoData>
-        )}
-      </S.VideoList>
+        </VideoList>
+      </S.VideoListWrapper>
     </FormItemSet>
   );
 };

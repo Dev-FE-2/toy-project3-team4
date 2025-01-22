@@ -116,9 +116,9 @@ const PlayListForm = () => {
         ...submitData,
         playlistSn: crypto.randomUUID(),
         userSn: userSn,
-
         likes: [],
         comments: [],
+        hits: 0,
       };
 
       insert(insertData, {

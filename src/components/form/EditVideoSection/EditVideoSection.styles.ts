@@ -1,10 +1,7 @@
 import styled from 'styled-components';
 import { border, colors, padding } from '@/styles';
 
-export const VideoList = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: ${padding.sm};
+export const VideoListWrapper = styled.div`
   margin-top: ${padding.md};
 
   @media (width >= 1280px) {
