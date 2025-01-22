@@ -1,5 +1,5 @@
 export { default as usePostPlaylist } from './usePostPlaylist';
-export { default as useFetchPlaylist } from './useFetchPlaylist';
+export * from './useFetchPlaylist';
 export { default as useFetchAllPlaylist } from './useFetchAllPlaylist';
 export { default as useUpdatePlaylist } from './useUpdatePlaylist';
 export { default as useDeletePlaylist } from './useDeletePlaylist';
@@ -8,3 +8,7 @@ export { default as useSearchPlaylist } from './useSearchPlaylist';
 export { default as useContextFeed } from './useContextFeed';
 export { default as useUpdateLikes } from './useUpdateLikes';
 export { default as useUpdateMyBookmarks } from './useUpdateMyBookmarks';
+export { default as useFetchVideos } from './useFetchVideos';
+export { default as useTagEdit } from './useTagEdit';
+export { default as useVideoEdit } from './useVideoEdit';
+export { default as useContextPlaylist } from './useContextPlaylist';

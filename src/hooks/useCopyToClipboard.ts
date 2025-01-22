@@ -16,6 +16,7 @@ function useCopyToClipboard() {
         setIsCopied(true); // 성공 시 상태 업데이트
         setError('');
         setTimeout(() => setIsCopied(false), 2000); // 2초 후 복사 상태 초기화
+        alert('클립보드에 복사되었습니다.');
       })
       .catch((err) => {
         setError('복사에 실패했습니다. 다시 시도해주세요.');
