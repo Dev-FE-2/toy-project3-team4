@@ -68,13 +68,12 @@ $ npm run dev
 
 # 5. Technology Stack (기술 스택)
 
-## 5.1 Language
+## 5.1 Programming Language
 
-|            |                                                                                                                                                           |
-| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| HTML5      | <img src="https://github.com/user-attachments/assets/2e122e74-a28b-4ce7-aff6-382959216d31" alt="HTML5" width="100">                                       |
-| CSS3       | <img src="https://github.com/user-attachments/assets/c531b03d-55a3-40bf-9195-9ff8c4688f13" alt="CSS3" width="100">                                        |
-| Typescript | <img src="https://i.namu.wiki/i/EY559r31H-um8uTtptPIbCZoBGxsumSlwEH0T_rA6WmxQq1UwqyAf3cJQJXN7Fv5CoEz0kv5CBXzjkkPU_XWig.svg" alt="Typescript" width="100"> |
+|            |                                                                                                                                                                                                                      |
+| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Javascript | <img src="https://i.namu.wiki/i/FZXm0yzdMY6GSM7VrPcXlEvFHCL6b4dwMA9fxv1lHMUwKjUIqsNqv33MyENA_p7LFTfQDND6CsOUp2iaZ9q3jpo8l9mVA3EPmbNAi17S3XfU8VVbhWyjTqHzzC73ICaiNNTT801NasJcZYkPRIwLTw.svg" alt="HTML5" width="100"> |
+| Typescript | <img src="https://i.namu.wiki/i/EY559r31H-um8uTtptPIbCZoBGxsumSlwEH0T_rA6WmxQq1UwqyAf3cJQJXN7Fv5CoEz0kv5CBXzjkkPU_XWig.svg" alt="Typescript" width="100">                                                            |
 
 <br/>
 
