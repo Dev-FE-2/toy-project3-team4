@@ -8,11 +8,11 @@ interface IExplorePlayListCard {
 }
 
 const ExplorePlayListCard = ({ data }: IExplorePlayListCard) => {
-  const { title, hashTags, comments, likes } = data;
+  const { title, hashTags, comments, likes, thumbnailUrl } = data;
   return (
     <S.CardContainer>
       <S.CardImageBox>
-        <S.CardImage src="src/assets/testThumbnail.png" />
+        <S.CardImage src={thumbnailUrl} />
       </S.CardImageBox>
       <S.CardInfoBox>
         <h3>{title}</h3>
