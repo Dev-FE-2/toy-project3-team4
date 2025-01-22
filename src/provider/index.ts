@@ -1,3 +1,3 @@
 export { default as queryClient } from './queryClient';
-export * from './playlistProvider';
+export * from './PlaylistProvider';
 export { default as FeedListProvider } from './FeedListProvider';

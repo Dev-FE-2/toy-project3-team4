@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { fetchVimeoInfo, fetchYouTubeInfo } from '@/api';
-import { usePlaylistContext } from '@/context';
 import { PLAYLIST_LIMITS } from '@/constant';
+import { getVideoInfo } from '@/utils';
 import type { Video } from '@/types';
+import usePlaylistContext from './useContextPlaylist';
 
 const useVideoEdit = () => {
   const {
@@ -35,13 +35,11 @@ const useVideoEdit = () => {
   const fetchVideoInfo = async (url: string): Promise<Video> => {
     setIsLoadingVideo(true);
     try {
-      if (url.includes('youtube.com') || url.includes('youtu.be')) {
-        return await fetchYouTubeInfo(url);
-      } else if (url.includes('vimeo.com')) {
-        return await fetchVimeoInfo(url);
-      } else {
-        throw new Error('지원하지 않는 영상 플랫폼입니다.');
+      const data = await getVideoInfo(url);
+      if (!data) {
+        throw new Error('비디오 정보를 가져올 수 없습니다.');
       }
+      return data;
     } catch (error) {
       console.error('비디오 페치 오류: ', error);
       throw new Error('비디오 정보를 가져올 수 없습니다.');
@@ -68,12 +66,8 @@ const useVideoEdit = () => {
     try {
       const videoInfo = await fetchVideoInfo(videoUrl);
       const newVideo: Video = {
+        ...videoInfo,
         url: videoUrl,
-        title: videoInfo.title,
-        description: videoInfo.description,
-        duration: videoInfo.duration,
-        thumbnail: videoInfo.thumbnail,
-        platform: videoInfo.platform,
       };
 
       setVideos((prev) => [...prev, newVideo]);

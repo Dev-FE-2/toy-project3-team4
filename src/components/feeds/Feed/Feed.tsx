@@ -21,18 +21,21 @@ const Feed = ({ playlistSn }: { playlistSn: string }) => {
   } = feed;
   const videoCount = links.length;
   const { data: author } = useFetchAuthor(userSn);
-  const link = URL.VIEWPLI.link + `?${QUERY_PARAMS.PLAYLIST_SN}=${playlistSn}`;
+  const link =
+    URL.VIEWPLI.link +
+    `?${QUERY_PARAMS.PLAYLIST_SN}=${playlistSn}&${QUERY_PARAMS.VIDEO_INDEX}=0`;
   const detailViewLinks = {
     default: link,
     infoView: link + `&${QUERY_PARAMS.PLAYLIST_INFO}=true`,
     indexView: link + `&${QUERY_PARAMS.PLAYLIST_INDEX}=true`,
     commentView: link + `&${QUERY_PARAMS.PLAYLIST_COMMENTS}=true`,
   };
+  const authorProfileLink = URL.PROFILE.link.replace(':userSn', userSn);
 
   return (
     <S.Feed>
       <S.FeedHeader>
-        <S.AuthorInfo to={link}>
+        <S.AuthorInfo to={authorProfileLink}>
           <ProfileImage size="3rem" imageUrl={author?.imgUrl || defaultImage} />
           {author?.name}
         </S.AuthorInfo>

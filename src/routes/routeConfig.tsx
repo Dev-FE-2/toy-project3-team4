@@ -12,7 +12,10 @@ import {
   InterestPage,
   UserInfoPage,
 } from '@/pages';
+import { loadPlaylist } from '@/utils';
 import AuthRoute from './AuthRoute';
+import { queryClient } from '@/provider';
+import { LoaderWrapper } from '@/components';
 
 export const routeConfig = [
   {
@@ -26,7 +29,12 @@ export const routeConfig = [
       },
       { path: URL.HOME.link, element: <HomePage /> },
       { path: URL.SEARCH.link, element: <SearchPage /> },
-      { path: URL.VIEWPLI.link, element: <PlaylistViewPage /> },
+      {
+        path: URL.VIEWPLI.link,
+        loader: loadPlaylist(queryClient),
+        element: <PlaylistViewPage />,
+        hydrateFallbackElement: <LoaderWrapper isLoading={true} />,
+      },
       { path: URL.PROFILE.link, element: <ProfilePage /> },
       {
         element: <AuthRoute mode="authenticated" />,

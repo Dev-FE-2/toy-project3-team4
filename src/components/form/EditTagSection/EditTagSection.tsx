@@ -4,8 +4,15 @@ import { PLAYLIST_LIMITS } from '@/constant';
 import * as S from '../FormItem/FormItem.styles';
 
 const EditTagSection = () => {
-  const { tagInput, setTagInput, tagError, tags, addTag, tagValidError } =
-    useTagEdit();
+  const {
+    tagInput,
+    setTagInput,
+    tagError,
+    tags,
+    addTag,
+    removeTag,
+    tagValidError,
+  } = useTagEdit();
 
   return (
     <S.FormItemSet>
@@ -34,7 +41,7 @@ const EditTagSection = () => {
       {tagValidError && <S.ErrorMessage>{tagValidError}</S.ErrorMessage>}
 
       {tags.length > 0 && (
-        <TagList tags={tags} gap={0.8} tagType="round" isDeletable={true} />
+        <TagList tags={tags} gap={0.8} tagType="round" removeTag={removeTag} />
       )}
     </S.FormItemSet>
   );

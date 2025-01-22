@@ -1,26 +1,24 @@
-import { useVideoEdit } from '@/hooks';
 import type { Video } from '@/types';
-import { RiDraggable, RiCloseLine } from 'react-icons/ri';
+import { RiCloseLine } from 'react-icons/ri';
 import * as S from './PlayListVideoCard.styles';
 
 interface IPlayListVideoCard {
   data: Video;
-  isEditable?: boolean;
+  onClickItem?: () => void;
+  onRemoveVideo?: (url: string) => void;
 }
 
 const PlayListVideoCard = ({
   data,
-  isEditable = false,
+  onClickItem,
+  onRemoveVideo,
 }: IPlayListVideoCard) => {
-  const { removeVideo } = useVideoEdit();
-
   return (
-    <S.VideoItem>
-      {isEditable && (
-        <S.MoveButton>
+    <S.VideoItem onClick={onClickItem}>
+      {/* 추후 D&D 기능 구현 필요 */}
+      {/* <S.MoveButton>
           <RiDraggable size="1.6rem" />
-        </S.MoveButton>
-      )}
+        </S.MoveButton> */}
 
       <S.ThumbnailBox>
         <img src={data.thumbnail} alt="thumbnail" />
@@ -30,10 +28,10 @@ const PlayListVideoCard = ({
         <p>{data.title}</p>
         <p>{data.url}</p>
       </S.VideoInfoBox>
-      {isEditable && (
+      {onRemoveVideo && (
         <S.DeleteVideoButton
           type="button"
-          onClick={() => removeVideo(data.url)}
+          onClick={() => onRemoveVideo(data.url)}
         >
           <RiCloseLine size="1.6rem" />
         </S.DeleteVideoButton>

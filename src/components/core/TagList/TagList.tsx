@@ -5,15 +5,15 @@ interface ITagList {
   tags: string[];
   tagType: 'text' | 'round';
   gap?: number;
-  isDeletable?: boolean;
+  removeTag?: (text: string) => void;
 }
 
-const TagList = ({ tags, tagType, gap, isDeletable = false }: ITagList) => {
+const TagList = ({ tags, tagType, gap, removeTag }: ITagList) => {
   return (
     <S.TagList $gap={gap}>
       {tags.map((tag) =>
         tagType === 'round' ? (
-          <RoundTag key={tag} text={tag} isDeletable={isDeletable} />
+          <RoundTag key={tag} text={tag} removeTag={removeTag} />
         ) : (
           <TextTag key={tag} text={tag} />
         ),

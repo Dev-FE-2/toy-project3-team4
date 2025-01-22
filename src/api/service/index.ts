@@ -1,3 +1,3 @@
 export * from './user';
 export * from './playlist';
-export * from './video';
+export * from './comment';
