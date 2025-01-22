@@ -1,36 +1,46 @@
 import { RiHeart3Line, RiHeart3Fill } from 'react-icons/ri';
-import { updateUser } from '@/api';
-import { useFetchMyUserInfo } from '@/hooks';
+import { useUserSn } from '@/store';
+import { FEED_ICON_SIZE } from '@/constant';
+import { useContextFeed, useUpdateLikes } from '@/hooks';
+import { IconButton } from '@/components';
 
 interface ILikeButton {
-  myuserSn?: string;
-  likes: string[];
-  iconSize: string;
+  playlistSn: string;
 }
 
-const LikeButton = ({ myuserSn, likes, iconSize }: ILikeButton) => {
-  const { data: myUserInfo } = useFetchMyUserInfo();
+const LikeButton = ({ playlistSn }: ILikeButton) => {
+  const { feed } = useContextFeed(playlistSn);
+  const { likes } = feed;
+  const userSn = useUserSn();
+  const { mutate: updateLikes } = useUpdateLikes(playlistSn);
 
   const addLikePli = () => {
-    if (myuserSn) {
-      updateUser(myuserSn, {
-        ...myUserInfo,
-      });
-    } else {
+    if (!userSn) {
       alert('로그인을 진행해주세요!');
+      return;
     }
+
+    const newLikes = [...likes, userSn];
+    updateLikes({ playlistSn, newLikes });
   };
 
-  const removeLikePli = () => {};
+  const removeLikePli = () => {
+    const newLikes = likes.filter((like) => like !== userSn);
+    updateLikes({ playlistSn, newLikes });
+  };
 
-  return myuserSn && likes.includes(myuserSn) ? (
-    <button type="button" onClick={addLikePli}>
-      <RiHeart3Fill size={iconSize} />
-    </button>
+  return userSn && likes.includes(userSn) ? (
+    <IconButton
+      type="button"
+      onClick={removeLikePli}
+      aria-label="좋아요 취소하기"
+    >
+      <RiHeart3Fill size={FEED_ICON_SIZE} />
+    </IconButton>
   ) : (
-    <button type="button" onClick={removeLikePli}>
-      <RiHeart3Line size={iconSize} />
-    </button>
+    <IconButton type="button" onClick={addLikePli} aria-label="좋아요 하기">
+      <RiHeart3Line size={FEED_ICON_SIZE} />
+    </IconButton>
   );
 };
 
