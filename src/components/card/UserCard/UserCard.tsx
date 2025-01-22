@@ -10,7 +10,7 @@ interface IUserProps {
  * @returns
  */
 const UserCard = ({ data }: IUserProps) => {
-  const { imgUrl, name, myPlaylists, followers, followings, userSn } = data;
+  const { imgUrl, name, myPlaylists, userSn, likes } = data;
   return (
     <S.CardContainer to={`/profile/${userSn}`}>
       <S.CardImage src={imgUrl || 'src/assets/avatar.svg'} />
@@ -19,15 +19,11 @@ const UserCard = ({ data }: IUserProps) => {
         <S.CardInfoBox>
           <S.CardStack>
             <S.B>{myPlaylists.length}</S.B>
-            <span>플리</span>
+            <span>플레이리스트</span>
           </S.CardStack>
           <S.CardStack>
-            <S.B>{followers.length}</S.B>
-            <span>팔로워</span>
-          </S.CardStack>
-          <S.CardStack>
-            <S.B>{followings.length}</S.B>
-            <span>팔로잉</span>
+            <S.B>{likes.length}</S.B>
+            <span>좋아요</span>
           </S.CardStack>
         </S.CardInfoBox>
       </S.CardWrapper>
