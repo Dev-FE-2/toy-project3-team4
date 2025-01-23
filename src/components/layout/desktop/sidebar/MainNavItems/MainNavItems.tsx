@@ -1,11 +1,11 @@
 import { useRef } from 'react';
 import { useVisibilityToggle } from '@/hooks';
-import { DESKTOP_NAV_ITEMS, NAV_ICON_SIZE, URL } from '@/constant';
+import { DESKTOP_NAV_ITEMS, NAV_ICON_SIZE, URL, PATH_PARAMS } from '@/constant';
 import { DesktopSearch, NavMenu, SideNavItem } from '@/components';
-import { useUser } from '@/store';
+import { useUserSn } from '@/store';
 
 const MainNavItems = () => {
-  const user = useUser();
+  const userSn = useUserSn();
   const dropdownRef = useRef(null);
   const {
     isVisible: isVisibleSearchForm,
@@ -29,8 +29,13 @@ const MainNavItems = () => {
                   }
                 : {
                     link:
-                      navItem.link === '/profile/:userSn'
-                        ? `/profile/${user?.userSn}`
+                      navItem.link === URL.PROFILE.link
+                        ? userSn
+                          ? URL.PROFILE.link.replace(
+                              PATH_PARAMS.USER_SN,
+                              userSn,
+                            )
+                          : URL.SIGNIN.link
                         : navItem.link,
                   })}
             >
