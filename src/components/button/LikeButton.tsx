@@ -1,6 +1,7 @@
+import { useNavigate } from 'react-router-dom';
 import { RiHeart3Line, RiHeart3Fill } from 'react-icons/ri';
 import { useUserSn } from '@/store';
-import { FEED_ICON_SIZE } from '@/constant';
+import { FEED_ICON_SIZE, URL } from '@/constant';
 import { useContextFeed, useUpdateLikes } from '@/hooks';
 import { IconButton } from '@/components';
 
@@ -9,6 +10,7 @@ interface ILikeButton {
 }
 
 const LikeButton = ({ playlistSn }: ILikeButton) => {
+  const navigation = useNavigate();
   const { feed } = useContextFeed(playlistSn);
   const { likes } = feed;
   const userSn = useUserSn();
@@ -16,7 +18,7 @@ const LikeButton = ({ playlistSn }: ILikeButton) => {
 
   const addLikePli = () => {
     if (!userSn) {
-      alert('로그인을 진행해주세요!');
+      navigation(URL.SIGNIN.link);
       return;
     }
 

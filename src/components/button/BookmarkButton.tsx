@@ -1,5 +1,6 @@
+import { useNavigate } from 'react-router-dom';
 import { RiBookmarkLine, RiBookmarkFill } from 'react-icons/ri';
-import { FEED_ICON_SIZE } from '@/constant';
+import { FEED_ICON_SIZE, URL } from '@/constant';
 import {
   useFetchMyUserInfo,
   useUpdateMyBookmarks,
@@ -12,13 +13,14 @@ interface ILikeButton {
 }
 
 const BookmarkButton = ({ playlistSn }: ILikeButton) => {
+  const navigation = useNavigate();
   const { data: myInfo } = useFetchMyUserInfo();
   const { myBookmarks } = useContextFeed(playlistSn);
   const { mutate: updateBookmarks } = useUpdateMyBookmarks(playlistSn);
 
   const addBookmarkPli = () => {
     if (!myInfo) {
-      alert('로그인을 진행해주세요!');
+      navigation(URL.SIGNIN.link);
       return;
     }
 
