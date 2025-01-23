@@ -4,7 +4,7 @@ import { colors, font } from './styles';
 const GlobalStyle = createGlobalStyle`
     :root {
         font-synthesis: none;
-        text-rendering: optimizeLegibility;
+        text-rendering: optimizelegibility;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
 
@@ -26,8 +26,8 @@ const GlobalStyle = createGlobalStyle`
         font-size: var(--font-size-paragraph);
     }
 
-    @media (min-width: 768px) {
-        /** 데스크탑 이하 디바이스 **/
+    @media (width >= 768px) {
+        /** 모바일 이상 디바이스 **/
 
         html {
             font-size: 68.75%;
