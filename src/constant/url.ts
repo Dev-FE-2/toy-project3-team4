@@ -33,6 +33,15 @@ export const URL: Url = {
   },
 } as const;
 
+export const REQUIRED_AUTH_URLS = [
+  URL.FOLLOWPLI.link,
+  URL.INSERTPLI.link,
+  URL.USERINFO.link,
+  URL.INTERESTS.link,
+  URL.VIEWPLI.link,
+  URL.UPDATEPLI.link,
+];
+
 export const QUERY_PARAMS = {
   PLAYLIST_SN: 'playlistSn',
   PLAYLIST_INFO: 'playlistInfo',
