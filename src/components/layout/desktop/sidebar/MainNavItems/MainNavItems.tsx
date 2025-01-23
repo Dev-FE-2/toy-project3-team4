@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { useVisibilityToggle } from '@/hooks';
-import { DESKTOP_NAV_ITEMS, NAV_ICON_SIZE, URL, PATH_PARAMS } from '@/constant';
+import { generateRoutingLink } from '@/utils';
+import { DESKTOP_NAV_ITEMS, NAV_ICON_SIZE, URL } from '@/constant';
 import { DesktopSearch, NavMenu, SideNavItem } from '@/components';
 import { useUserSn } from '@/store';
 
@@ -28,15 +29,7 @@ const MainNavItems = () => {
                     'aria-controls': 'searchForm',
                   }
                 : {
-                    link:
-                      navItem.link === URL.PROFILE.link
-                        ? userSn
-                          ? URL.PROFILE.link.replace(
-                              PATH_PARAMS.USER_SN,
-                              userSn,
-                            )
-                          : URL.SIGNIN.link
-                        : navItem.link,
+                    link: generateRoutingLink(navItem.link, userSn),
                   })}
             >
               <NavMenu

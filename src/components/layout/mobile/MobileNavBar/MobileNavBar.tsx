@@ -1,8 +1,9 @@
 import { NavLink } from 'react-router-dom';
-import { MOBILE_NAV_ITEMS, URL, PATH_PARAMS } from '@/constant';
+import { generateRoutingLink } from '@/utils';
+import { MOBILE_NAV_ITEMS } from '@/constant';
+import { useUserSn } from '@/store';
 import { NavMenu } from '@/components';
 import * as S from './MobileNavBar.styles';
-import { useUserSn } from '@/store';
 
 const MobileNavBar = () => {
   const userSn = useUserSn();
@@ -14,13 +15,7 @@ const MobileNavBar = () => {
           {MOBILE_NAV_ITEMS.map((navItem, index) => (
             <li key={`${index}-${navItem.text}`}>
               <NavLink
-                to={
-                  navItem.link === URL.PROFILE.link
-                    ? userSn
-                      ? URL.PROFILE.link.replace(PATH_PARAMS.USER_SN, userSn)
-                      : URL.SIGNIN.link
-                    : navItem.link
-                }
+                to={generateRoutingLink(navItem.link, userSn)}
                 aria-label={navItem.text}
               >
                 <NavMenu
