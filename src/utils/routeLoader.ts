@@ -11,7 +11,6 @@ export const loadPlaylist =
     if (!playlistSn) return redirect(CONST_URL.HOME.link);
 
     // playlistSn 유효성 검증
-    // const data = await getPlaylist(playlistSn);
     const query = getFetchPlayListOptions(playlistSn);
     const data = await queryClient.ensureQueryData(query);
 

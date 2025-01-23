@@ -1,3 +1,5 @@
+import { FieldValue } from 'firebase/firestore/lite';
+
 export interface IPlaylistAPISchema {
   playlistSn: string;
   userSn: string;
@@ -10,7 +12,7 @@ export interface IPlaylistAPISchema {
   hashTags: string[];
   thumbnailUrl: string;
   links: string[];
-  hits: number;
+  hits: number | FieldValue;
 }
 
 export interface PlaylistFormData {

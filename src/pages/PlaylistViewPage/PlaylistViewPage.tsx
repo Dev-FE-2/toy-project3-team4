@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLoaderData, useSearchParams } from 'react-router-dom';
 import {
   CommentList,
@@ -13,7 +13,7 @@ import {
   VideoPlayer,
 } from '@/components';
 import type { ICommentAPISchema, IPlaylistAPISchema } from '@/types';
-import { useFetchAuthor, useFetchVideos } from '@/hooks';
+import { useFetchAuthor, useFetchVideos, useIncrementHits } from '@/hooks';
 import * as S from './PlaylistViewPage.styles';
 import { QUERY_PARAMS, URL } from '@/constant';
 import useFetchComments from '@/hooks/playlist/useFetchComments';
@@ -46,6 +46,7 @@ const PlaylistViewPage = () => {
   const { data: videoInfos, isLoading, error } = useFetchVideos({ links });
   const { data: author } = useFetchAuthor(userSn);
   const commentQueries = useFetchComments(comments);
+  const { mutate: updateHits } = useIncrementHits(playlistSn);
 
   const commentData = commentQueries
     .filter((query) => query.status === 'success' && query.data)
@@ -76,6 +77,15 @@ const PlaylistViewPage = () => {
     }
   };
 
+  useEffect(() => {
+    // 페이지 진입 시 3초 지연 후 조회수 증가
+    const timer = setTimeout(() => {
+      updateHits();
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, [updateHits]);
+
   if (error) {
     return <div>영상 정보를 불러오는 중 오류가 발생했습니다.</div>;
   }
@@ -83,7 +93,6 @@ const PlaylistViewPage = () => {
   return (
     <S.Container>
       <S.ContentInner>
-        {/* Left Column - Video Player */}
         <S.LeftColumn>
           {isLoading ? (
             <LoaderWrapper isLoading={isLoading} />
@@ -105,10 +114,8 @@ const PlaylistViewPage = () => {
           )}
         </S.LeftColumn>
 
-        {/* Right Column - Content */}
         <S.RightColumn>
           <PlaylistInfo author={author} playlistTitle={title} />
-
           <S.InteractionBar>
             {/* <LikeButton playlistSn={playlistSn} /> */}
             <IndexViewButton
@@ -135,7 +142,6 @@ const PlaylistViewPage = () => {
             hits={hits}
           />
 
-          {/* Comments Section */}
           {showComments && (
             <S.SectionWrapper>
               <S.SectionTitle>

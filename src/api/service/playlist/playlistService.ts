@@ -12,6 +12,7 @@ import {
   doc,
   getDoc,
   getDocs,
+  increment,
   limit,
   query,
   startAfter,
@@ -25,7 +26,7 @@ import { getUser } from '../user';
  * @returns {Promise<IPlaylistAPISchema[] | null>} - 플레이리스트 데이터 또는 null
  */
 const getAllPlaylist = async (): Promise<IPlaylistAPISchema[] | null> =>
-  getAllDocument<IPlaylistAPISchema>(DB_COLLECTION.PLAYLIST);
+  await getAllDocument<IPlaylistAPISchema>(DB_COLLECTION.PLAYLIST);
 
 /**
  * Firestore에서 플레이리스트 정보 조회
@@ -35,7 +36,7 @@ const getAllPlaylist = async (): Promise<IPlaylistAPISchema[] | null> =>
 const getPlaylist = async (
   playlistSn: string,
 ): Promise<IPlaylistAPISchema | null> =>
-  getDocument<IPlaylistAPISchema>(DB_COLLECTION.PLAYLIST, playlistSn);
+  await getDocument<IPlaylistAPISchema>(DB_COLLECTION.PLAYLIST, playlistSn);
 
 /**
  * Firestore에 신규 플레이리스트 등록
@@ -43,7 +44,11 @@ const getPlaylist = async (
  * @returns {Promise<void>}
  */
 const addPlaylist = async (playlistData: IPlaylistAPISchema): Promise<void> =>
-  addDocument(DB_COLLECTION.PLAYLIST, playlistData.playlistSn, playlistData);
+  await addDocument(
+    DB_COLLECTION.PLAYLIST,
+    playlistData.playlistSn,
+    playlistData,
+  );
 
 /**
  * Firestore에 플레이리스트 정보 업데이트
@@ -55,7 +60,7 @@ const updatePlaylist = async (
   playlistSn: string,
   updates: Partial<IPlaylistAPISchema>,
 ): Promise<void> =>
-  updateDocument<IPlaylistAPISchema>(
+  await updateDocument<IPlaylistAPISchema>(
     DB_COLLECTION.PLAYLIST,
     playlistSn,
     updates,
@@ -69,6 +74,13 @@ const updatePlaylist = async (
 const deletePlaylist = async (playlistSn: string): Promise<void> => {
   if (!playlistSn) throw new Error('Invalid playlist ID');
   await deleteDocument(DB_COLLECTION.PLAYLIST, playlistSn);
+};
+
+const updateHits = async (playlistSn: string) => {
+  if (!playlistSn) throw new Error('Invalid playlist ID');
+  await updateDocument<IPlaylistAPISchema>(DB_COLLECTION.PLAYLIST, playlistSn, {
+    hits: increment(1),
+  });
 };
 
 const searchPlaylist = async (
@@ -160,6 +172,7 @@ export {
   addPlaylist,
   updatePlaylist,
   deletePlaylist,
+  updateHits,
   searchPlaylist,
   userPlaylist,
   bookmarkPlaylist,

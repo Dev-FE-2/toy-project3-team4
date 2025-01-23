@@ -40,7 +40,9 @@ const PlaylistStats = ({
   return (
     <S.VideoInfoSection>
       <S.VideoStats>
-        <span>조회수 {new Intl.NumberFormat().format(hits || 0)}회</span>
+        <span>
+          조회수 {new Intl.NumberFormat().format((hits as number) || 0)}회
+        </span>
         {date && (
           <>
             <span>·</span>
