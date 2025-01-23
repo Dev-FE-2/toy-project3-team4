@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { RiMoreFill } from 'react-icons/ri';
-import { URL, QUERY_PARAMS } from '@/constant';
+import { URL, QUERY_PARAMS, PATH_PARAMS } from '@/constant';
 import { useFetchAuthor, useContextFeed } from '@/hooks';
 import { ProfileImage, TagList } from '@/components';
 import { Thumbnails, InteractionBar } from '@/components/feeds';
@@ -24,13 +24,19 @@ const Feed = ({ playlistSn }: { playlistSn: string }) => {
   const link =
     URL.VIEWPLI.link +
     `?${QUERY_PARAMS.PLAYLIST_SN}=${playlistSn}&${QUERY_PARAMS.VIDEO_INDEX}=0`;
+  const link =
+    URL.VIEWPLI.link +
+    `?${QUERY_PARAMS.PLAYLIST_SN}=${playlistSn}&${QUERY_PARAMS.VIDEO_INDEX}=0`;
   const detailViewLinks = {
     default: link,
     infoView: link + `&${QUERY_PARAMS.PLAYLIST_INFO}=true`,
     indexView: link + `&${QUERY_PARAMS.PLAYLIST_INDEX}=true`,
     commentView: link + `&${QUERY_PARAMS.PLAYLIST_COMMENTS}=true`,
   };
-  const authorProfileLink = URL.PROFILE.link.replace(':userSn', userSn);
+  const authorProfileLink = URL.PROFILE.link.replace(
+    PATH_PARAMS.USER_SN,
+    userSn,
+  );
 
   return (
     <S.Feed>

@@ -1,9 +1,12 @@
 import { useRef } from 'react';
 import { useVisibilityToggle } from '@/hooks';
+import { generateRoutingLink } from '@/utils';
 import { DESKTOP_NAV_ITEMS, NAV_ICON_SIZE, URL } from '@/constant';
 import { DesktopSearch, NavMenu, SideNavItem } from '@/components';
+import { useUserSn } from '@/store';
 
 const MainNavItems = () => {
+  const userSn = useUserSn();
   const dropdownRef = useRef(null);
   const {
     isVisible: isVisibleSearchForm,
@@ -25,13 +28,15 @@ const MainNavItems = () => {
                     'aria-expanded': isVisibleSearchForm,
                     'aria-controls': 'searchForm',
                   }
-                : { link: navItem.link })}
+                : {
+                    link: generateRoutingLink(navItem.link, userSn),
+                  })}
             >
               <NavMenu
                 iconName={navItem.iconName}
                 text={navItem.text}
                 size={NAV_ICON_SIZE}
-                link={navItem.link}
+                linkForActive={generateRoutingLink(navItem.link, userSn)}
               />
             </SideNavItem>
           </li>

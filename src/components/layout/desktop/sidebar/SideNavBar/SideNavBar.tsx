@@ -1,4 +1,4 @@
-import { Logo, MainNavItems, MoreNavItems, FollowNavItems } from '@/components';
+import { Logo, MainNavItems, MoreNavItems } from '@/components';
 import * as S from './SideNavBar.styles';
 
 const SideNavBar = () => {
@@ -11,7 +11,6 @@ const SideNavBar = () => {
 
         <S.Navigation>
           <MainNavItems />
-          <FollowNavItems />
           <MoreNavItems />
         </S.Navigation>
       </article>

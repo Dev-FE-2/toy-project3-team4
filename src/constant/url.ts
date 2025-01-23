@@ -1,18 +1,22 @@
 /** Routes에서 사용 */
 type Url = Record<string, { text: string; link: string }>;
 
+export const PATH_PARAMS = {
+  USER_SN: ':userSn',
+};
+
 /**
  * 라우팅, 네비게이션에 필요한 url 객체
  * key 값은 복잡성을 줄이기 위해 다른 상수로 만들지 않음
  * @return Url
  */
-const URL: Url = {
+export const URL: Url = {
   INDEX: { text: '', link: '/' },
   HOME: { text: '홈', link: '/home' },
   SIGNIN: { text: '로그인', link: '/signin' },
   SEARCH: { text: '검색', link: '/search' },
   FOLLOWPLI: { text: '팔로우', link: '/followpli' },
-  PROFILE: { text: '프로필', link: '/profile/:userSn' },
+  PROFILE: { text: '프로필', link: `/profile/${PATH_PARAMS.USER_SN}` },
   INTERESTS: { text: '관심사 선택', link: '/interests' },
   USERINFO: { text: '내 정보 수정', link: '/userinfo' },
   VIEWPLI: {
@@ -29,4 +33,19 @@ const URL: Url = {
   },
 } as const;
 
-export { URL };
+export const REQUIRED_AUTH_URLS = [
+  URL.FOLLOWPLI.link,
+  URL.INSERTPLI.link,
+  URL.USERINFO.link,
+  URL.INTERESTS.link,
+  URL.VIEWPLI.link,
+  URL.UPDATEPLI.link,
+];
+
+export const QUERY_PARAMS = {
+  PLAYLIST_SN: 'playlistSn',
+  PLAYLIST_INFO: 'playlistInfo',
+  PLAYLIST_INDEX: 'playlistIndex',
+  PLAYLIST_COMMENTS: 'comments',
+  VIDEO_INDEX: 'videoIndex',
+};

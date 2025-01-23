@@ -1,14 +1,10 @@
 import styled from 'styled-components';
+import { iconStyle } from '@/styles';
 
 type IIconButton = React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 const IconButton = styled.button<IIconButton>`
-  cursor: pointer;
-  transition: all 0.3s;
-
-  &:hover {
-    opacity: 0.7;
-  }
+  ${iconStyle}
 `;
 
 export default IconButton;

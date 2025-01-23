@@ -16,10 +16,6 @@ export const DESKTOP_NAV_ITEMS: NavItem[] = [
     iconName: 'search',
   },
   {
-    ...URL.FOLLOWPLI,
-    iconName: 'followpli',
-  },
-  {
     ...URL.INSERTPLI,
     iconName: 'insertpli',
   },
@@ -33,10 +29,6 @@ export const MOBILE_NAV_ITEMS: NavItem[] = [
   {
     ...URL.HOME,
     iconName: 'home',
-  },
-  {
-    ...URL.FOLLOWPLI,
-    iconName: 'followpli',
   },
   {
     ...URL.INSERTPLI,

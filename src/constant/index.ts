@@ -6,4 +6,3 @@ export * from './interests';
 export * from './reactQuery';
 export * from './playlistLimits';
 export * from './iconSize';
-export * from './queryParams';
