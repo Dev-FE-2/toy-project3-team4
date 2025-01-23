@@ -28,7 +28,8 @@ export const CardTitle = styled.h3`
 `;
 
 export const CardInfoBox = styled.div`
-  width: 100%;
+  width: 50%;
+  margin: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;

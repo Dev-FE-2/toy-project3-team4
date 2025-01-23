@@ -1,37 +1,31 @@
-import { useUser } from '@/store';
 import * as S from './ProfileCard.styles';
-import { useQuery } from '@tanstack/react-query';
 import defaultImage from '@/assets/avatar.svg';
-import { getUser } from '@/api';
+import { IUserAPISchema } from '@/types';
+
+interface IProfileCard {
+  profile: IUserAPISchema;
+}
 
 /**
  * 프로필 페이지의 사용자 정보 렌더링을 위한 카드 컴포넌트
  * @returns
  */
-const ProfileCard = () => {
-  const user = useUser();
-
-  const { data } = useQuery({
-    queryKey: ['getUser'],
-    queryFn: () => getUser(user?.userSn || ''),
-    enabled: !!user?.userSn,
-  });
-
+const ProfileCard = ({ profile }: IProfileCard) => {
   return (
     <S.CardContainer>
-      <S.CardImage imgUrl={user?.imgUrl || defaultImage} size="10rem" />
-      <S.CardTitle>{data?.name}</S.CardTitle>
+      <S.CardImage imgUrl={profile.imgUrl || defaultImage} size="10rem" />
+      <S.CardTitle>{profile.name}</S.CardTitle>
       <S.CardInfoBox>
         <S.CardStack>
-          <S.B>{data?.myPlaylists.length}</S.B>
+          <S.B>{profile.myPlaylists.length}</S.B>
           <span>플리</span>
         </S.CardStack>
         <S.CardStack>
-          <S.B>{data?.likes.length}</S.B>
+          <S.B>{profile.likes.length}</S.B>
           <span>좋아요</span>
         </S.CardStack>
       </S.CardInfoBox>
-      <p>{data?.description}</p>
+      <p>{profile.description}</p>
     </S.CardContainer>
   );
 };

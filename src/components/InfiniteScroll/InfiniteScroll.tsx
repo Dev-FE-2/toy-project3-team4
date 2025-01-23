@@ -3,20 +3,16 @@ import { InfiniteData, UseInfiniteQueryResult } from '@tanstack/react-query';
 import { LoaderWrapper } from '../core';
 
 interface InfiniteScrollProps<T> {
-  useInfiniteQuery: (
-    keyword: string,
-  ) => UseInfiniteQueryResult<InfiniteData<T[]>, Error>;
-  keyword: string;
+  useInfiniteQuery: () => UseInfiniteQueryResult<InfiniteData<T[]>, Error>;
   children: (item: T) => React.ReactNode;
 }
 
 function InfiniteScroll<T>({
   useInfiniteQuery,
-  keyword,
   children,
 }: InfiniteScrollProps<T>) {
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, status } =
-    useInfiniteQuery(keyword);
+    useInfiniteQuery();
 
   const observerRef = useRef<IntersectionObserver | null>(null);
   const lastItemRef = useCallback(

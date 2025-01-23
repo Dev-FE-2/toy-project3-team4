@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import { colors, padding, height, border } from '@/styles';
 
+export const MobileSearchBox = styled.div`
+  position: relative;
+  width: 100%;
+`;
 export const MobileSearch = styled.article`
   z-index: 1;
   position: absolute;

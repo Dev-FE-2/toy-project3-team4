@@ -6,17 +6,19 @@ import { useSearchPlaylist, useSearchUser } from '@/hooks';
 import { Fragment } from 'react/jsx-runtime';
 
 const SearchPage = () => {
-  const [searchParam, setSearchParam] = useSearchParams();
+  const [searchParam] = useSearchParams();
   const keyword = searchParam.get('keyword') || '';
-  const display = searchParam.get('display') || '';
-  const { data, hasNextPage } = useSearchUser(keyword, 2);
+  const { data, hasNextPage, fetchNextPage } = useSearchUser(keyword, 2);
 
   const handleMoreUser = () => {
-    searchParam.set('display', 'user');
-    setSearchParam(searchParam);
+    return fetchNextPage();
   };
 
   if (!keyword) return <div>적절하지 않은 접근입니다.</div>;
+
+  const useHandlePlaylist = () => {
+    return useSearchPlaylist(keyword);
+  };
 
   return (
     <S.SearchContainer>
@@ -31,23 +33,16 @@ const SearchPage = () => {
 
       {data?.pages[0].length === 0 && <div>검색결과가 존재하지 않습니다.</div>}
 
-      {hasNextPage && (
+      {data?.pages[0].length !== 0 && hasNextPage && (
         <Button $bgColor="white" $width="100%" onClick={handleMoreUser}>
           더보기
         </Button>
       )}
 
-      {!display && (
-        <>
-          <S.SearchTitle>플레이리스트</S.SearchTitle>
-          <InfiniteScroll
-            keyword={keyword}
-            useInfiniteQuery={useSearchPlaylist}
-          >
-            {(data) => <ExplorePlayListCard data={data} />}
-          </InfiniteScroll>
-        </>
-      )}
+      <S.SearchTitle>플레이리스트</S.SearchTitle>
+      <InfiniteScroll useInfiniteQuery={useHandlePlaylist}>
+        {(data) => <ExplorePlayListCard data={data} />}
+      </InfiniteScroll>
     </S.SearchContainer>
   );
 };
