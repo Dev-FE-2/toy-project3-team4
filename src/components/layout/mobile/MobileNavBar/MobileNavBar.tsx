@@ -1,11 +1,11 @@
 import { NavLink } from 'react-router-dom';
-import { MOBILE_NAV_ITEMS } from '@/constant';
+import { MOBILE_NAV_ITEMS, URL, PATH_PARAMS } from '@/constant';
 import { NavMenu } from '@/components';
 import * as S from './MobileNavBar.styles';
-import { useUser } from '@/store';
+import { useUserSn } from '@/store';
 
 const MobileNavBar = () => {
-  const user = useUser();
+  const userSn = useUserSn();
 
   return (
     <S.MobileNavBar>
@@ -13,14 +13,19 @@ const MobileNavBar = () => {
         <ul>
           {MOBILE_NAV_ITEMS.map((navItem, index) => (
             <li key={`${index}-${navItem.text}`}>
-              <NavLink to={navItem.link} aria-label={navItem.text}>
+              <NavLink
+                to={
+                  navItem.link === URL.PROFILE.link
+                    ? userSn
+                      ? URL.PROFILE.link.replace(PATH_PARAMS.USER_SN, userSn)
+                      : URL.SIGNIN.link
+                    : navItem.link
+                }
+                aria-label={navItem.text}
+              >
                 <NavMenu
                   iconName={navItem.iconName}
-                  link={
-                    navItem.link === '/profile/:userSn'
-                      ? `/profile/${user?.userSn}`
-                      : navItem.link
-                  }
+                  link={navItem.link}
                   size="2.8rem"
                 />
               </NavLink>
