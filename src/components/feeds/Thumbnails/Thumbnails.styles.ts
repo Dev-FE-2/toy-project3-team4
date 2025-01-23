@@ -59,7 +59,10 @@ export const Thumbnails = styled(Link)`
 export const Thumbnail = styled.picture`
   img {
     display: block;
-    height: 100%;
     margin: 0 auto;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) scale(1.01);
   }
 `;
