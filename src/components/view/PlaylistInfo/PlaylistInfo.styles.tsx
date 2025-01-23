@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { font, padding } from '@/styles';
+import { Link } from 'react-router-dom';
 
 export const ContentSection = styled.div`
   margin-bottom: ${padding.md};
@@ -17,8 +18,8 @@ export const VideoActions = styled.div`
   margin-bottom: 16px;
 `;
 
-export const CreatorInfo = styled.div`
-  display: flex;
+export const CreatorInfo = styled(Link)`
+  display: inline-flex;
   align-items: center;
   gap: ${padding.sm};
 `;

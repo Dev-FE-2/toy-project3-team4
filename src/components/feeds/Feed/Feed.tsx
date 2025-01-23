@@ -24,9 +24,6 @@ const Feed = ({ playlistSn }: { playlistSn: string }) => {
   const link =
     URL.VIEWPLI.link +
     `?${QUERY_PARAMS.PLAYLIST_SN}=${playlistSn}&${QUERY_PARAMS.VIDEO_INDEX}=0`;
-  const link =
-    URL.VIEWPLI.link +
-    `?${QUERY_PARAMS.PLAYLIST_SN}=${playlistSn}&${QUERY_PARAMS.VIDEO_INDEX}=0`;
   const detailViewLinks = {
     default: link,
     infoView: link + `&${QUERY_PARAMS.PLAYLIST_INFO}=true`,

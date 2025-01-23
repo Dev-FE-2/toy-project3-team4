@@ -25,7 +25,7 @@ const PlaylistViewPage = () => {
   );
 
   const [showPlaylist, setShowPlaylist] = useState(
-    Boolean(searchParams.get('playlistIndex')) || false,
+    searchParams.get('comments') === null,
   );
   const [showComments, setShowComments] = useState(
     Boolean(searchParams.get('comments')) || false,
