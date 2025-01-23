@@ -36,7 +36,7 @@ const MainNavItems = () => {
                 iconName={navItem.iconName}
                 text={navItem.text}
                 size={NAV_ICON_SIZE}
-                link={navItem.link}
+                linkForActive={generateRoutingLink(navItem.link, userSn)}
               />
             </SideNavItem>
           </li>

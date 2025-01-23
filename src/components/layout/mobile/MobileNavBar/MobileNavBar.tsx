@@ -20,7 +20,7 @@ const MobileNavBar = () => {
               >
                 <NavMenu
                   iconName={navItem.iconName}
-                  link={navItem.link}
+                  linkForActive={generateRoutingLink(navItem.link, userSn)}
                   size="2.8rem"
                 />
               </NavLink>
