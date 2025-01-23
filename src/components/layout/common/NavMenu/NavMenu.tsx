@@ -21,10 +21,10 @@ type MenuProps = {
   iconName: string;
   text?: string;
   size: string;
-  link?: string;
+  linkForActive?: string;
 };
 
-const NavMenu = ({ iconName, text, size, link }: MenuProps) => {
+const NavMenu = ({ iconName, text, size, linkForActive }: MenuProps) => {
   const { pathname } = useLocation();
 
   const navIcons = new Map([
@@ -89,7 +89,7 @@ const NavMenu = ({ iconName, text, size, link }: MenuProps) => {
 
   return (
     <S.NavMenu>
-      {pathname === link ? iconInfo?.activeIcon : iconInfo?.icon}
+      {pathname === linkForActive ? iconInfo?.activeIcon : iconInfo?.icon}
       {text ? <span>{text}</span> : ''}
     </S.NavMenu>
   );
