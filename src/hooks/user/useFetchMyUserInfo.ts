@@ -13,7 +13,7 @@ const useFetchMyUserInfo = () => {
   }, [queryClient]);
 
   return useQuery<IUserAPISchema | null, Error>({
-    queryKey: ['myInfo', userSn],
+    queryKey: ['myInfo'],
     queryFn: async () => {
       if (!userSn) throw new Error('Invalid my userSn ID');
       return await getUser(userSn);
