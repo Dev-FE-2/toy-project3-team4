@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { border, font, padding } from '@/styles';
-import { Input } from '@/components';
 
 export const Container = styled.div`
   position: relative;
@@ -35,24 +34,6 @@ export const RightColumn = styled.section`
     padding-left: 0;
     margin-top: ${padding.md};
   }
-`;
-
-export const InteractionBar = styled.article`
-  display: flex;
-  align-items: center;
-  gap: ${padding.sm};
-  margin-bottom: ${padding.sm};
-`;
-
-export const CommentHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
-`;
-
-export const CommentInput = styled(Input)`
-  margin-bottom: ${padding.sm};
 `;
 
 export const SectionWrapper = styled.section`
