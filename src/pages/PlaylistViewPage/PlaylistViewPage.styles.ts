@@ -1,12 +1,8 @@
 import styled from 'styled-components';
-import { border, font, padding, width } from '@/styles';
-import { Input } from '@/components';
+import { border, font, padding } from '@/styles';
 
 export const Container = styled.div`
   position: relative;
-  max-width: ${width.desktop};
-  width: 100%;
-  margin: 0 auto;
   padding-bottom: 3.2rem;
 `;
 
@@ -22,7 +18,7 @@ export const LeftColumn = styled.section`
   flex: 1;
   max-width: 65%;
 
-  @media (width >= 1024px) {
+  @media (width < 1024px) {
     max-width: 100%;
   }
 `;
@@ -32,28 +28,12 @@ export const RightColumn = styled.section`
   max-width: 35%;
   padding-left: ${padding.md};
 
-  @media (width >= 1024px) {
+  @media (width < 1024px) {
     max-width: 100%;
     border-left: none;
+    padding-left: 0;
+    margin-top: ${padding.md};
   }
-`;
-
-export const InteractionBar = styled.article`
-  display: flex;
-  align-items: center;
-  gap: ${padding.sm};
-  margin-bottom: ${padding.sm};
-`;
-
-export const CommentHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
-`;
-
-export const CommentInput = styled(Input)`
-  margin-bottom: ${padding.sm};
 `;
 
 export const SectionWrapper = styled.section`

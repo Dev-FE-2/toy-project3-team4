@@ -12,3 +12,4 @@ export { default as useFetchVideos } from './useFetchVideos';
 export { default as useTagEdit } from './useTagEdit';
 export { default as useVideoEdit } from './useVideoEdit';
 export { default as useContextPlaylist } from './useContextPlaylist';
+export { default as usePlaylistView } from './usePlaylistView';

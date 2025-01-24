@@ -1,4 +1,4 @@
-import { font, padding } from '@/styles';
+import { border, colors, font, padding } from '@/styles';
 import styled from 'styled-components';
 
 export const VideoInfoBox = styled.div`
@@ -10,6 +10,14 @@ export const VideoInfoBox = styled.div`
     display: flex;
     align-items: center;
     gap: ${padding.sm};
+  }
+
+  @media (width < 1024px) {
+    /* background-color: ${colors.semantic.background.grayLight}; */
+    padding-bottom: ${padding.md};
+    border-bottom: ${border.default};
+
+    /* border-radius: ${border.radius.sm}; */
   }
 `;
 
