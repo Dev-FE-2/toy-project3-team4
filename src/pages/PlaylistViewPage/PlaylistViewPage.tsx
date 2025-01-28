@@ -62,6 +62,14 @@ const PlaylistViewPage = () => {
     });
   };
 
+  const handleVideoEnd = () => {
+    // 다음 영상이 있는 경우에만 재생
+    if (videoInfos && videoIdx < videoInfos.length - 1) {
+      const nextVideoIdx = videoIdx + 1;
+      handleVideoClick(nextVideoIdx);
+    }
+  };
+
   if (videosError) {
     return <div>영상 정보를 불러오는 중 오류가 발생했습니다.</div>;
   }
@@ -80,6 +88,7 @@ const PlaylistViewPage = () => {
                     video={currentVideo}
                     isFirstVideo={videoIdx === 0}
                     thumbnailUrl={thumbnailUrl}
+                    onVideoEnd={handleVideoEnd}
                   />
                   <VideoInfo video={currentVideo} />
                 </>

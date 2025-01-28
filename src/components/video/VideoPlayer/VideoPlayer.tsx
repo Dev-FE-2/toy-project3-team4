@@ -1,3 +1,4 @@
+import ReactPlayer from 'react-player';
 import { Video } from '@/types';
 import * as S from './VideoPlayer.styles';
 
@@ -5,28 +6,26 @@ interface VideoPlayerProps {
   video: Video;
   isFirstVideo: boolean;
   thumbnailUrl?: string;
+  onVideoEnd?: () => void;
 }
 
 const VideoPlayer = ({
   video,
   isFirstVideo,
   thumbnailUrl,
+  onVideoEnd,
 }: VideoPlayerProps) => {
-  const getEmbedUrl = (video: Video) => {
-    if (video.platform === 'youtube') {
-      return `https://www.youtube.com/embed/${video.videoId}`;
-    }
-    return `https://player.vimeo.com/video/${video.videoId}`;
-  };
-
   return (
     <S.VideoPlayerBox>
-      <S.VideoFrame
-        src={getEmbedUrl(video)}
-        title={video.title}
-        aria-label={`${video.title} 비디오 플레이어`}
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
+      <ReactPlayer
+        url={video.url}
+        muted
+        controls
+        playing
+        onEnded={onVideoEnd}
+        width={'100%'}
+        height={'100%'}
+        style={{ position: 'relative', zIndex: 1 }}
       />
       {isFirstVideo && thumbnailUrl && (
         <S.VideoThumbnail src={thumbnailUrl} alt="Video thumbnail" />
