@@ -1,16 +1,11 @@
-import { useEffect } from 'react';
-import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import { getUser } from '@/api';
+import { STALE_TIME } from '@/constant';
 import { useUserSn } from '@/store';
 import type { IUserAPISchema } from '@/types';
 
 const useFetchMyUserInfo = () => {
   const userSn = useUserSn();
-  const queryClient = useQueryClient();
-
-  useEffect(() => {
-    queryClient.resetQueries({ queryKey: ['myInfo'] });
-  }, [queryClient]);
 
   return useQuery<IUserAPISchema | null, Error>({
     queryKey: ['myInfo'],
@@ -19,6 +14,7 @@ const useFetchMyUserInfo = () => {
       return await getUser(userSn);
     },
     enabled: !!userSn,
+    staleTime: STALE_TIME,
   });
 };
 
