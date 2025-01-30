@@ -24,7 +24,7 @@ const BookmarkButton = ({ playlistSn }: ILikeButton) => {
       return;
     }
 
-    const newBookmarks = [...(myBookmarks || []), playlistSn];
+    const newBookmarks = [...myBookmarks, playlistSn];
     updateBookmarks({ newBookmarks });
   };
 
