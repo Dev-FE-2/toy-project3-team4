@@ -14,16 +14,30 @@ const useUpdateLikes = (playlistSn: string) => {
       updateLikesContext(playlistSn, newLikes);
     },
     onSuccess: (_, { playlistSn, newLikes }) => {
+      // feed 리스트 조회 캐시 업데이트
       queryClient.setQueryData(
         ['playlists'],
-        (prevData: IPlaylistAPISchema[]) => {
-          if (!prevData) return prevData;
+        (prevFeedList: IPlaylistAPISchema[]) => {
+          if (!prevFeedList) return prevFeedList;
 
-          return prevData.map((playlist) =>
+          return prevFeedList.map((playlist) =>
             playlist.playlistSn === playlistSn
               ? { ...playlist, likes: newLikes }
               : playlist,
           );
+        },
+      );
+
+      // 개별 플레이리스트(feed) 캐시 업데이트
+      queryClient.setQueryData(
+        ['playlist', playlistSn],
+        (prevPlaylist: IPlaylistAPISchema) => {
+          if (!prevPlaylist) return prevPlaylist;
+
+          return {
+            ...prevPlaylist,
+            likes: newLikes,
+          };
         },
       );
     },
