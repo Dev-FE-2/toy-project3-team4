@@ -15,7 +15,6 @@ const useFetchAllPlaylist = () => {
     queryKey: ['playlists'],
     queryFn: async () => await getAllPlaylist(),
     staleTime: STALE_TIME,
-    refetchOnWindowFocus: false,
   });
 };
 
