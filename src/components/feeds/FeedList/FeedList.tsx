@@ -4,13 +4,27 @@ import { useFetchMyUserInfo } from '@/hooks';
 import { LoaderWrapper, Feed } from '@/components';
 
 const FeedList = () => {
-  const { data: feedList, isLoading, isError, error } = useFetchAllPlaylist();
-  const { data: myInfo } = useFetchMyUserInfo();
+  const {
+    data: feedList,
+    isLoading: isFeedLoading,
+    isError: isFeedError,
+    error: feedError,
+  } = useFetchAllPlaylist();
+  const {
+    data: myInfo,
+    isLoading: isMyInfoLoading,
+    isError: isMyInfoError,
+    error: myInfoError,
+  } = useFetchMyUserInfo();
 
-  if (isError) return <div>오류 발생: {error?.message}</div>;
+  if (isFeedError) return <div>오류 발생: {feedError?.message}</div>;
+  if (isMyInfoError) return <div>오류 발생: {myInfoError?.message}</div>;
 
   return (
-    <LoaderWrapper isLoading={isLoading} text="로딩 중...">
+    <LoaderWrapper
+      isLoading={isFeedLoading || isMyInfoLoading}
+      text="로딩 중..."
+    >
       <FeedListProvider
         initialFeedList={feedList || []}
         initialMyBookmarks={myInfo?.bookmarks || []}
