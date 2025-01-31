@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { getUser } from '@/api';
-import { STALE_TIME, QUERY_KEYS } from '@/constant';
+import { LONG_STALE_TIME, QUERY_KEYS } from '@/constant';
 import { useUserSn } from '@/store';
 import type { IUserAPISchema } from '@/types';
 
@@ -14,7 +14,7 @@ const useFetchMyUserInfo = () => {
       return await getUser(userSn);
     },
     enabled: !!userSn,
-    staleTime: STALE_TIME,
+    staleTime: LONG_STALE_TIME,
   });
 };
 

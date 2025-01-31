@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { getUser } from '@/api';
-import { STALE_TIME } from '@/constant';
+import { LONG_STALE_TIME } from '@/constant';
 import type { IUserAPISchema } from '@/types';
 
 const useFetchAuthor = (userSn: string) => {
@@ -14,7 +14,7 @@ const useFetchAuthor = (userSn: string) => {
       return await getUser(userSn);
     },
     enabled: !!userSn,
-    staleTime: STALE_TIME,
+    staleTime: LONG_STALE_TIME,
     refetchOnWindowFocus: false,
   });
 };

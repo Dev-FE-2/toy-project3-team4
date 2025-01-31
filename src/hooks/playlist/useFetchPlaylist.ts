@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { getPlaylist } from '@/api';
-import { STALE_TIME, QUERY_KEYS } from '@/constant';
+import { CONTENT_STALE_TIME, QUERY_KEYS } from '@/constant';
 import type { IPlaylistAPISchema } from '@/types';
 
 const getFetchPlayListOptions = (playlistSn: string) => ({
@@ -10,7 +10,7 @@ const getFetchPlayListOptions = (playlistSn: string) => ({
     return await getPlaylist(playlistSn);
   },
   enabled: !!playlistSn,
-  staleTime: STALE_TIME,
+  staleTime: CONTENT_STALE_TIME,
   refetchOnWindowFocus: false,
 });
 
