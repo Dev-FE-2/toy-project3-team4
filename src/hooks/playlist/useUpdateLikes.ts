@@ -1,18 +1,15 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { updatePlaylist } from '@/api';
-import { useContextFeed } from '@/hooks';
 import { QUERY_KEYS } from '@/constant';
 import type { IPlaylistAPISchema } from '@/types';
 
-const useUpdateLikes = (playlistSn: string) => {
+const useUpdateLikes = () => {
   const queryClient = useQueryClient();
-  const { updateLikes: updateLikesContext } = useContextFeed(playlistSn);
 
   return useMutation<void, Error, { playlistSn: string; newLikes: string[] }>({
     mutationFn: async ({ playlistSn, newLikes }) => {
       if (!playlistSn || !newLikes) throw new Error('Invalid update data');
       await updatePlaylist(playlistSn, { likes: newLikes });
-      updateLikesContext(playlistSn, newLikes);
     },
     onSuccess: (_, { playlistSn, newLikes }) => {
       const feedListQuery = queryClient.getQueryData<IPlaylistAPISchema[]>([

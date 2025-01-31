@@ -1,5 +1,4 @@
 import { useFetchAllPlaylist } from '@/hooks';
-import { FeedListProvider } from '@/provider';
 import { useFetchMyUserInfo } from '@/hooks';
 import { LoaderWrapper, Feed } from '@/components';
 
@@ -25,22 +24,17 @@ const FeedList = () => {
       isLoading={isFeedLoading || isMyInfoLoading}
       text="로딩 중..."
     >
-      <FeedListProvider
-        initialFeedList={feedList || []}
-        initialMyBookmarks={myInfo?.bookmarks || []}
-      >
-        <ul>
-          {feedList && feedList.length > 0 ? (
-            feedList.map((feed, index) => (
-              <li key={`${index}-${feed.playlistSn}`}>
-                <Feed playlistSn={feed.playlistSn} />
-              </li>
-            ))
-          ) : (
-            <div>no data</div>
-          )}
-        </ul>
-      </FeedListProvider>
+      <ul>
+        {feedList && feedList.length > 0 ? (
+          feedList.map((feed, index) => (
+            <li key={`${index}-${feed.playlistSn}`}>
+              <Feed feed={feed} myBookmarks={myInfo?.bookmarks || []} />
+            </li>
+          ))
+        ) : (
+          <div>no data</div>
+        )}
+      </ul>
     </LoaderWrapper>
   );
 };
