@@ -14,6 +14,7 @@ const useUpdateMyBookmarks = () => {
       await updateUser(userSn, { bookmarks: newBookmarks });
     },
     onSuccess(_, { newBookmarks }) {
+      // 캐시 업데이트
       queryClient.setQueryData(
         [QUERY_KEYS.MY_INFO],
         (prevData: IUserAPISchema[]) => {
@@ -25,6 +26,9 @@ const useUpdateMyBookmarks = () => {
           };
         },
       );
+
+      // 최신 데이터 반영 (백그라운드에서 refetch)
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.MY_INFO] });
     },
     onError: (error: Error) => {
       console.error('북마크 업데이트 실패:', error.message);

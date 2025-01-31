@@ -43,6 +43,15 @@ const useUpdateLikes = () => {
           }),
         );
       }
+
+      // 최신 데이터 반영 (백그라운드에서 refetch)
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEYS.FEED_LIST],
+        refetchType: 'active',
+      });
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEYS.PLAYLIST, playlistSn],
+      });
     },
     onError: (error: Error) => {
       console.error('좋아요 업데이트 실패:', error.message);
