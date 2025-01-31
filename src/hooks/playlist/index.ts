@@ -5,7 +5,6 @@ export { default as useUpdatePlaylist } from './useUpdatePlaylist';
 export { default as useDeletePlaylist } from './useDeletePlaylist';
 export { default as useFetchAuthor } from './useFetchAuthor';
 export { default as useSearchPlaylist } from './useSearchPlaylist';
-export { default as useContextFeed } from './useContextFeed';
 export { default as useUpdateLikes } from './useUpdateLikes';
 export { default as useUpdateMyBookmarks } from './useUpdateMyBookmarks';
 export { default as useFetchVideos } from './useFetchVideos';

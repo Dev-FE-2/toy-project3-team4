@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { getVideoInfo } from '@/utils';
-import { STALE_TIME } from '@/constant';
+import { CONTENT_STALE_TIME } from '@/constant';
 import type { Video } from '@/types';
 
 const useFetchVideos = ({ links }: { links: string[] }) => {
@@ -12,7 +12,7 @@ const useFetchVideos = ({ links }: { links: string[] }) => {
       return results.filter((info): info is Video => info !== null);
     },
     enabled: links.length > 0,
-    staleTime: STALE_TIME,
+    staleTime: CONTENT_STALE_TIME,
   });
 };
 

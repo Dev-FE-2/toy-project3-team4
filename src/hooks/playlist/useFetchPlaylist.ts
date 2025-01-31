@@ -1,16 +1,16 @@
 import { useQuery } from '@tanstack/react-query';
 import { getPlaylist } from '@/api';
-import { STALE_TIME } from '@/constant';
+import { CONTENT_STALE_TIME, QUERY_KEYS } from '@/constant';
 import type { IPlaylistAPISchema } from '@/types';
 
 const getFetchPlayListOptions = (playlistSn: string) => ({
-  queryKey: ['playlist', playlistSn],
+  queryKey: [QUERY_KEYS.PLAYLIST, playlistSn],
   queryFn: async () => {
     if (!playlistSn) throw new Error('Invalid playlist ID');
     return await getPlaylist(playlistSn);
   },
   enabled: !!playlistSn,
-  staleTime: STALE_TIME,
+  staleTime: CONTENT_STALE_TIME,
   refetchOnWindowFocus: false,
 });
 

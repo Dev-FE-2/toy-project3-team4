@@ -4,7 +4,11 @@ import styled from 'styled-components';
 import { padding, width } from '@/styles';
 
 export const Feed = styled.article`
-  max-width: ${width.feed};
+  width: 100%;
+
+  @media (width >= 768px) {
+    max-width: ${width.feed};
+  }
 `;
 
 export const FeedHeader = styled.header`

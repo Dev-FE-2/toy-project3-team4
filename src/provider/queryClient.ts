@@ -1,6 +1,5 @@
 import { QueryClient } from '@tanstack/react-query';
-
-const INTERVAL_TIME = 1000 * 60 * 10; // 10분
+import { INTERVAL_TIME } from '@/constant';
 
 const queryClient = new QueryClient({
   defaultOptions: {

@@ -1,28 +1,26 @@
+import { useNavigate } from 'react-router-dom';
 import { RiBookmarkLine, RiBookmarkFill } from 'react-icons/ri';
-import { FEED_ICON_SIZE } from '@/constant';
-import {
-  useFetchMyUserInfo,
-  useUpdateMyBookmarks,
-  useContextFeed,
-} from '@/hooks';
+import { FEED_ICON_SIZE, URL } from '@/constant';
+import { useFetchMyUserInfo, useUpdateMyBookmarks } from '@/hooks';
 import { IconButton } from '@/components';
 
-interface ILikeButton {
+interface IBookmarkButton {
   playlistSn: string;
+  myBookmarks: string[];
 }
 
-const BookmarkButton = ({ playlistSn }: ILikeButton) => {
+const BookmarkButton = ({ playlistSn, myBookmarks }: IBookmarkButton) => {
+  const navigation = useNavigate();
   const { data: myInfo } = useFetchMyUserInfo();
-  const { myBookmarks } = useContextFeed(playlistSn);
-  const { mutate: updateBookmarks } = useUpdateMyBookmarks(playlistSn);
+  const { mutate: updateBookmarks } = useUpdateMyBookmarks();
 
   const addBookmarkPli = () => {
     if (!myInfo) {
-      alert('로그인을 진행해주세요!');
+      navigation(URL.SIGNIN.link);
       return;
     }
 
-    const newBookmarks = [...(myBookmarks || []), playlistSn];
+    const newBookmarks = [...myBookmarks, playlistSn];
     updateBookmarks({ newBookmarks });
   };
 

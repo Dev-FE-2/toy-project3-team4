@@ -1,16 +1,22 @@
 import { Link } from 'react-router-dom';
 import { RiMoreFill } from 'react-icons/ri';
 import { URL, QUERY_PARAMS, PATH_PARAMS } from '@/constant';
-import { useFetchAuthor, useContextFeed } from '@/hooks';
+import { useFetchAuthor } from '@/hooks';
 import { ProfileImage, TagList } from '@/components';
+import type { IPlaylistAPISchema } from '@/types';
 import { Thumbnails, InteractionBar } from '@/components/feeds';
 import * as S from './Feed.styles';
 import defaultImage from '@/assets/avatar.svg';
 
-const Feed = ({ playlistSn }: { playlistSn: string }) => {
-  const { feed } = useContextFeed(playlistSn);
+interface IFeed {
+  feed: IPlaylistAPISchema;
+  myBookmarks: string[];
+}
+
+const Feed = ({ feed, myBookmarks }: IFeed) => {
   const {
-    userSn,
+    playlistSn,
+    userSn: authorSn,
     title,
     content,
     likes,
@@ -20,7 +26,7 @@ const Feed = ({ playlistSn }: { playlistSn: string }) => {
     links,
   } = feed;
   const videoCount = links.length;
-  const { data: author } = useFetchAuthor(userSn);
+  const { data: author } = useFetchAuthor(authorSn);
   const link =
     URL.VIEWPLI.link +
     `?${QUERY_PARAMS.PLAYLIST_SN}=${playlistSn}&${QUERY_PARAMS.VIDEO_INDEX}=0`;
@@ -32,7 +38,7 @@ const Feed = ({ playlistSn }: { playlistSn: string }) => {
   };
   const authorProfileLink = URL.PROFILE.link.replace(
     PATH_PARAMS.USER_SN,
-    userSn,
+    authorSn,
   );
 
   return (
@@ -53,6 +59,8 @@ const Feed = ({ playlistSn }: { playlistSn: string }) => {
         <InteractionBar
           playlistSn={playlistSn}
           detailViewLinks={detailViewLinks}
+          myBookmarks={myBookmarks}
+          likes={likes}
         />
         <S.FeedInfo>
           <div className="likes-info">좋아요 {likes.length}개</div>
