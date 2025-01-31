@@ -2,6 +2,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { updateUser } from '@/api';
 import { useUserSn } from '@/store';
 import { useContextFeed } from '@/hooks';
+import { QUERY_KEYS } from '@/constant';
 import type { IUserAPISchema } from '@/types';
 
 const useUpdateMyBookmarks = (playlistSn: string) => {
@@ -17,14 +18,17 @@ const useUpdateMyBookmarks = (playlistSn: string) => {
       updateBookmarksContext(newBookmarks);
     },
     onSuccess(_, { newBookmarks }) {
-      queryClient.setQueryData(['myInfo'], (prevData: IUserAPISchema[]) => {
-        if (!prevData) return prevData;
+      queryClient.setQueryData(
+        [QUERY_KEYS.MY_INFO],
+        (prevData: IUserAPISchema[]) => {
+          if (!prevData) return prevData;
 
-        return {
-          ...prevData,
-          bookmarks: newBookmarks,
-        };
-      });
+          return {
+            ...prevData,
+            bookmarks: newBookmarks,
+          };
+        },
+      );
     },
     onError: (error: Error) => {
       console.error('북마크 업데이트 실패:', error.message);

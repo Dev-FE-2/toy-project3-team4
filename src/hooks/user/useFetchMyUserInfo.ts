@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { getUser } from '@/api';
-import { STALE_TIME } from '@/constant';
+import { STALE_TIME, QUERY_KEYS } from '@/constant';
 import { useUserSn } from '@/store';
 import type { IUserAPISchema } from '@/types';
 
@@ -8,7 +8,7 @@ const useFetchMyUserInfo = () => {
   const userSn = useUserSn();
 
   return useQuery<IUserAPISchema | null, Error>({
-    queryKey: ['myInfo'],
+    queryKey: [QUERY_KEYS.MY_INFO],
     queryFn: async () => {
       if (!userSn) throw new Error('Invalid my userSn ID');
       return await getUser(userSn);

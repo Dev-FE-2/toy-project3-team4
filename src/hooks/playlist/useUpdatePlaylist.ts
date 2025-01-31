@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { updatePlaylist } from '@/api';
+import { QUERY_KEYS } from '@/constant';
 import type { IPlaylistAPISchema } from '@/types';
 
 const useUpdatePlaylist = () => {
@@ -17,7 +18,7 @@ const useUpdatePlaylist = () => {
     onSuccess: (_, { playlistSn, updates }) => {
       // 개별 플레이리스트(feed) 캐시 업데이트
       queryClient.setQueryData(
-        ['playlist', playlistSn],
+        [QUERY_KEYS.PLAYLIST, playlistSn],
         (prevPlaylist: IPlaylistAPISchema) => {
           if (!prevPlaylist) return prevPlaylist;
 
