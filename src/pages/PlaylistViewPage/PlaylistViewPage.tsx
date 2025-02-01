@@ -25,6 +25,7 @@ const PlaylistViewPage = () => {
     date,
     hashTags,
     comments: commentSns,
+    likes,
     hits,
   } = useLoaderData() as IPlaylistAPISchema;
 
@@ -104,6 +105,7 @@ const PlaylistViewPage = () => {
             author={author}
             playlistTitle={title}
             playlistSn={playlistSn}
+            likes={likes}
             onToggleView={(type) => {
               setShowComments(type === 'comments');
               setShowPlaylist(type === 'playlist');
@@ -115,6 +117,7 @@ const PlaylistViewPage = () => {
             date={date}
             hashTags={hashTags}
             hits={hits}
+            likes={likes}
           />
 
           {showComments && (

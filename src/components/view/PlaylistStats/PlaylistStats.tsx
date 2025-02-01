@@ -6,7 +6,7 @@ import * as S from './PlaylistStats.styles';
 
 type PlaylistStatsProps = Pick<
   IPlaylistAPISchema,
-  'content' | 'date' | 'hashTags' | 'hits'
+  'content' | 'date' | 'hashTags' | 'hits' | 'likes'
 >;
 
 const PlaylistStats = ({
@@ -14,6 +14,7 @@ const PlaylistStats = ({
   date,
   hashTags,
   hits,
+  likes,
 }: PlaylistStatsProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [showButton, setShowButton] = useState(false);
@@ -42,6 +43,11 @@ const PlaylistStats = ({
       <S.VideoStats>
         <span>
           조회수 {new Intl.NumberFormat().format((hits as number) || 0)}회
+        </span>
+        <span>·</span>
+        <span>
+          좋아요 {new Intl.NumberFormat().format((likes.length as number) || 0)}
+          회
         </span>
         {date && (
           <>
