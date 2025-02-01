@@ -19,9 +19,9 @@ const PlaylistInfo = ({ playlistTitle, author }: PlaylistInfoProps) => {
         <ProfileImage size="3rem" imageUrl={author?.imgUrl || defaultImage} />
         <div>
           <S.CreatorName>{author?.name}</S.CreatorName>
-          <S.CreatorSubInfo>
+          {/* <S.CreatorSubInfo>
             플레이리스트 {author?.myPlaylists.length}개
-          </S.CreatorSubInfo>
+          </S.CreatorSubInfo> */}
         </div>
       </S.CreatorInfo>
     </S.ContentSection>

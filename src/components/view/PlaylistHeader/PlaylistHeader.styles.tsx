@@ -6,4 +6,8 @@ export const InteractionBar = styled.article`
   align-items: center;
   gap: ${padding.sm};
   margin-bottom: ${padding.sm};
+
+  .position-right {
+    margin-left: auto;
+  }
 `;
